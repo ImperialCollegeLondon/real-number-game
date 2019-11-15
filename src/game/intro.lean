@@ -35,3 +35,9 @@ Lean is a computer theorem prover being developed at Microsoft Research.
 
 Prove a theorem. Write a function. <a href="https://twitter.com/XenaProject" target="blank">@XenaProject</a>.
 -/
+/- Tactic : fish
+
+## Summary
+
+eat fish $fish$ `fish`
+-/
