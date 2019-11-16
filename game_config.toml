@@ -7,7 +7,7 @@ intro = "src/game/intro.lean"
 name = "Sup and inf"
 id = 1
 levels = [
-	"src/game/sup_inf/level1.lean",
+	"src/game/sup_inf/L01defs.lean",
 ]
 
 [[worlds]]
@@ -15,7 +15,7 @@ name = "Limits of sequences"
 id = 2
 parents = [1]
 levels = [
-	"src/game/world2/level1.lean",
+	"src/game/limits/L01defs.lean",
 ]
 
 [[worlds]]
@@ -23,5 +23,5 @@ name = "Sums of series"
 id = 3
 parents = [2]
 levels = [
-	"src/game/world3/level1.lean",
+	"src/game/series/L01defs.lean",
 ]
