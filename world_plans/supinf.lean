@@ -1,5 +1,12 @@
 import data.real.basic -- Lean has a good API for reals so I'm happy to use them.
 import algebra.pointwise -- for addition on set ℝ
+import for_mathlib.add_comm_monoid
+local attribute [instance] set.add_comm_monoid
+
+-- this should apparently be in mathlib
+instance (X Y : Type) : nonempty X → nonempty Y → nonempty (X × Y)
+| ⟨x⟩ ⟨y⟩ := ⟨(x, y)⟩
+
 /-
 Goal : prove the following theorem.
 
@@ -11,22 +18,22 @@ Goal after that: state and prove Richard Thomas' problem sheet question.
 class bounded_above (X : set ℝ) : Prop := 
 (is_bounded_above : bounded (≤) X)
 
-local attribute [instance] set.add_comm_monoid
+structure subtype' (R : Type) (P : R → Prop) :=
+(val : R) (property : P val)
 
-instance (X Y : Type*) : nonempty X → nonempty Y → nonempty (X × Y)
-| ⟨x⟩ ⟨y⟩ := ⟨(x, y)⟩
+variables (R : Type) (P : R → Prop)
 
---set_option pp.all true
+def subtype'.val' : subtype' R P → R := subtype'.val
+def subtype'.property' : ∀ (c : subtype' R P), P (c.val) := subtype'.property
+
 theorem real.add_nonempty (X Y : set ℝ) :
-  nonempty X → nonempty Y → nonempty (subtype (X + Y : set ℝ))
+  nonempty ↥X → nonempty ↥Y → nonempty ↥(X + Y)
 | ⟨x⟩ ⟨y⟩ := ⟨⟨x.val + y.val, ⟨x.val, x.property, y.val, y.2, rfl⟩⟩⟩
-
-#exit
 
 theorem real.Sup_add -- or is it real.Sup.add?
   (X : set ℝ) (h1X : nonempty X) (h2X : bounded_above X)
   (Y : set ℝ) (h1Y : nonempty Y) (h2Y : bounded_above Y) : 
-  real.Sup {z : ℝ | ∃ (x ∈ X) (y ∈ Y), z = x + y} = real.Sup X + real.Sup Y  :=
+  real.Sup (X + Y) = real.Sup X + real.Sup Y  :=
 begin
   
   apply le_antisymm,
