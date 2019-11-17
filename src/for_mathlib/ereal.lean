@@ -1,17 +1,13 @@
 import data.real.basic 
 
-/-- ereal : The type $$[-\infty,+\infty]$$ -/
+/-- ereal : The type $$[-\infty,+\infty]$$ or `[-∞, ∞]` -/
 def ereal := with_bot (with_top ℝ)
 
-instance : linear_order ereal := 
-by unfold ereal; apply_instance
-instance : lattice.has_top ereal := 
-by unfold ereal; apply_instance
-instance : lattice.has_bot ereal :=
-by -- guess what
-unfold ereal; apply_instance
-instance : has_zero ereal := by unfold ereal; apply_instance instance : lattice.order_bot ereal := by unfold ereal; apply_instance instance : lattice.order_top ereal := by unfold ereal; apply_instance
+instance : linear_order ereal := by unfold ereal; apply_instance
+instance : lattice.order_bot ereal := by unfold ereal; apply_instance
+instance : lattice.order_top ereal := by unfold ereal; apply_instance
 
+/- neg -/
 def ereal.neg : ereal → ereal
 | none := ⊤
 | (some none) := ⊥
@@ -41,14 +37,15 @@ def ereal.neg_neg : ∀ (a : ereal), - (- a) = a
 | (some (some a)) := show (((- -a : ℝ) : with_top ℝ) : with_bot (with_top ℝ)) = (((a : ℝ) : with_top ℝ) : with_bot (with_top ℝ)),
 by simp [neg_neg a]
 
-def ereal.le_neg_of (a b : ereal) (h : a ≤ -b) : b ≤ -a :=
+def ereal.le_neg_of {a b : ereal} (h : a ≤ -b) : b ≤ -a :=
 by rwa [←ereal.neg_neg b, ereal.neg_le, ereal.neg_neg]
 
 def has_Sup (X : set ereal) : Prop := ∃ l : ereal, is_lub X l
 
 local attribute [instance, priority 10] classical.prop_decidable
 
-def Sup_exists (X : set ereal) : has_Sup X :=
+/-- A set of ereals has a Sup in ereal -/
+theorem Sup_exists (X : set ereal) : has_Sup X :=
   let Xoc : set (with_top ℝ) := λ x, X (↑x : with_bot _) in
 dite (Xoc = ∅) (λ h, ⟨⊥, ⟨
     by
@@ -75,7 +72,7 @@ dite (Xoc = ∅) (λ h, ⟨⊥, ⟨
       },
       { intros c hc,
         cases c with c,
-          cases (set.exists_mem_of_ne_empty h) with x hx, -- dont need 7 lines for this
+          cases (set.exists_mem_of_ne_empty h) with x hx,
           cases (lattice.le_bot_iff.1 (hc (↑x : with_bot _) hx)),
         cases c with c, {unfold_coes, simp},
         suffices : real.Sup Xoo ≤ c,
@@ -116,7 +113,7 @@ noncomputable def ereal.Sup := λ X, classical.some (Sup_exists X)
 
 noncomputable instance : lattice.has_Sup ereal := ⟨ereal.Sup⟩
 
-/-- $$[-\infty,+\infty]$$ is a complete lattice -/
+/-- `ereal` is a complete lattice -/
 noncomputable instance : lattice.complete_lattice (ereal) :=
 { top := ⊤,
   le_top := λ _, lattice.le_top,
@@ -127,6 +124,6 @@ noncomputable instance : lattice.complete_lattice (ereal) :=
   le_Sup := λ X x hx, (classical.some_spec (Sup_exists X)).1 _ hx,
   Sup_le := λ X b hb, (classical.some_spec (Sup_exists X)).2 _ hb,
   Inf_le := λ X x hx, ereal.neg_le_of $ (classical.some_spec (Sup_exists ({mx | ∃ x ∈ X, mx = -x}))).1 _ ⟨x, hx, rfl⟩,
-  le_Inf := λ X b hb, ereal.le_neg_of _ _ $ (classical.some_spec (Sup_exists ({mx | ∃ x ∈ X, mx = -x}))).2 _
-    (λ mx ⟨x, hx, hmx⟩, ereal.le_neg_of _ _ $ hb _ $ by rwa [hmx, ereal.neg_neg]),
+  le_Inf := λ X b hb, ereal.le_neg_of $ (classical.some_spec (Sup_exists ({mx | ∃ x ∈ X, mx = -x}))).2 _
+    (λ mx ⟨x, hx, hmx⟩, ereal.le_neg_of $ hb _ $ by rwa [hmx, ereal.neg_neg]),
   ..with_bot.lattice }
