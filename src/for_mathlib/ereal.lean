@@ -58,14 +58,9 @@ dite (Xoc = ∅) (λ h, ⟨⊥, ⟨
       rw ←h,
       exact hx,
     },
-    by { intros u hu,
-      exact lattice.bot_le}⟩
-  ⟩) (λ h, dite (⊤ ∈ Xoc) (λ h2, ⟨⊤, begin
-    split, intros x hx, exact lattice.le_top,
-    intros x hx,
-    apply hx,
-    exact h2,
-  end⟩) begin
+    λ u hu, lattice.bot_le⟩
+  ⟩) (λ h, dite (⊤ ∈ Xoc) (λ h2, ⟨⊤, ⟨λ _ _, lattice.le_top, λ x hx, hx _ h2⟩⟩)
+  begin
     intro htop,
     let Xoo : set ℝ := λ (x : ℝ), Xoc (↑ x),
     by_cases h2 : nonempty (upper_bounds Xoo),
