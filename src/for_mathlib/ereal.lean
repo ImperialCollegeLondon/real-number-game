@@ -27,39 +27,22 @@ def ereal.neg_le_of : ∀ (a b : ereal) (h : -a ≤ b), -b ≤ a
 | (some (some a)) (some none) h := lattice.bot_le
 | (some (some a)) (some (some b)) h := 
 begin
-  change (↑(↑(-a) : with_top ℝ) : with_bot (with_top ℝ)) ≤ _ at h,
-  unfold_coes at h,
-  replace h : -a ≤ b := by simpa using h,
-  change (↑(↑(-b) : with_top ℝ) : with_bot (with_top ℝ)) ≤ _,
-  suffices : -b ≤ a,
-    unfold_coes,
-    simp [this],
-  exact neg_le_of_neg_le h,
+  revert h,
+  change (((-a : ℝ) : with_top ℝ) : with_bot (with_top ℝ)) ≤ _ →
+    (((-b : ℝ) : with_top ℝ) : with_bot (with_top ℝ)) ≤ _,
+  unfold_coes, simpa using neg_le_of_neg_le,
 end
-
-def ereal.neg_neg (a : ereal) : - (- a) = a :=
-begin
-  cases a with a,
-    refl,
-  cases a with a,
-    refl,
-  unfold has_neg.neg,
-  dsimp [ereal.neg],
-  unfold_coes,
-  dsimp [ereal.neg],
-  rw neg_neg, refl,
-end 
 
 def ereal.neg_le {a b : ereal} : -a ≤ b ↔ -b ≤ a := ⟨ereal.neg_le_of a b, ereal.neg_le_of b a⟩
 
-def ereal.le_neg_of (a b : ereal) : a ≤ -b → b ≤ -a :=
-begin
-  intro h,
-  rw ←ereal.neg_neg b,
-  apply ereal.neg_le_of,
-  rwa ereal.neg_neg,
-end 
+def ereal.neg_neg : ∀ (a : ereal), - (- a) = a
+| none := rfl
+| (some none) := rfl
+| (some (some a)) := show (((- -a : ℝ) : with_top ℝ) : with_bot (with_top ℝ)) = (((a : ℝ) : with_top ℝ) : with_bot (with_top ℝ)),
+by simp [neg_neg a]
 
+def ereal.le_neg_of (a b : ereal) (h : a ≤ -b) : b ≤ -a :=
+by rwa [←ereal.neg_neg b, ereal.neg_le, ereal.neg_neg]
 
 def has_Sup (X : set ereal) : Prop := ∃ l : ereal, is_lub X l
 
@@ -68,19 +51,17 @@ local attribute [instance, priority 10] classical.prop_decidable
 def Sup_exists (X : set ereal) : has_Sup X :=
 begin
   let Xoc : set (with_top ℝ) := λ x, X (↑x : with_bot _),
-  exact dite (Xoc = ∅) (λ h, begin
-    use ⊥,
+  exact dite (Xoc = ∅) (λ h, ⟨⊥, begin
     split,
-    { intros x hx,
-      cases x, exact le_refl none,
+    { rintro (⟨⟩|x) hx, exact le_refl none,
       exfalso,
       apply set.not_mem_empty x,
       rw ←h,
       exact hx,
     },
-    intros u hu,
-    exact lattice.bot_le,
-  end) (λ h, dite (⊤ ∈ Xoc) (λ h2, ⟨⊤, begin
+    { intros u hu,
+      exact lattice.bot_le}
+  end⟩) (λ h, dite (⊤ ∈ Xoc) (λ h2, ⟨⊤, begin
     split, intros x hx, exact lattice.le_top,
     intros x hx,
     apply hx,
