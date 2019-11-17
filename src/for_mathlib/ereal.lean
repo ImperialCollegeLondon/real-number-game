@@ -1,4 +1,27 @@
+/-
+Copyright (c) 2019 Kevin Buzzard. All rights reserved.
+Released under Apache 2.0 license as described in the file LICENSE.
+Authors: Kevin Buzzard
+-/
+
 import data.real.basic 
+
+/-!
+# The extended reals [-∞, ∞].
+
+This file defines `ereal`, the real numbers together with a top and bottom element,
+referred to as ⊤ and ⊥. 
+
+Addition and multiplication are problematic in the presence of ±∞, but
+negation is not, so we define negation. The main work is defining
+Sup : set ereal → ereal and proving that it is a Sup in all cases.
+Once we have, this, it is not hard to give a complete lattice
+structure on `ereal`.
+
+## Tags
+
+real, ereal, complete lattice
+-/
 
 /-- ereal : The type $$[-\infty,+\infty]$$ or `[-∞, ∞]` -/
 def ereal := with_bot (with_top ℝ)
@@ -8,6 +31,8 @@ instance : lattice.order_bot ereal := by unfold ereal; apply_instance
 instance : lattice.order_top ereal := by unfold ereal; apply_instance
 
 /- neg -/
+
+/-- negation on ereal -/
 def ereal.neg : ereal → ereal
 | none := ⊤
 | (some none) := ⊥
@@ -15,7 +40,8 @@ def ereal.neg : ereal → ereal
 
 instance : has_neg ereal := ⟨ereal.neg⟩
 
-def ereal.neg_le_of : ∀ {a b : ereal} (h : -a ≤ b), -b ≤ a
+/-- if -a ≤ b then -b ≤ a on ereal -/
+theorem ereal.neg_le_of_neg_le : ∀ {a b : ereal} (h : -a ≤ b), -b ≤ a
 | none none h := by cases (lattice.le_bot_iff.1 h)
 | none (some b) h := by cases (lattice.top_le_iff.1 h); exact le_refl _
 | (some none) b h := lattice.le_top
@@ -29,17 +55,21 @@ begin
   unfold_coes, simpa using neg_le_of_neg_le,
 end
 
-def ereal.neg_le {a b : ereal} : -a ≤ b ↔ -b ≤ a := ⟨ereal.neg_le_of, ereal.neg_le_of⟩
+/-- -a ≤ b ↔ -b ≤ a on ereal-/
+theorem ereal.neg_le {a b : ereal} : -a ≤ b ↔ -b ≤ a := ⟨ereal.neg_le_of_neg_le, ereal.neg_le_of_neg_le⟩
 
-def ereal.neg_neg : ∀ (a : ereal), - (- a) = a
+/-- - -a = a on ereal -/
+theorem ereal.neg_neg : ∀ (a : ereal), - (- a) = a
 | none := rfl
 | (some none) := rfl
 | (some (some a)) := show (((- -a : ℝ) : with_top ℝ) : with_bot (with_top ℝ)) = (((a : ℝ) : with_top ℝ) : with_bot (with_top ℝ)),
 by simp [neg_neg a]
 
-def ereal.le_neg_of {a b : ereal} (h : a ≤ -b) : b ≤ -a :=
+/-- a ≤ -b → b ≤ -a on ereal -/
+theorem ereal.le_neg_of_le_neg {a b : ereal} (h : a ≤ -b) : b ≤ -a :=
 by rwa [←ereal.neg_neg b, ereal.neg_le, ereal.neg_neg]
 
+/-- The claim that a set of ereals has a supremum in ereal -/
 def has_Sup (X : set ereal) : Prop := ∃ l : ereal, is_lub X l
 
 local attribute [instance, priority 10] classical.prop_decidable
@@ -123,7 +153,7 @@ noncomputable instance : lattice.complete_lattice (ereal) :=
   Inf := λ X, -classical.some (Sup_exists ({mx | ∃ x ∈ X, mx = -x})),
   le_Sup := λ X x hx, (classical.some_spec (Sup_exists X)).1 _ hx,
   Sup_le := λ X b hb, (classical.some_spec (Sup_exists X)).2 _ hb,
-  Inf_le := λ X x hx, ereal.neg_le_of $ (classical.some_spec (Sup_exists ({mx | ∃ x ∈ X, mx = -x}))).1 _ ⟨x, hx, rfl⟩,
-  le_Inf := λ X b hb, ereal.le_neg_of $ (classical.some_spec (Sup_exists ({mx | ∃ x ∈ X, mx = -x}))).2 _
-    (λ mx ⟨x, hx, hmx⟩, ereal.le_neg_of $ hb _ $ by rwa [hmx, ereal.neg_neg]),
+  Inf_le := λ X x hx, ereal.neg_le_of_neg_le $ (classical.some_spec (Sup_exists ({mx | ∃ x ∈ X, mx = -x}))).1 _ ⟨x, hx, rfl⟩,
+  le_Inf := λ X b hb, ereal.le_neg_of_le_neg $ (classical.some_spec (Sup_exists ({mx | ∃ x ∈ X, mx = -x}))).2 _
+    (λ mx ⟨x, hx, hmx⟩, ereal.le_neg_of_le_neg $ hb _ $ by rwa [hmx, ereal.neg_neg]),
   ..with_bot.lattice }
