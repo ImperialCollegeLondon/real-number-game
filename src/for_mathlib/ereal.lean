@@ -49,19 +49,18 @@ def has_Sup (X : set ereal) : Prop := ∃ l : ereal, is_lub X l
 local attribute [instance, priority 10] classical.prop_decidable
 
 def Sup_exists (X : set ereal) : has_Sup X :=
-begin
-  let Xoc : set (with_top ℝ) := λ x, X (↑x : with_bot _),
-  exact dite (Xoc = ∅) (λ h, ⟨⊥, begin
-    split,
+  let Xoc : set (with_top ℝ) := λ x, X (↑x : with_bot _) in
+dite (Xoc = ∅) (λ h, ⟨⊥, ⟨
+    by
     { rintro (⟨⟩|x) hx, exact le_refl none,
       exfalso,
       apply set.not_mem_empty x,
       rw ←h,
       exact hx,
     },
-    { intros u hu,
-      exact lattice.bot_le}
-  end⟩) (λ h, dite (⊤ ∈ Xoc) (λ h2, ⟨⊤, begin
+    by { intros u hu,
+      exact lattice.bot_le}⟩
+  ⟩) (λ h, dite (⊤ ∈ Xoc) (λ h2, ⟨⊤, begin
     split, intros x hx, exact lattice.le_top,
     intros x hx,
     apply hx,
@@ -149,7 +148,6 @@ begin
       simpa using hb,
     }
   end) 
-end
 
 noncomputable def ereal.Sup := λ X, classical.some (Sup_exists X)
 
