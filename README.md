@@ -7,6 +7,6 @@ the rudiments of real analysis via the Lean Theorem Prover.
 
 Planned sections so far:
 
-1) Sup and Inf
+1) Sup and Inf -- see `world_plans/supinf.lean`
 2) Sequences and limits
 3) Series and sums
