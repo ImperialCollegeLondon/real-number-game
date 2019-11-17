@@ -19,7 +19,7 @@ def ereal.neg : ereal → ereal
 
 instance : has_neg ereal := ⟨ereal.neg⟩
 
-def ereal.neg_le_of : ∀ (a b : ereal) (h : -a ≤ b), -b ≤ a
+def ereal.neg_le_of : ∀ {a b : ereal} (h : -a ≤ b), -b ≤ a
 | none none h := by cases (lattice.le_bot_iff.1 h)
 | none (some b) h := by cases (lattice.top_le_iff.1 h); exact le_refl _
 | (some none) b h := lattice.le_top
@@ -33,7 +33,7 @@ begin
   unfold_coes, simpa using neg_le_of_neg_le,
 end
 
-def ereal.neg_le {a b : ereal} : -a ≤ b ↔ -b ≤ a := ⟨ereal.neg_le_of a b, ereal.neg_le_of b a⟩
+def ereal.neg_le {a b : ereal} : -a ≤ b ↔ -b ≤ a := ⟨ereal.neg_le_of, ereal.neg_le_of⟩
 
 def ereal.neg_neg : ∀ (a : ereal), - (- a) = a
 | none := rfl
@@ -100,10 +100,7 @@ dite (Xoc = ∅) (λ h, ⟨⊥, ⟨
         ext x,
         split, swap, rintro ⟨⟩,
         intro hx,
-        exfalso,
-        replace hb : ↑x ≤ ⊥ := hb (↑x : with_bot _) hx,
-        rw lattice.le_bot_iff at hb,
-        cases hb,
+        cases (lattice.le_bot_iff.1 (hb (↑x : with_bot _) hx)),
       cases b with b, refl,
       exfalso,
       apply h2,
@@ -128,26 +125,9 @@ noncomputable instance : lattice.complete_lattice (ereal) :=
   bot_le := @lattice.bot_le _ _,
   Sup := ereal.Sup,
   Inf := λ X, -classical.some (Sup_exists ({mx | ∃ x ∈ X, mx = -x})),
-  le_Sup := begin
-    intros X x hx,
-    have h := classical.some_spec (Sup_exists X),
-    exact h.1 _ hx,
-  end,
-  Sup_le := begin
-    intros X b hb,
-    have h := classical.some_spec (Sup_exists X),
-    cases h with h1 h2,
-    change ereal.Sup X ∈ _ at h2,
-    apply h2,
-    exact hb,
-  end,
-  Inf_le := begin
-    intros X x hx,
-    have h := classical.some_spec (Sup_exists ({mx | ∃ x ∈ X, mx = -x})),
-    rw ←ereal.neg_le,
-    apply h.1,
-    use x, use hx,
-  end,
+  le_Sup := λ X x hx, (classical.some_spec (Sup_exists X)).1 _ hx,
+  Sup_le := λ X b hb, (classical.some_spec (Sup_exists X)).2 _ hb,
+  Inf_le := λ X x hx, ereal.neg_le_of $ (classical.some_spec (Sup_exists ({mx | ∃ x ∈ X, mx = -x}))).1 _ ⟨x, hx, rfl⟩,
   le_Inf := begin
     intros X b hb,
     have h := classical.some_spec (Sup_exists ({mx | ∃ x ∈ X, mx = -x})),
