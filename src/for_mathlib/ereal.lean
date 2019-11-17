@@ -1,6 +1,6 @@
 import data.real.basic 
 
-/-- ereal : The set $$[-\infty,+\infty]$$ -/
+/-- ereal : The type $$[-\infty,+\infty]$$ -/
 def ereal := with_bot (with_top ℝ)
 
 instance : linear_order ereal := 
@@ -10,36 +10,23 @@ by unfold ereal; apply_instance
 instance : lattice.has_bot ereal :=
 by -- guess what
 unfold ereal; apply_instance
-instance : has_zero ereal := by unfold ereal; apply_instance instance : lattice.order_bot ereal := by unfold ereal; apply_instance
+instance : has_zero ereal := by unfold ereal; apply_instance instance : lattice.order_bot ereal := by unfold ereal; apply_instance instance : lattice.order_top ereal := by unfold ereal; apply_instance
 
 def ereal.neg : ereal → ereal
 | none := ⊤
 | (some none) := ⊥
-| (some (some x)) := (↑(↑-x : with_top ℝ) : with_bot (with_top ℝ))
+| (some (some x)) := ((↑-x : with_top ℝ) : with_bot (with_top ℝ))
 
 instance : has_neg ereal := ⟨ereal.neg⟩
-def ereal.neg_le_of (a b : ereal) : -a ≤ b → -b ≤ a :=
+
+def ereal.neg_le_of : ∀ (a b : ereal) (h : -a ≤ b), -b ≤ a
+| none none h := by cases (lattice.le_bot_iff.1 h)
+| none (some b) h := by cases (lattice.top_le_iff.1 h); exact le_refl _
+| (some none) b h := lattice.le_top
+| (some (some a)) none h := by cases (lattice.le_bot_iff.1 h)
+| (some (some a)) (some none) h := lattice.bot_le
+| (some (some a)) (some (some b)) h := 
 begin
-  intro h,
-  cases a with a,
-    cases b with b, 
-      change _ ≤ ⊥ at h,
-      rw lattice.le_bot_iff at h,
-      cases h,
-    change ⊤ ≤ _ at h,
-    rw lattice.top_le_iff at h,
-    cases b with b, cases h, exact le_refl _,
-    cases h,
-  cases a with a,
-    change _ ≤ ⊤,
-    exact lattice.le_top,
-  cases b with b,
-    change _ ≤ ⊥ at h,
-    rw lattice.le_bot_iff at h,
-    cases h,
-  cases b with b,
-    change ⊥ ≤ _,
-    exact lattice.bot_le,
   change (↑(↑(-a) : with_top ℝ) : with_bot (with_top ℝ)) ≤ _ at h,
   unfold_coes at h,
   replace h : -a ≤ b := by simpa using h,
@@ -231,4 +218,3 @@ noncomputable instance : lattice.complete_lattice (ereal) :=
     rwa ereal.neg_neg,
   end,
   ..with_bot.lattice }
-  
