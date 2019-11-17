@@ -116,8 +116,7 @@ noncomputable def ereal.Sup := λ X, classical.some (Sup_exists X)
 
 noncomputable instance : lattice.has_Sup ereal := ⟨ereal.Sup⟩
 
-/-- The set $$[-\infty,+\infty]$$ is a
-<a href="https://en.wikipedia.org/wiki/Complete_lattice">complete lattice.</a> -/
+/-- $$[-\infty,+\infty]$$ is a complete lattice -/
 noncomputable instance : lattice.complete_lattice (ereal) :=
 { top := ⊤,
   le_top := λ _, lattice.le_top,
@@ -128,18 +127,6 @@ noncomputable instance : lattice.complete_lattice (ereal) :=
   le_Sup := λ X x hx, (classical.some_spec (Sup_exists X)).1 _ hx,
   Sup_le := λ X b hb, (classical.some_spec (Sup_exists X)).2 _ hb,
   Inf_le := λ X x hx, ereal.neg_le_of $ (classical.some_spec (Sup_exists ({mx | ∃ x ∈ X, mx = -x}))).1 _ ⟨x, hx, rfl⟩,
-  le_Inf := begin
-    intros X b hb,
-    have h := classical.some_spec (Sup_exists ({mx | ∃ x ∈ X, mx = -x})),
-    cases h with h1 h2,
-    change ereal.Sup {mx | ∃ x ∈ X, mx = -x} ∈ _ at h2,
-    apply ereal.le_neg_of,
-    apply h2,
-    intros mx hmx,
-    apply ereal.le_neg_of,
-    apply hb,
-    rcases hmx with ⟨x, hx, hmx⟩,
-    rw hmx,
-    rwa ereal.neg_neg,
-  end,
+  le_Inf := λ X b hb, ereal.le_neg_of _ _ $ (classical.some_spec (Sup_exists ({mx | ∃ x ∈ X, mx = -x}))).2 _
+    (λ mx ⟨x, hx, hmx⟩, ereal.le_neg_of _ _ $ hb _ $ by rwa [hmx, ereal.neg_neg]),
   ..with_bot.lattice }
