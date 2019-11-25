@@ -11,17 +11,7 @@ Goal after that: state and prove Richard Thomas' problem sheet question.
 
 namespace real_number_game
 
--- theorem --THIS NEEDS TO BE TAUGHT 
-theorem gt_Sup_minus_eps (S : set ℝ) [nonempty S] [bounded_above S] :
-  ∀ ε, 0 < ε → ∃ s ∈ S, Sup S - ε < s :=
-begin
-  intros ε hε,
-  apply classical.by_contradiction,
-  intro h,
-  push_neg at h,
-  have h2 := Sup_le (Sup S - ε) h,
-  linarith,
-end
+
 
 -- too hard?
 instance (X Y : set ℝ) [nonempty X] [nonempty Y] : nonempty (X + Y) :=
@@ -68,8 +58,29 @@ begin
   linarith,
 end
 
+-- theorems which need to be done.
 
+-- theorem --THIS NEEDS TO BE TAUGHT. Don't need contradiction?
+theorem exists_gt_of_lt_Sup (S : set ℝ) [nonempty S] [bounded_above S] :
+  ∀ c, c < Sup S → ∃ s ∈ S, c < s :=
+begin
+  intros c hc,
+  apply classical.by_contradiction,
+  intro h,
+  push_neg at h,
+  have h2 := Sup_le c h,
+  linarith,
+end
 
+theorem gt_Sup_minus_eps (S : set ℝ) [nonempty S] [bounded_above S] :
+  ∀ ε, 0 < ε → ∃ s ∈ S, Sup S - ε < s :=
+begin
+  intros ε hε,
+  apply exists_gt_of_lt_Sup,
+  linarith,
+end
+
+-- theorem -- THIS NEEDS TO BE TAUGHT
 theorem real.Sup_add -- or is it real.Sup.add?
   (X : set ℝ) [h1X : nonempty X] [h2X : bounded_above X]
   (Y : set ℝ) [h2Y : nonempty Y] [h2Y : bounded_above Y] : 
