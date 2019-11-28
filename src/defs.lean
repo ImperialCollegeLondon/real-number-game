@@ -6,16 +6,21 @@ import tactic.norm_num
 
 namespace real_number_game
 
--- hide
-class nonempty (S : set ℝ) : Type :=
+-- hide (need to choose this or P)
+class nonemptyT (S : set ℝ) : Type :=
 (x : ℝ)
 (thm : x ∈ S)
 
+-- hide (need to choose this or T)
+class nonemptyP (S : set ℝ) : Prop :=
+(thm : ∃ x : ℝ, x ∈ S)
+
+-- irrelevant example
 example : ∃ x: ℝ, x < 1 := ⟨0.5, by norm_num⟩
 example : (0.5 : ℝ) < 1 := by norm_num
 
--- example
-noncomputable example : nonempty (set.Icc 0 1) :=
+-- irrelevant example
+noncomputable example : nonemptyT (set.Icc 0 1) :=
 { x := 0.5,
   thm := ⟨by unfold algebra.div;norm_num,by unfold algebra.div;norm_num⟩
 }
@@ -23,40 +28,46 @@ noncomputable example : nonempty (set.Icc 0 1) :=
 -- show
 def is_upper_bound (S : set ℝ) (b : ℝ) : Prop := ∀ s ∈ S, s ≤ b
 
--- hide
-class bounded_above (S : set ℝ) : Type :=
+-- hide this def
+class bounded_aboveT (S : set ℝ) : Type :=
 (b : ℝ) 
 (thm : is_upper_bound S b)
 
+-- hide this def
+class bounded_aboveP (S : set ℝ) : Prop :=
+(thm : ∃ b : ℝ, is_upper_bound S b)
+
 -- example (for me only)
-instance : bounded_above (set.Icc 0 1) :=
+instance : bounded_aboveT (set.Icc 0 1) :=
 { b := 2,
   thm := λ r ⟨h1, h2⟩, le_trans h2 (by norm_num)
 }
 
 -- hide
-noncomputable def Sup (S : set ℝ) [nonempty S] [bounded_above S] := real.Sup S
+noncomputable def Sup (S : set ℝ) [nonemptyP S] [bounded_aboveP S] := real.Sup S
 
--- axiom; hide proof
-theorem le_Sup {S : set ℝ} [nonempty S] [bounded_above S] : ∀ x ∈ S, x ≤ Sup S :=
+-- state as axiom; hide proof
+theorem le_Sup {S : set ℝ} [nonemptyP S] [bounded_aboveP S] : ∀ x ∈ S, x ≤ Sup S :=
 begin
   apply real.le_Sup,
-  use bounded_above.b S,
-  exact bounded_above.thm S,
+  cases bounded_aboveP.thm S with b hb,
+  use b,
+  exact hb,
 end
 
--- axiom; hide proof
-theorem Sup_le {S : set ℝ} [nonempty S] [bounded_above S] : ∀ b : ℝ, is_upper_bound S b → Sup S ≤ b :=
+-- state as axiom; hide proof
+theorem Sup_le {S : set ℝ} [nonemptyP S] [bounded_aboveP S] :
+  ∀ b : ℝ, is_upper_bound S b → Sup S ≤ b :=
 begin
   intros b hb,
   show real.Sup S ≤ _,
   rw real.Sup_le,
   { exact hb},
-  { use nonempty.x S, exact nonempty.thm S},
+  { cases nonemptyP.thm S with c hc, use c, exact hc},
   { use b, exact hb}
 end
 
-
-
+-- other axioms: ℤ unbounded, linearly ordered field.
+-- Might need to introduce later.
 
 end real_number_game 
