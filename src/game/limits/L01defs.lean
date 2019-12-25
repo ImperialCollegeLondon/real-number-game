@@ -119,7 +119,7 @@ begin
   exact hab,
 end
 
-lemma limit.const_mult_exists (a : ℕ → ℝ) (l m c : ℝ) (hl : is_limit a l) : is_limit (λ n, c * (a n)) (l*c) :=
+lemma limit.const_mult (a : ℕ → ℝ) (l m c : ℝ) (hl : is_limit a l) : is_limit (λ n, c * (a n)) (l*c) :=
 begin
   rcases lt_trichotomy c 0 with hc|hc|hc,
   assume ε : ℝ,
