@@ -4,3 +4,5 @@ theorem Q4 (S : set ℝ) (x : ℝ) (H1 : x ∈ upper_bounds S) (H2 : x ∈ S) : 
 
 
 Also see M1P1-lean
+
+Continuous implies preimage of open is open, is quite nice.
