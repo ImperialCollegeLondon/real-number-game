@@ -1,4 +1,4 @@
-variable α : Type -- hide
+variable X : Type -- hide
 
 /- 
 Working with sets is very similar to working with propositions.
@@ -22,10 +22,10 @@ You can now finish the proof with "exact hx,"
 
 
 /- Lemma
-If $A$ and $B$ are sets of reals, then
+If $A$ and $B$ are sets of any type $X$, then
 $$ A \subseteq A\cup B.$$ 
 -/
-theorem included_in_union (A B : set α) : A ⊆ A ∪ B :=
+theorem included_in_union (A B : set X) : A ⊆ A ∪ B :=
 begin
     --change ∀ (x : α), x ∈ A → x ∈ A ∪ B,  --they may want to do this
     intros x hx,

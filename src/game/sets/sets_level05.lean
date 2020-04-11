@@ -1,5 +1,5 @@
 import tactic
-variable α : Type
+variable X : Type
 
 /-
 In this level you continue working with sets, while learning some useful
@@ -34,8 +34,12 @@ the empty set which does not belong to $A$. This can be accomplished by
 "push_neg at hn,". You sure can bring this home from here by using "cases".
 
 -/
-local attribute [instance] classical.prop_decidable
-theorem empty_set_included : ∀ A : set α, ∅ ⊆ A :=
+
+local attribute [instance] classical.prop_decidable --hide
+/- Lemma
+The empty set is included in any set $A$.... 
+-/
+theorem empty_set_included : ∀ A : set X, ∅ ⊆ A :=
 begin
     intro A, 
     change ∀ x ∈ ∅, x ∈ A,
