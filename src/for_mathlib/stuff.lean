@@ -13,8 +13,3 @@ add_comm_monoid M :=
   add_comm := add_comm,
   zero_add := λ a, add_comm a 0 ▸ add_zero a,
 }
-
-
--- this should apparently be in mathlib
-instance (X Y : Type) : nonempty X → nonempty Y → nonempty (X × Y)
-| ⟨x⟩ ⟨y⟩ := ⟨(x, y)⟩

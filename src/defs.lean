@@ -13,7 +13,11 @@ class nonemptyT (S : set ℝ) : Type :=
 
 -- hide (need to choose this or T)
 class nonemptyP (S : set ℝ) : Prop :=
-(thm : ∃ x : ℝ, x ∈ S)
+(thm' : ∃ x : ℝ, x ∈ S)
+
+def nonemptyP.thm (S : set ℝ) [nonemptyP S] :
+  ∃ x : ℝ, x ∈ S :=
+nonemptyP.thm'
 
 -- irrelevant example
 example : ∃ x: ℝ, x < 1 := ⟨0.5, by norm_num⟩
@@ -35,7 +39,11 @@ class bounded_aboveT (S : set ℝ) : Type :=
 
 -- hide this def
 class bounded_aboveP (S : set ℝ) : Prop :=
-(thm : ∃ b : ℝ, is_upper_bound S b)
+(thm' : ∃ b : ℝ, is_upper_bound S b)
+
+def bounded_aboveP.thm (S : set ℝ) [bounded_aboveP S] :
+  ∃ b : ℝ, is_upper_bound S b :=
+bounded_aboveP.thm'
 
 -- example (for me only)
 instance : bounded_aboveT (set.Icc 0 1) :=
@@ -44,7 +52,7 @@ instance : bounded_aboveT (set.Icc 0 1) :=
 }
 
 -- hide
-noncomputable def Sup (S : set ℝ) [nonemptyP S] [bounded_aboveP S] := real.Sup S
+noncomputable def Sup (S : set ℝ) [nonemptyP S] [bounded_aboveP S] := _root_.Sup S
 
 -- state as axiom; hide proof
 theorem le_Sup {S : set ℝ} [nonemptyP S] [bounded_aboveP S] : ∀ x ∈ S, x ≤ Sup S :=
@@ -60,7 +68,7 @@ theorem Sup_le {S : set ℝ} [nonemptyP S] [bounded_aboveP S] :
   ∀ b : ℝ, is_upper_bound S b → Sup S ≤ b :=
 begin
   intros b hb,
-  show real.Sup S ≤ _,
+  show _root_.Sup S ≤ b,
   rw real.Sup_le,
   { exact hb},
   { cases nonemptyP.thm S with c hc, use c, exact hc},
