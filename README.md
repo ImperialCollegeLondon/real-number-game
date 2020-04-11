@@ -7,6 +7,7 @@ the Real Number Game is an attempt to teach Imperial's 1st year undergraduates
 
 Planned sections so far:
 
+0) Tutorial: sets etc.
 1) Sup and Inf -- see `world_plans/supinf.lean`
 2) Sequences and limits
 3) Series and sums
