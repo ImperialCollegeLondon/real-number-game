@@ -1,5 +1,5 @@
 import data.set.basic
-variable α : Type
+variable X : Type
 
 /-
 To prove the theorem below, remember that you can use "split" to 
@@ -9,7 +9,11 @@ right-left implication, respectively. For the first goal, after
 of inclusion by "apply set.subset.antisymm,".
 -/
 
-theorem included_iff_union (A : set α) (B : set α) : A ⊆ B ↔ A ∪ B = B := 
+/- Lemma
+If $A$ and $B$ are sets of any type $X$, then
+$$ A \subseteq B \iff A \cup B = B.$$
+-/
+theorem included_iff_union (A : set X) (B : set X) : A ⊆ B ↔ A ∪ B = B := 
 begin
     split,
     intro H,
