@@ -21,7 +21,10 @@ You can now finish the proof with "exact hx,"
 -/
 
 
-
+/- Lemma
+If $A$ and $B$ are sets of reals, then
+$$ A \subseteq A\cup B.$$ 
+-/
 theorem included_in_union (A B : set α) : A ⊆ A ∪ B :=
 begin
     --change ∀ (x : α), x ∈ A → x ∈ A ∪ B,  --they may want to do this
