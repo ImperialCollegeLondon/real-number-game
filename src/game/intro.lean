@@ -1,7 +1,7 @@
 /-
 # The Real Number Game, version 1.0beta
 
-## By Kevin Buzzard 
+## By Kevin Buzzard and Dan Stanescu currently
 
 # What is this game?
 
@@ -34,10 +34,4 @@ whose aim is to get mathematics undergraduates using computer theorem provers.
 Lean is a computer theorem prover being developed at Microsoft Research.
 
 Prove a theorem. Write a function. <a href="https://twitter.com/XenaProject" target="blank">@XenaProject</a>.
--/
-/- Tactic : fish
-
-## Summary
-
-eat fish $fish$ `fish`
 -/
