@@ -4,11 +4,20 @@ extra_files = "extras"
 intro = "src/game/intro.lean"
 
 [[worlds]]
-name = "Sup and inf"
+name = "Sets"
 id = 1
 levels = [
-	"src/game/sup_inf/L01defs.lean",
+	"src/game/sets/level01.lean"
+        "src/game/sets/level02.lean"
+	"src/game/sets/level03.lean"
+	"src/game/sets/level04.lean"
 ]
+
+[[worlds]]
+name = "Sup and Inf"
+id = 2
+levels = [
+       	 "src/game/sup_inf/L01defs.lean"]
 
 [[worlds]]
 name = "Limits of sequences"
