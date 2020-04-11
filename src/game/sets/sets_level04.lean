@@ -1,12 +1,16 @@
 import data.set.basic
-variable α : Type
+variable X : Type
 
 /-
 You should now be able to prove the theorem below if you remember 
 to use "split" and "cases" together with "apply set.subset.antisymm,".
 -/
 
-theorem included_iff_intersection (A : set α) (B : set α) : A ⊆ B ↔ A ∩ B = A := 
+/- Lemma
+If $A$ and $B$ are sets of any type $X$, then
+$$ A \subseteq B \iff A \cap B = A.$$
+-/
+theorem included_iff_intersection (A : set X) (B : set X) : A ⊆ B ↔ A ∩ B = A := 
 begin
     split,
     intro H, apply set.subset.antisymm,
