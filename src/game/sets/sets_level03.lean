@@ -1,12 +1,17 @@
 import data.set.basic --hide
 variable X : Type --hide
 
+/- Axiom : set.subset.antisymm {A B : set X} (H : A ⊆ B) (G : B ⊆ A) : 
+A = B
+-/
+
 /-
 To prove the theorem below, remember that you can use "split" to 
 change the goal into two goals, corresponding to the left-right and
 right-left implication, respectively. For the first goal, after
 "intro H," the equality of the two sets can be rewritten in terms
-of inclusion by "apply set.subset.antisymm,".
+of inclusion by "apply set.subset.antisymm,". You can find the corresponding
+statement in the left side bar.
 -/
 
 /- Lemma

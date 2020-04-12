@@ -1,4 +1,4 @@
-import data.real.basic
+import data.real.basic --hide
 
 /- 
 This is a basic example of working with intervals of real numbers with Lean.
