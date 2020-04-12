@@ -4,6 +4,14 @@ notation `|` x `|` := abs x -- hide
 def is_limit (a : ℕ → ℝ) (l : ℝ) := 
     ∀ ε : ℝ, 0 < ε → ∃ N : ℕ, ∀ n : ℕ, N ≤ n → |a n - l| < ε
 
+/-
+A basic result for working with sequences.
+-/
+
+/- Lemma
+If $\lim_{n \to \infty} a_n = L$ and $c \in \mathbb{R}$, then
+ $\lim_{n \to \infty} (c \cdot a_n) = c \cdot L$
+-/
 lemma limit.times_const (a : ℕ → ℝ) (L c : ℝ) (hL : is_limit a L) : 
     is_limit (λ n, c * (a n)) (L*c) :=
 begin
