@@ -1,5 +1,5 @@
-import data.set.basic
-variable X : Type
+import data.set.basic --hide
+variable X : Type --hide
 
 /-
 You should now be able to prove the theorem below if you remember 
