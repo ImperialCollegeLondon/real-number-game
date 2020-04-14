@@ -11,3 +11,4 @@ Planned sections so far:
 1) Sup and Inf -- see `world_plans/supinf.lean`
 2) Sequences and limits
 3) Series and sums
+5) Functions
