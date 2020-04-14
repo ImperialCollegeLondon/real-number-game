@@ -20,7 +20,8 @@ name = "Sup and Inf"
 id = 2
 parents = [1]
 levels = [
-       	 "src/game/sup_inf/L01defs.lean"]
+       	 "src/game/sup_inf/L01defs.lean"
+]
 
 [[worlds]]
 name = "Limits of sequences"
@@ -32,18 +33,18 @@ levels = [
 ]
 
 [[worlds]]
-name = "Sums of series"
+name = "Functions"
 id = 4
 parents = [3]
 levels = [
-	"src/game/series/L01defs.lean",
+	"src/game/functions/bothInjective.lean"
 ]
 
 [[worlds]]
-name = "Functions"
+name = "Sums of series"
 id = 5
 parents = [4]
 levels = [
-        "src/game/functions/bothInjective.lean",
-
+        "src/game/series/L01defs.lean",
 ]
+
