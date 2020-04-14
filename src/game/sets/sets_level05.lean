@@ -9,7 +9,7 @@ To do that, we'll follow the advice of P. Halmos in "Naive Set Theory".
 That is, to prove something is true about the empty set, prove that it cannot be false.
 
 When starting this level, the goal is:
-$$\forall (A : set X), \emptyset \subseteq A$$
+$$\forall (A : \textrm{set} \; X), \; \emptyset \subseteq A$$
 To make progress, you'll need to instantiate a specific set $A$ 
 with the "intro" tactic.
 

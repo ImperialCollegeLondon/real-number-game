@@ -13,7 +13,7 @@ membership. The inequality goals can be met with the "linarith" tactic.
 notation `[` a `,` b `]`  := set.Icc a b
 
 /- Lemma
-If $x = 2$, $x ∈ [0,5] 
+If $x = 2$ then $x ∈ [0,5]$
 -/
 lemma in_closed_interval (x:ℝ) : x = 2 → x ∈ [(0:ℝ), 5] := 
 begin
