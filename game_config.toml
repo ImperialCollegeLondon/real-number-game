@@ -38,3 +38,12 @@ parents = [3]
 levels = [
 	"src/game/series/L01defs.lean",
 ]
+
+[[worlds]]
+name = "Functions"
+id = 5
+parents = [4]
+levels = [
+        "src/game/functions/bothInjective.lean",
+
+]
