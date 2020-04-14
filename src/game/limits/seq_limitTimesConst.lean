@@ -1,7 +1,7 @@
-import .L01defs
+import game.limits.L01defs
 
---notation `|` x `|` := abs x -- hide
---def is_limit (a : ℕ → ℝ) (l : ℝ) := ∀ ε : ℝ, 0 < ε → ∃ N : ℕ, ∀ n : ℕ, N ≤ n → |a n - l| < ε
+notation `|` x `|` := abs x -- hide
+def is_limit (a : ℕ → ℝ) (l : ℝ) := ∀ ε : ℝ, 0 < ε → ∃ N : ℕ, ∀ n : ℕ, N ≤ n → |a n - l| < ε
 
 /-
 A basic result for working with sequences.
