@@ -18,7 +18,7 @@ statement in the left side bar.
 If $A$ and $B$ are sets of any type $X$, then
 $$ A \subseteq B \iff A \cup B = B.$$
 -/
-theorem included_iff_union (A : set X) (B : set X) : A ⊆ B ↔ A ∪ B = B := 
+theorem subset_iff_union_eq (A : set X) (B : set X) : A ⊆ B ↔ A ∪ B = B := 
 begin
     split,
     intro H,

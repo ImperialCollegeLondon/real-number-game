@@ -31,7 +31,7 @@ local attribute [instance] classical.prop_decidable --hide
 /- Lemma
 The empty set is included in any set $A$.... 
 -/
-theorem empty_set_included : ∀ A : set X, ∅ ⊆ A :=
+theorem empty_set_subset : ∀ A : set X, ∅ ⊆ A :=
 begin
     intro A, 
     change ∀ x ∈ ∅, x ∈ A,

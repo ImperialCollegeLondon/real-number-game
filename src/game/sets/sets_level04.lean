@@ -10,7 +10,7 @@ to use "split" and "cases" together with "apply set.subset.antisymm,".
 If $A$ and $B$ are sets of any type $X$, then
 $$ A \subseteq B \iff A \cap B = A.$$
 -/
-theorem included_iff_intersection (A : set X) (B : set X) : A ⊆ B ↔ A ∩ B = A := 
+theorem subset_iff_intersection_eq (A : set X) (B : set X) : A ⊆ B ↔ A ∩ B = A := 
 begin
     split,
     intro H, apply set.subset.antisymm,
