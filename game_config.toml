@@ -34,18 +34,18 @@ levels = [
 ]
 
 [[worlds]]
-name = "Functions"
+name = "Sums of series"
 id = 4
 parents = [3]
 levels = [
-	"src/game/functions/bothInjective.lean"
+        "src/game/series/tempLevel1.lean",
 ]
 
 [[worlds]]
-name = "Sums of series"
+name = "Functions"
 id = 5
 parents = [4]
 levels = [
-        "src/game/series/L01defs.lean",
+	"src/game/functions/bothInjective.lean"
 ]
 
