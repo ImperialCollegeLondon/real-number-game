@@ -20,7 +20,8 @@ name = "Sup and Inf"
 id = 2
 parents = [1]
 levels = [
-       	 "src/game/sup_inf/L01defs.lean"
+       	 "src/game/sup_inf/L01defs.lean",
+       	 "src/game/sup_inf/infSumSets.lean"
 ]
 
 [[worlds]]
