@@ -1,23 +1,43 @@
-import data.real.basic --hide
+import tactic --hide
+variable X : Type --hide
 
-/- 
-This is a very basic example of working with intervals of real numbers in Lean.
-An interval that is closed at both endpoints $a$ and $b$ can be 
-constructed using `set.Icc a b`. For an open-closed interval, the notation
-is `set.Ioc a b`, etc. The usual closed-interval notation, using square
-brackets, is used here as a wrapper around these definitions.
-After "intro hx," the "split" tactic will showcase the conditions for 
-membership. The inequality goals can be met with the "linarith" tactic.
+/-
+In this level you continue working with sets, while learning some useful
+proof techniques. 
+You need to prove that the empty set is included in any set.
+To do that, we'll follow the advice of P. Halmos in "Naive Set Theory".
+That is, to prove something is true about the empty set, prove that it cannot be false.
+
+When starting this level, the goal is:
+$$\forall (A : \textrm{set} \; X), \; \emptyset \subseteq A$$
+To make progress, you'll need to instantiate a specific set $A$ 
+with the "intro" tactic.
+
+Remember now the definition of set inclusion. The goal 
+$$ \emptyset \subseteq A$$
+is the same as 
+$$ \forall x \in \emptyset, x \in A.$$
+Thus, "change ∀ x ∈ ∅, x ∈ A," on the line after "intro A,".
+Time to switch to the meat of the proof. Type "by_contradiction hn," to introduce the contradiction hypothesis "hn" and change the goal to "false".
+ 
+Next, it is helpful to further change this into a statement that there exists 
+a member of the empty set which does not belong to $A$. 
+This can be accomplished by
+"push_neg at hn,". You sure can bring this home from here using "cases".
+
 -/
 
-notation `[` a `,` b `]`  := set.Icc a b
-
+local attribute [instance] classical.prop_decidable --hide
 /- Lemma
-If $x = 2$ then $x ∈ [0,5]$
+The empty set is included in any set $A$.... 
 -/
-lemma in_closed_interval (x:ℝ) : x = 2 → x ∈ [(0:ℝ), 5] := 
+theorem empty_set_subset : ∀ A : set X, ∅ ⊆ A :=
 begin
-    intro hx,
-    split, linarith, linarith, done
+    intro A, 
+    change ∀ x ∈ ∅, x ∈ A,
+    by_contradiction hn,
+    push_neg at hn,
+    cases hn with x h1,
+    cases h1 with hf ha,
+    exact hf, done
 end
-

@@ -1,4 +1,4 @@
-import game.sup_inf.L01defs
+import game.sets.L01defs
 import tactic.linarith
 
 namespace xena -- hide
