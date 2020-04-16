@@ -22,7 +22,10 @@ id = 2
 parents = [1]
 levels = [
        	 "src/game/sup_inf/level01.lean",
-       	 "src/game/sup_inf/infSumSets.lean"
+       	 "src/game/sup_inf/supSumSets.lean",
+       	 "src/game/sup_inf/infSumSets.lean",
+       	 "src/game/sup_inf/supProdConst.lean",
+       	 "src/game/sup_inf/supProdSets.lean"
 ]
 
 [[worlds]]
@@ -48,5 +51,21 @@ id = 5
 parents = [4]
 levels = [
 	"src/game/functions/bothInjective.lean"
+]
+
+[[worlds]]
+name = "Integral"
+id = 6
+parents = [5]
+levels = [
+	"src/game/integral/tempLevel1.lean"
+]
+
+[[worlds]]
+name = "Topology of the reals"
+id = 7
+parents = [6]
+levels = [
+	"src/game/topology/tempLevel1.lean"
 ]
 
