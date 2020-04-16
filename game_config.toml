@@ -34,6 +34,7 @@ id = 3
 parents = [2]
 levels = [
 	"src/game/limits/L01defs.lean",
+	"src/game/limits/seq_lim_add.lean",
     	"src/game/limits/seq_limitTimesConst.lean"
 ]
 
@@ -50,7 +51,10 @@ name = "Functions"
 id = 5
 parents = [4]
 levels = [
-	"src/game/functions/bothInjective.lean"
+	"src/game/functions/bothInjective.lean",
+	"src/game/functions/bothSurjective.lean",
+	"src/game/functions/bothBijective.lean", 
+	"src/game/functions/twoSidedInverse.lean"
 ]
 
 [[worlds]]
