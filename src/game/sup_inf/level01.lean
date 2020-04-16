@@ -4,9 +4,9 @@ namespace xena -- hide
 -- World name : Sup and Inf
 
 /-
-# Chapter 1 : Sup and Inf
+# Chapter 2 : Sup and Inf
 
-# Level 1 : Introduction to sets of reals.
+# Level 1 : Upper bounds
 
 Let $X$ be a set of real numbers.
 
@@ -21,6 +21,7 @@ To prove this in Lean, it helps to understand a bit more about definitions. Init
 `is_upper_bound Y b → is_upper_bound X b`
 
 -/
+
 /- Lemma
 If $Xsubseteq Y$ are two sets of reals, and $b$ is an upper bound for $Y$, then it's also an upper bound for $X$.
 -/

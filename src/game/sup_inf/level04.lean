@@ -5,6 +5,10 @@ definition is_lub' (S : set ℝ) (x : ℝ) := is_upper_bound S x ∧
   ∀ y : ℝ, is_upper_bound S y → x ≤ y
 definition has_lub (S : set ℝ) := ∃ x, is_lub' S x 
 
+/-
+The next three results go in the sidebar.
+-/
+
 lemma two_real_ne_zero : (2:ℝ) ≠ 0 :=
 begin
     intro, linarith,
@@ -24,6 +28,9 @@ begin
   simp [H,mul_two],
 end
 
+/- Lemma
+A more general version of the previous level...
+-/
 lemma lub_open (y : ℝ) : is_lub' {x : ℝ | x < y} y :=
 begin
 split,

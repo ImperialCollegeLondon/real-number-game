@@ -7,6 +7,9 @@ definition has_lub (S : set ℝ) := ∃ x, is_lub' S x
 
 def S3b : set ℝ := {x : ℝ | ∃ y : ℚ, x = ↑y}
 
+/- Lemma
+Rationals have no sup...
+-/
 theorem Q3b : ∀ b : ℝ, ¬ (is_lub (S3b) b) :=
 begin
 intros b Hlub,

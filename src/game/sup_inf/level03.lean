@@ -5,6 +5,10 @@ definition is_lub' (S : set ℝ) (x : ℝ) := is_upper_bound S x ∧
   ∀ y : ℝ, is_upper_bound S y → x ≤ y
 definition has_lub (S : set ℝ) := ∃ x, is_lub' S x 
 
+/- 
+The next result must be placed in the sidebar axioms.
+-/
+
 -- part (c) (i)
 definition reals_lt_59 := {x : ℝ | x < 59}
 
@@ -23,7 +27,10 @@ begin
   },
 end
 
-example : is_lub' reals_lt_59 59 := 
+/- Lemma
+The LUB of...
+-/
+lemma lub_of_open_set : is_lub' reals_lt_59 59 := 
 begin
   split,
   { intros s Hs,
