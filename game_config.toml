@@ -22,6 +22,8 @@ id = 2
 parents = [1]
 levels = [
        	 "src/game/sup_inf/level01.lean",
+       	 "src/game/sup_inf/level02.lean",
+       	 "src/game/sup_inf/level03.lean",
        	 "src/game/sup_inf/supSumSets.lean",
        	 "src/game/sup_inf/infSumSets.lean",
        	 "src/game/sup_inf/supProdConst.lean",
