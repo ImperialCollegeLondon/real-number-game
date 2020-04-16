@@ -3,6 +3,11 @@ import data.real.basic
 -- main result in lemma sup_mem_prod_of_sets
 def mem_prod_sets (A : set ℝ) (B : set ℝ) := { x : ℝ | ∃ y ∈ A, ∃ z ∈ B, x = y * z}
 
+
+/-
+The next two results go in the sidebar!
+-/
+
 --intermediary result
 lemma zero_in_prod : (0:ℝ) ∈ mem_prod_sets (set.Icc (-2) (-1)) (set.Icc (0:ℝ) 3) :=
 begin
