@@ -24,10 +24,12 @@ levels = [
        	 "src/game/sup_inf/level01.lean",
        	 "src/game/sup_inf/level02.lean",
        	 "src/game/sup_inf/level03.lean",
+       	 "src/game/sup_inf/level04.lean",
        	 "src/game/sup_inf/supSumSets.lean",
        	 "src/game/sup_inf/infSumSets.lean",
        	 "src/game/sup_inf/supProdConst.lean",
-       	 "src/game/sup_inf/supProdSets.lean"
+       	 "src/game/sup_inf/supProdSets.lean",
+       	 "src/game/sup_inf/lub_rationals.lean"
 ]
 
 [[worlds]]

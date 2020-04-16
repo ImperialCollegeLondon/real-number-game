@@ -3,3 +3,5 @@
 /leanpkg.path
 /scratch/*
 /html/*
+./makeAll
+./makeGame
