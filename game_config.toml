@@ -43,11 +43,14 @@ levels = [
 ]
 
 [[worlds]]
-name = "Sums of series"
+name = "Series"
 id = 4
 parents = [3]
 levels = [
-        "src/game/series/tempLevel1.lean",
+        "src/game/series/tempLevel01.lean",
+        "src/game/series/tempLevel02.lean",
+        "src/game/series/tempLevel03.lean",
+        "src/game/series/tempLevel04.lean",
 ]
 
 [[worlds]]
