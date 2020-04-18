@@ -1,17 +1,14 @@
-variable X : Type -- hide
+import game.series.L01defs
 
 /- 
-Idea 01: $\sum a_n$ converges iff $a_n \to 0$.
+Temporary level 01: $\sum a_n$ converges iff $a_n \to 0$.
 -/
-
 
 /- Lemma
-If $A$ and $B$ are sets of any type $X$, then
-$$ A \subseteq A\cup B.$$ 
+Partial sum sequence of $a_n$ convergent iff $a_n → 0$.
 -/
-theorem subset_union_left (A B : set X) : A ⊆ A ∪ B :=
+lemma sum_converges (a : ℕ → ℝ) : 
+    is_convergent (partial_sum_sequence a) ↔ is_limit a 0 :=
 begin
-    --change ∀ (x : α), x ∈ A → x ∈ A ∪ B,  --they may want to do this
-    intros x hx,
-    left, exact hx, done
+    sorry,
 end
