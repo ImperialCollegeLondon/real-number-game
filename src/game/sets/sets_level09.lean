@@ -1,14 +1,28 @@
 import data.real.basic
 
--- these make working with all the casts easier (aka cheating...a bit)
-axiom inv_prod_self : ∀ n : ℕ, 0 < n → (1/n : ℝ) * (n : ℝ ) = 1 
-axiom inv_prod_other : ∀ (m : ℤ), ∀ (n : ℕ), 0 < n → (1/n : ℝ) * (m : ℝ) = (m/n : ℝ)
+-- The axioms in the side bar make working with the casts from rationals to reals easier.
+
+/- Axiom : inv_prod_self : 
+∀ n : ℕ, 0 < n → (1/n : ℝ) * (n : ℝ ) = 1 
+-/
+
+/- Axiom : inv_prod_other : 
+∀ (m : ℤ), ∀ (n : ℕ), 0 < n → (1/n : ℝ) * (m : ℝ) = (m/n : ℝ)
+-/
+
+/- Axiom : archimedean_R : ∀ x : ℝ, 0 < x → ∃ n : ℕ, 0 < n ∧ (1/n : ℝ) < x
+-/
+
+/- Axiom : has_ceiling : ∀ x : ℝ,  ∃ m : ℤ, ((m-1) : ℝ) ≤ x ∧ x < (m:ℝ)
+-/
 
 -- one way to prove ℚ dense in ℝ 
-axiom archimedean_R : ∀ x : ℝ, 0 < x → ∃ n : ℕ, 0 < n ∧ (1/n : ℝ) < x
-axiom has_ceiling : ∀ x : ℝ,  ∃ m : ℤ, ((m-1) : ℝ) ≤ x ∧ x < (m:ℝ)
 def dense_in_R (A : set ℝ) := ∀ (x y : ℝ), x < y → ∃ a ∈ A, a ∈ set.Ioo x y
 def rat_as_reals : set ℝ := { x | ∃ r : ℚ, x = ↑r }
+
+/- Lemma
+Rationals are dense in the reals.
+-/
 theorem rat_dense_in_R : dense_in_R rat_as_reals := 
 begin
     intros x y hxy,
