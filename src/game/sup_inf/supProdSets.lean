@@ -5,19 +5,9 @@ def mem_prod_sets (A : set ℝ) (B : set ℝ) := { x : ℝ | ∃ y ∈ A, ∃ z 
 
 
 /-
-The next two results go in the sidebar!
+The intermediary result `zero_in_prod` proved in sets_level08.
+The next intermediary result to be set up as separate problem.
 -/
-
---intermediary result
-lemma zero_in_prod : (0:ℝ) ∈ mem_prod_sets (set.Icc (-2) (-1)) (set.Icc (0:ℝ) 3) :=
-begin
-  set a0 := (0:ℝ) with ha,
-  have h1 : a0 ∈ (set.Icc (0:ℝ) 3), simp, linarith,
-  set b := (-2:ℝ) with hb,
-  have h2 : b ∈ set.Icc (-2:ℝ) (-1:ℝ), simp, linarith,
-  use b, split, exact h2,
-  use a0, split, exact h1, rw ha, norm_num, done
-end
 
 -- intermediary result
 lemma mem_prod_sets_lub_proof : 
