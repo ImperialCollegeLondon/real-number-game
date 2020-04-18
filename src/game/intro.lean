@@ -24,6 +24,10 @@ from -- try blue ones higher up the chain first. Green nodes are completed.
 
 Many thanks to Mohammad Pedramfar, without whom this game would not exist.
 
+Several people contributed ideas and sometimes full proofs, which may or may not have found 
+their way in the game.
+This aims at being a complete list: Christopher Sumnicht.
+
 # Questions?
 
 You can ask questions on the <a href="https://leanprover.zulipchat.com/" target="blank">Lean Zulip chat</a>,
