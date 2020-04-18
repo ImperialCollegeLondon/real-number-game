@@ -29,6 +29,7 @@ levels = [
        	 "src/game/sup_inf/supSumSets.lean",
        	 "src/game/sup_inf/infSumSets.lean",
        	 "src/game/sup_inf/supProdConst.lean",
+       	 "src/game/sup_inf/lub_prodSets.lean",
        	 "src/game/sup_inf/supProdSets.lean",
        	 "src/game/sup_inf/lub_rationals.lean"
 ]
