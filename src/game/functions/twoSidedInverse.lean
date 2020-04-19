@@ -2,7 +2,7 @@ import data.real.basic
 open function
 
 -- inverses
-def two_sided_inverse {X Y : Type u} (f : X → Y) (g : Y → X) 
+def two_sided_inverse {X Y : set ℝ} (f : X → Y) (g : Y → X) 
 := (∀ x : X, (g ∘ f)(x) = x) ∧ (∀ y : Y, (f ∘ g)(y) = y)
 
 /- Lemma

@@ -23,15 +23,23 @@ run_cmd add_interactive [`inequality]
 -- World name : Sequences and limits
 
 /-
-# Chapter 2 : Sequences and limits
+# Chapter 3 : Sequences and limits
 
 # Level 1 : Introduction to sequences.
 
-Lean's natural numbers start at zero, so it is convenient to let our sequences start from the zeroth term. In other words, a sequence of reals will be $a_0$...
+Lean's natural numbers start at zero, so it is convenient to let our sequences start from the zeroth term.
+In other words, a sequence of reals will be $a_0, a_1, a_2, \ldots$. 
+-/
+
+/-
+Let's just step back for a minute and think about what a sequence really *is*. 
+If $n$ is a natural number then $a_n$ is a real number, 
+so $n\mapsto a_n$ is actually a function from natural numbers to real numbers. 
+If we just call this function $a$ then the $n$th term in the sequence
+will be called `a(n)` or `a n` in Lean, rather than $a_n$, but this is OK.
 
 The key definition we want is the concept of a limit of a sequence.
 -/
-
 
 definition is_limit (a : ℕ → ℝ) (l : ℝ) := ∀ ε : ℝ, 0 < ε → ∃ N : ℕ, ∀ n : ℕ, N ≤ n → |a n - l| < ε
 
