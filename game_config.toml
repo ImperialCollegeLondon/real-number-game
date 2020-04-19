@@ -19,9 +19,17 @@ levels = [
 ]
 
 [[worlds]]
-name = "Sup and Inf"
+name = "Order"
 id = 2
 parents = [1]
+levels = [
+	"src/game/order/tempLevel1.lean"
+]
+
+[[worlds]]
+name = "Sup and Inf"
+id = 3
+parents = [2]
 levels = [
        	 "src/game/sup_inf/level01.lean",
        	 "src/game/sup_inf/level02.lean",
@@ -38,8 +46,8 @@ levels = [
 
 [[worlds]]
 name = "Limits of sequences"
-id = 3
-parents = [2]
+id = 4
+parents = [3]
 levels = [
 	"src/game/limits/L01defs.lean",
 	"src/game/limits/seq_lim_add.lean",
@@ -48,8 +56,8 @@ levels = [
 
 [[worlds]]
 name = "Series"
-id = 4
-parents = [3]
+id = 5
+parents = [4]
 levels = [
         "src/game/series/tempLevel01.lean",
         "src/game/series/tempLevel02.lean",
@@ -59,8 +67,8 @@ levels = [
 
 [[worlds]]
 name = "Functions"
-id = 5
-parents = [4]
+id = 6
+parents = [5]
 levels = [
 	"src/game/functions/bothInjective.lean",
 	"src/game/functions/bothSurjective.lean",
@@ -70,16 +78,16 @@ levels = [
 
 [[worlds]]
 name = "Integral"
-id = 6
-parents = [5]
+id = 7
+parents = [6]
 levels = [
 	"src/game/integral/tempLevel1.lean"
 ]
 
 [[worlds]]
 name = "Topology of the reals"
-id = 7
-parents = [6]
+id = 8
+parents = [7]
 levels = [
 	"src/game/topology/hausdorff.lean"
 ]
