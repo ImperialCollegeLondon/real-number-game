@@ -5,7 +5,7 @@ import data.real.basic
 /-
 # Chapter 2 : Sup and Inf
 
-##Level 2 : Any non-empty, bounded set of reals has a supremum.
+## Level 2 : Any non-empty, bounded set of reals has a supremum.
 -/
 
 definition is_upper_bound (S : set ℝ) (x : ℝ) := x ∈ upper_bounds S 

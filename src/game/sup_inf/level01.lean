@@ -6,7 +6,7 @@ namespace xena -- hide
 /-
 # Chapter 2 : Sup and Inf
 
-# Level 1 : Upper bounds
+## Level 1 : Upper bounds
 -/
 
 /-
@@ -22,9 +22,7 @@ Here is an easy fact about upper bounds, which we shall prove below:
 If $X \subseteq Y$ are two sets of reals, and $b$ is an upper bound for $Y$, 
 then it's also an upper bound for $X$.
 
-To prove this in Lean, it helps to understand a bit more about definitions. 
-Initially our goal is `is_upper_bound Y b → is_upper_bound X b`
-
+You can prove this easily in Lean using the `change` tactic. 
 -/
 
 /- Lemma
