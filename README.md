@@ -8,9 +8,10 @@ the Real Number Game is an attempt to teach Imperial's 1st year undergraduates
 Planned sections so far:
 
 1) Sets etc.
-2) Sup and Inf -- see `world_plans/supinf.lean`
-3) Sequences and limits
-4) Series and sums
-5) Functions
-6) Integral
-7) Topology of R
+2) Order and algebraic structure
+3) Sup and Inf -- see `world_plans/supinf.lean`
+4) Sequences and limits
+5) Series and sums
+6) Functions
+7) Integral
+8) Topology of R
