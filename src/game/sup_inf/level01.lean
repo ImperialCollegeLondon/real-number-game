@@ -10,7 +10,7 @@ namespace xena -- hide
 
 Let $X$ be a set of real numbers.
 
-We say a real number $b$ is an *upper bound* for $X$ if every $x\in X$ is at most $b$.
+We say a real number $b$ is an *upper bound* for $X$ if every $x \in X$ is at most $b$.
 -/
 def is_upper_bound (X : set ℝ) (b : ℝ) := ∀ x : ℝ, x ∈ X → x ≤ b
 /-
