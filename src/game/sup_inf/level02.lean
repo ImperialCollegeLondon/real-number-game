@@ -1,9 +1,17 @@
 import data.real.basic
 
-definition is_upper_bound (S : set ℝ) (x : ℝ) := ∀ s ∈ S, s ≤ x 
-definition is_lub' (S : set ℝ) (x : ℝ) := is_upper_bound S x ∧ 
-  ∀ y : ℝ, is_upper_bound S y → x ≤ y
-definition has_lub (S : set ℝ) := ∃ x, is_lub' S x 
+-- World name : Sup and Inf
+
+/-
+# Chapter 2 : Sup and Inf
+
+# Level 2 : Any non-empty, bounded set of reals has a supremum.
+-/
+
+definition is_upper_bound (S : set ℝ) (x : ℝ) := x ∈ upper_bounds S 
+definition has_lub (S : set ℝ) := ∃ x, is_lub S x 
+local attribute [instance] classical.prop_decidable --hide
+
 
 /- Lemma
 Any non-empty and bounded set of reals has a supremum.
@@ -14,22 +22,22 @@ begin
   cases H with b Hb,
   -- b is LUB, Hb is proof it's LUB
   split,
-  { intro Hempty,
-    -- b is LUB of S, and S is empty.
-    -- seek contradiction.
-    have H := Hb.2 (b - 1), -- b - 1 is an upper bound
-    have Hub : is_upper_bound S (b - 1),
-    { intros s Hs,
-      exfalso,
-      rw Hempty at Hs,
-      exact Hs,
-    },
-      have Hwrong := H Hub,
-      linarith,
-  }  ,
+  { -- first prove S is not empty, by contradiction as usual with empty sets
+    intro Hempty,
+    have H1 : (b-1) ∈ upper_bounds S,
+      change ∀ x ∈ S, x ≤ (b-1),
+      by_contradiction hn,
+      push_neg at hn,
+      cases hn with x h1, 
+      cases h1 with h11 h12,
+      rw Hempty at h11, 
+      exact h11, 
+    have HH := Hb.2 H1, -- b - 1 is an upper bound
+    linarith,
+  },
   {
      existsi b,
-     exact Hb.1
-  }
+     exact Hb.1,
+  }, 
+  done
 end 
-
