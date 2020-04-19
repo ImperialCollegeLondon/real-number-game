@@ -15,7 +15,7 @@ We say a real number $b$ is an *upper bound* for $X$ if every $x\in X$ is at mos
 def is_upper_bound (X : set ℝ) (b : ℝ) := ∀ x : ℝ, x ∈ X → x ≤ b
 /-
 Here is an easy fact about upper bounds, which we shall prove below: 
-If $Xsubseteq Y$ are two sets of reals, and $b$ is an upper bound for $Y$, 
+If $X \subseteq Y$ are two sets of reals, and $b$ is an upper bound for $Y$, 
 then it's also an upper bound for $X$.
 
 To prove this in Lean, it helps to understand a bit more about definitions. 
