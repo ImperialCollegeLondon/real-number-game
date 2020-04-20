@@ -41,7 +41,8 @@ levels = [
        	 "src/game/sup_inf/lub_prodSets.lean",
        	 "src/game/sup_inf/supProdSets.lean",
        	 "src/game/sup_inf/lub_rationals.lean",
-       	 "src/game/sup_inf/unbdd_iff.lean"
+       	 "src/game/sup_inf/unbdd_iff.lean",
+       	 "src/game/sup_inf/rat_complete.lean"
 ]
 
 [[worlds]]

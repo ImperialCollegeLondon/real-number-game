@@ -1,5 +1,11 @@
 import data.real.basic
 
+/-
+# Chapter 2 : Sup and Inf
+
+## Level 5
+-/
+
 -- see also ds_infSum.lean for only the better-organized version -- hide
 def sum_of_sets (A : set ℝ) (B : set ℝ) := { x : ℝ | ∃ y ∈ A, ∃ z ∈ B, x = y + z}
 

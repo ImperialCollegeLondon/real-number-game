@@ -1,5 +1,12 @@
 import data.real.basic
 
+/-
+# Chapter 2 : Sup and Inf
+
+## Level 9
+-/
+
+
 -- main result in lemma sup_mem_prod_of_sets
 def mem_prod_sets (A : set ℝ) (B : set ℝ) := { x : ℝ | ∃ y ∈ A, ∃ z ∈ B, x = y * z}
 

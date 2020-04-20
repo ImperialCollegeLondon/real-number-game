@@ -3,6 +3,12 @@ import data.real.basic
 /- Axiom : archimPrinciple : ∀ x : ℝ, x > 0 →  ∃ n : ℕ, n > 0 ∧ (1/n : ℝ) < x
 -/
 
+/-
+# Chapter 2 : Sup and Inf
+
+## Level 11
+-/
+
 def unboundedAbove (A : set ℝ) := ∀ x : ℝ, x > 0 → ∃ a ∈ A, x < a
 
 /- Lemma

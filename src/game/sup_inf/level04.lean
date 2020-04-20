@@ -1,5 +1,13 @@
 import data.real.basic
 
+
+/-
+# Chapter 2 : Sup and Inf
+
+## Level 4 
+-/
+
+
 definition is_upper_bound (S : set ℝ) (x : ℝ) := ∀ s ∈ S, s ≤ x 
 definition is_lub' (S : set ℝ) (x : ℝ) := is_upper_bound S x ∧ 
   ∀ y : ℝ, is_upper_bound S y → x ≤ y

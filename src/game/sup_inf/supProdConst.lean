@@ -1,5 +1,11 @@
 import data.real.basic
 
+/-
+# Chapter 2 : Sup and Inf
+
+## Level 7
+-/
+
 -- supremum of constant × set
 def const_times_set (c: ℝ) (A : set ℝ) := { x : ℝ | ∃ y ∈ A, x = c * y }
 

@@ -3,7 +3,7 @@ import data.real.basic
 /-
 # Chapter 1 : Sets
 
-## Level 8
+## Level 9
 -/
 
 -- The axioms in the side bar make working with the casts from rationals to reals easier.
@@ -24,12 +24,12 @@ import data.real.basic
 
 -- one way to prove ℚ dense in ℝ 
 def dense_in_R (A : set ℝ) := ∀ (x y : ℝ), x < y → ∃ a ∈ A, a ∈ set.Ioo x y
-def rat_as_reals : set ℝ := { x | ∃ r : ℚ, x = ↑r }
+def embedded_rationals : set ℝ := { x | ∃ r : ℚ, x = ↑r }
 
 /- Lemma
 Rationals are dense in the reals.
 -/
-theorem rat_dense_in_R : dense_in_R rat_as_reals := 
+theorem rat_dense_in_R : dense_in_R embedded_rationals := 
 begin
     intros x y hxy,
     have H := lt_trichotomy x 0,
