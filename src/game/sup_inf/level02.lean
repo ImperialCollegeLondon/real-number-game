@@ -5,13 +5,17 @@ import data.real.basic
 /-
 # Chapter 2 : Sup and Inf
 
-## Level 2 : Any non-empty, bounded set of reals has a supremum.
+## Level 2 : Any set of reals that has a supremum is non-empty and 
+has an upper bound.
 -/
 
 definition is_upper_bound (S : set ℝ) (x : ℝ) := x ∈ upper_bounds S 
 definition has_lub (S : set ℝ) := ∃ x, is_lub S x 
 local attribute [instance] classical.prop_decidable --hide
 
+/-
+Do we want to keep this level? Replace it? Second part is trivial.
+-/ 
 
 /- Lemma
 Any non-empty and bounded set of reals has a supremum.
