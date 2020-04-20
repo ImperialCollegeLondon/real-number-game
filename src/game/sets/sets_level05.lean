@@ -2,8 +2,15 @@ import data.set.basic --hide
 variable X : Type --hide
 
 /-
-You should now be able to prove the theorem below if you remember 
-to use "split" and "cases" together with "apply set.subset.antisymm,".
+# Chapter 1 : Sets
+
+## Level 5
+-/
+
+
+/-
+You should now be able to prove the theorem below if you
+use `split` and `cases` together with `set.subset.antisymm`.
 -/
 
 /- Lemma

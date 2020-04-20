@@ -1,5 +1,11 @@
 import data.real.basic
 
+/-
+# Chapter 1 : Sets
+
+## Level 8
+-/
+
 /- 
 This result will be of help in the sup-inf world.
 -/
@@ -10,7 +16,7 @@ def mem_prod_sets (A : set ℝ) (B : set ℝ) := { x : ℝ | ∃ y ∈ A, ∃ z 
 
 
 /- Lemma
-Prove that if $x = 0$, then `x ∈ mem_prod_sets [-2,-1] [(0:ℝ), 3]`
+Prove that if $x = 0$, then `x ∈ mem_prod_sets [(-2:ℝ),-1] [(0:ℝ), 3]`
 -/
 lemma zero_in_prod : (0:ℝ) ∈ mem_prod_sets [(-2:ℝ), -1] [(0:ℝ), 3] :=
 begin

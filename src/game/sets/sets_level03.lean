@@ -1,10 +1,16 @@
 variable X : Type -- hide
 
+/-
+# Chapter 1 : Sets
+
+## Level 3
+-/
+
+
 /- 
 Now prove that for any set $A$, $A ∩ B ⊆ A$.  
-After "intros x hx,", the "hx" hypothesis will be a conjunction.  
-Using "cases hx with xA xB," will split it into the two hypotheses that are 
-simultaneously valid.
+After `intros x hx,`, the `hx` hypothesis will be a conjunction.  
+Use the `cases` tactic to finish.
 -/
 
 
