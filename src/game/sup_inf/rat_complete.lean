@@ -9,8 +9,6 @@ import data.real.basic
 ## Level 12
 -/
 
-#check is_lub
-
 def bdd (X : set ℝ) := bdd_above X ∧ bdd_below X
 def complete (X : set ℝ) := ∀ Y : set ℝ, Y.nonempty ∧ Y ⊆ X ∧ bdd Y → ∃ s i : ℝ, is_lub Y s ∧ is_glb Y i 
 def embedded_rationals : set ℝ := {x : ℝ | ∃ y : ℚ, x = ↑y}
