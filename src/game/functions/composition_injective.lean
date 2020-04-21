@@ -6,9 +6,9 @@ open function
 
 ## Level 5
 
-A classical result in composition of functions. Now going the other way around
+A classical result in composition of functions.
+Now going the other way around.
 -/
-
 
 /- Lemma
 If composition of $f$ and $g$ is injective, then $f$ is injective.

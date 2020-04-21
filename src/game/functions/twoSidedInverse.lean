@@ -16,7 +16,6 @@ def two_sided_inverse {X Y : set ℝ} (f : X → Y) (g : Y → X)
 /- Lemma
 A function $f : X → Y$ has a two-sided inverse if and only if it is a bijection.
 -/
-
 theorem exist_two_sided_inverse (X Y : set ℝ) (f : X → Y) : 
     (∃ g : Y → X, two_sided_inverse f g) ↔ bijective f :=
 begin
