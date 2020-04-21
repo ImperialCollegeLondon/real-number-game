@@ -1,30 +1,25 @@
-variable X : Type -- hide
+import data.real.basic
 
-/- 
-Working with sets is very similar to working with propositions.
-For our initial examples, we'll use sets with members of a generic type
-$X$. Let's first prove that any set $A$ is included in its union with 
-any other set $B$. That is, you need to prove that:
-$$∀ x ∈ A, x ∈ A ∪ B,$$
-a statement which is definitionally equivalent to the goal in the theorem.
-You can actually convince yourselves that this is the case by typing
-"change ∀ x ∈ A, x ∈ A ∪ B,"
-just after "begin". The goal will change to the new statement. This kind of goal change is only possible for completely equivalent (in a strict definitional sense) goals.  With or without the "change" line then, you can thus introduce the 
-hypotheses by "intros x hx,". Now the equivalence with the world of propositions 
-will become apparent. The union of two sets is in fact the disjunction 
-$P ∨ Q$ of two propositions, where the left one, $P$, reads $x ∈ A$. Thus, 
-choosing "left," will select that term, which is our hypothesis "hx". 
-You can now finish the proof with "exact hx,"
+/-
+# Chapter 2 : Order
+
+## Level 1
+
+This level aims to familiarize you with the use of the trichotomy property in 
+Lean, as it will come in handy in later levels.
+The corresponding statement in Lean's mathlib is:
+
+`lt_trichotomy : ∀ (a b : ?M_1), a < b ∨ a = b ∨ b < a`
+
+and you can just use it to finish the proof below.
 -/
 
 
 /- Lemma
-If $A$ and $B$ are sets of any type $X$, then
-$$ A \subseteq A\cup B.$$ 
+For any two real numbers $a$ and $b$, we have that
+$$ a < b \lor a = b \lor b < a$$.
 -/
-theorem subset_union_left (A B : set X) : A ⊆ A ∪ B :=
+theorem trichotomy' (a b : ℝ) : a < b ∨ a = b ∨ b < a :=
 begin
-    --change ∀ (x : α), x ∈ A → x ∈ A ∪ B,  --they may want to do this
-    intros x hx,
-    left, exact hx, done
+    exact lt_trichotomy a b, done
 end

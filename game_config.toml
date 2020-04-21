@@ -23,7 +23,9 @@ name = "Order"
 id = 2
 parents = [1]
 levels = [
-	"src/game/order/level01.lean"
+	"src/game/order/level01.lean",
+	"src/game/order/level02.lean",
+	"src/game/order/level03.lean"
 ]
 
 [[worlds]]
