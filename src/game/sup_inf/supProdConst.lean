@@ -3,7 +3,7 @@ import data.real.basic
 /-
 # Chapter 3 : Sup and Inf
 
-## Level 7
+## Level 8
 
 Again a classical result.
 -/

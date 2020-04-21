@@ -1,4 +1,5 @@
 import game.series.L01defs
+variable X : Type --hide
 
 /- 
 Idea 04: root test

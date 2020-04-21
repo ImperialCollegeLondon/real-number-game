@@ -25,7 +25,9 @@ parents = [1]
 levels = [
 	"src/game/order/level01.lean",
 	"src/game/order/level02.lean",
-	"src/game/order/level03.lean"
+	"src/game/order/level03.lean",
+	"src/game/order/level04.lean",
+	"src/game/order/level05.lean"
 ]
 
 [[worlds]]
@@ -39,6 +41,7 @@ levels = [
        	 "src/game/sup_inf/level04.lean",
        	 "src/game/sup_inf/supSumSets.lean",
        	 "src/game/sup_inf/infSumSets.lean",
+       	 "src/game/sup_inf/infSumConst.lean",
        	 "src/game/sup_inf/supProdConst.lean",
        	 "src/game/sup_inf/lub_prodSets.lean",
        	 "src/game/sup_inf/supProdSets.lean",

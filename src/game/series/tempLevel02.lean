@@ -1,4 +1,5 @@
 import game.series.L01defs
+variable X : Type --hide
 
 /- 
 Idea 02: if $\forall n \in \mathbb{N}, a_n \ge 0$,
