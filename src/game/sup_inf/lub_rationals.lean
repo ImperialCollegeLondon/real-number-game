@@ -1,7 +1,7 @@
 import data.real.basic
 
 /-
-# Chapter 2 : Sup and Inf
+# Chapter 3 : Sup and Inf
 
 ## Level 10
 -/
@@ -15,7 +15,7 @@ definition has_lub (S : set ℝ) := ∃ x, is_lub' S x
 def embedded_rationals : set ℝ := {x : ℝ | ∃ y : ℚ, x = ↑y}
 
 /- Lemma
-Rationals have no sup...
+The set of rational numbers does not have a supremum
 -/
 lemma not_lub_rationals : ∀ b : ℝ, ¬ (is_lub (embedded_rationals) b) :=
 begin

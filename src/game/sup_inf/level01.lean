@@ -4,7 +4,7 @@ namespace xena -- hide
 -- World name : Sup and Inf
 
 /-
-# Chapter 2 : Sup and Inf
+# Chapter 3 : Sup and Inf
 
 ## Level 1 : Upper bounds
 -/
@@ -12,7 +12,7 @@ namespace xena -- hide
 /-
 Let $X$ be a set of real numbers.
 
-We say a real number $b$ is an `upper bound` for $X$ if every $x \in X$ is at most $b$.
+We say a real number $b$ is an *upper bound* for $X$ if every $x \in X$ is at most $b$.
 -/
 
 def is_upper_bound (X : set ℝ) (b : ℝ) := ∀ x : ℝ, x ∈ X → x ≤ b
@@ -26,7 +26,7 @@ You can prove this easily in Lean using the `change` tactic.
 -/
 
 /- Lemma
-If $Xsubseteq Y$ are two sets of reals, and $b$ is an upper bound for $Y$, 
+If $X \subseteq Y$ are two sets of reals, and $b$ is an upper bound for $Y$, 
 then it's also an upper bound for $X$.
 -/
 lemma upper_bounds_mono (X Y : set ℝ) (h1 : X ⊆ Y) (b : ℝ) : is_upper_bound Y b → is_upper_bound X b :=

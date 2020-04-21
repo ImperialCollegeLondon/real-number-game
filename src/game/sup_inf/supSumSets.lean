@@ -1,9 +1,11 @@
 import data.real.basic
 
 /-
-# Chapter 2 : Sup and Inf
+# Chapter 3 : Sup and Inf
 
 ## Level 5
+
+A classical result: the supremum of an element-wise sum of sets.
 -/
 
 -- see also ds_infSum.lean for only the better-organized version -- hide

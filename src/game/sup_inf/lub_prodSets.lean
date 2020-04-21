@@ -1,9 +1,11 @@
 import data.real.basic
 
 /-
-# Chapter 2 : Sup and Inf
+# Chapter 3 : Sup and Inf
 
 ## Level 8
+
+An intermediary result to be used in the next level.
 -/
 
 -- main result in lemma sup_mem_prod_of_sets
@@ -11,7 +13,7 @@ def mem_prod_sets (A : set ℝ) (B : set ℝ) := { x : ℝ | ∃ y ∈ A, ∃ z 
 
 
 /-
-Intermediary result needed for supProdSets.
+Prove that a given real number is the supremum of a particular set.
 -/
 
 /- Lemma

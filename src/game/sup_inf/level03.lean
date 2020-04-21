@@ -2,7 +2,7 @@ import data.real.basic
 
 
 /-
-# Chapter 2 : Sup and Inf
+# Chapter 3 : Sup and Inf
 
 ## Level 3
 -/
@@ -14,12 +14,14 @@ definition is_lub' (S : set ℝ) (x : ℝ) := is_upper_bound S x ∧
 definition has_lub (S : set ℝ) := ∃ x, is_lub' S x 
 
 /- 
-The next result must be placed in the sidebar axioms.
+This level asks you to prove what the supremum of a given open set is.
 -/
 
 -- part (c) (i)
 definition reals_lt_59 := {x : ℝ | x < 59}
 
+-- begin hide
+-- The next result must be placed in the sidebar axioms.
 theorem helper_lemma (x y : ℝ) (H : x < y) : x < (x + y) / 2 ∧ (x + y) / 2 < y :=
 begin
   have two_ge_zero : (2 : ℝ) ≥ 0 := by norm_num,
@@ -34,6 +36,7 @@ begin
     norm_num,
   },
 end
+-- end hide
 
 /- Lemma
 The LUB of...

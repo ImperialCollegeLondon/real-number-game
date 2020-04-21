@@ -1,7 +1,7 @@
 import data.real.basic
 
 /-
-# Chapter 2 : Sup and Inf
+# Chapter 3 : Sup and Inf
 
 ## Level 9
 -/

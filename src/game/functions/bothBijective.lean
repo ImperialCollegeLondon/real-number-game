@@ -1,6 +1,13 @@
 import data.real.basic
 open function
 
+/-
+# Chapter 6 : Functions
+
+## Level 3
+
+Be sure to make use of the results in the previous two levels.
+-/
 
 /- Lemma
 If $f : X \to Y$ and $g : Y \to Z$ are both bijective functions, then

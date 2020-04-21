@@ -1,18 +1,17 @@
 import data.real.basic
 
-/- Axiom : archimPrinciple : ∀ x : ℝ, x > 0 →  ∃ n : ℕ, n > 0 ∧ (1/n : ℝ) < x
--/
-
 /-
-# Chapter 2 : Sup and Inf
+# Chapter 3 : Sup and Inf
 
 ## Level 11
 -/
 
 def unboundedAbove (A : set ℝ) := ∀ x : ℝ, x > 0 → ∃ a ∈ A, x < a
+-- Might want to make this into an axiom to be placed on the left
+def archimPrinciple := ∀ x : ℝ, x > 0 →  ∃ n : ℕ, n > 0 ∧ (1/n : ℝ) < x 
 
 /- Lemma
-The Archimedean principle is equivalent to nats being unbounded above.
+The Archimedean principle is equivalent to the set of natural numbers being unbounded above.
 -/
 lemma nats_unbounded_iff : 
     unboundedAbove {x : ℝ | ∃ n : ℕ, x = n ∧ n > 0} ↔ archimPrinciple :=

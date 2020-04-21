@@ -1,6 +1,14 @@
 import data.real.basic
 open function
 
+/-
+# Chapter 6 : Functions
+
+## Level 4
+
+A classical result in composition of functions.
+-/
+
 -- inverses
 def two_sided_inverse {X Y : set ℝ} (f : X → Y) (g : Y → X) 
 := (∀ x : X, (g ∘ f)(x) = x) ∧ (∀ y : Y, (f ∘ g)(y) = y)

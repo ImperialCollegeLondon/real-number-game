@@ -23,7 +23,7 @@ name = "Order"
 id = 2
 parents = [1]
 levels = [
-	"src/game/order/tempLevel1.lean"
+	"src/game/order/level01.lean"
 ]
 
 [[worlds]]
@@ -74,7 +74,9 @@ levels = [
 	"src/game/functions/bothInjective.lean",
 	"src/game/functions/bothSurjective.lean",
 	"src/game/functions/bothBijective.lean", 
-	"src/game/functions/twoSidedInverse.lean"
+	"src/game/functions/twoSidedInverse.lean",
+	"src/game/functions/composition_injective.lean",
+	"src/game/functions/composition_surjective.lean"
 ]
 
 [[worlds]]

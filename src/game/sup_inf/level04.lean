@@ -2,7 +2,7 @@ import data.real.basic
 
 
 /-
-# Chapter 2 : Sup and Inf
+# Chapter 3 : Sup and Inf
 
 ## Level 4 
 -/
@@ -14,9 +14,11 @@ definition is_lub' (S : set ℝ) (x : ℝ) := is_upper_bound S x ∧
 definition has_lub (S : set ℝ) := ∃ x, is_lub' S x 
 
 /-
-The next three results go in the sidebar.
+A generalization of the result in the previous level.
 -/
 
+-- begin hide
+-- these three helper results to go in sidebar
 lemma two_real_ne_zero : (2:ℝ) ≠ 0 :=
 begin
     intro, linarith,
@@ -35,6 +37,7 @@ begin
   rw [div_mul_cancel _ (two_real_ne_zero)],
   simp [H,mul_two],
 end
+-- end hide
 
 /- Lemma
 A more general version of the previous level...

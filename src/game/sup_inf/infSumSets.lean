@@ -1,9 +1,11 @@
 import data.real.basic
 
 /-
-# Chapter 2 : Sup and Inf
+# Chapter 3 : Sup and Inf
 
 ## Level 6
+
+This level, very similar to the previous, showcases the infimum.
 -/
 
 def sum_of_sets (A : set ℝ) (B : set ℝ) := { x : ℝ | ∃ y ∈ A, ∃ z ∈ B, x = y + z}

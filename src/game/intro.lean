@@ -24,8 +24,8 @@ from -- try blue ones higher up the chain first. Green nodes are completed.
 
 Many thanks to Mohammad Pedramfar, without whom this game would not exist.
 
-Several people contributed ideas and sometimes full proofs, which may or may not have found 
-their way in the game.
+Several people contributed ideas and sometimes full proofs, most of which have found 
+their place in the game in one way or another.
 This aims at being a complete list: Christopher Sumnicht.
 
 # Questions?

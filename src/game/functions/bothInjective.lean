@@ -1,6 +1,14 @@
 import data.real.basic
 open function
 
+/-
+# Chapter 6 : Functions
+
+## Level 1
+
+A classical result in composition of functions.
+-/
+
 
 /- Lemma
 If $f : X \to Y$ and $g : Y \to Z$ are both injective functions, then
