@@ -15,6 +15,8 @@ is `set.Ioc a b`, etc. The usual closed-interval notation, using square
 brackets, is used here as a wrapper around these definitions.
 After `intro hx,` the `split` tactic will showcase the conditions for 
 membership. The inequality goals can be met with the `linarith` tactic.
+The latter is very useful when dealing with goals that don't involve any
+nonlinearity in the involved variables, in particular with inequalities.
 -/
 
 notation `[` a `,` b `]`  := set.Icc a b

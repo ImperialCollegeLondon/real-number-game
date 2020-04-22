@@ -7,7 +7,7 @@ import data.real.basic
 
 This level invites you to work out a property of the absolute value.
 In Lean the absolute value of $x$ is denoted by `abs x`. 
-For ease of use, a notation can be used around that definition as below.
+For ease of use, a notation can be wrapped around that definition as below.
 -/
 
 notation `|` x `|` := abs x

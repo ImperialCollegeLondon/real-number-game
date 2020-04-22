@@ -7,7 +7,8 @@ import data.real.basic
 -/
 
 /- 
-This result will be of help in the sup-inf world.
+This is a little more complicated example asking you to work with intervals of reals.
+The result will be of help in the sup-inf world.
 -/
 
 notation `[` a `,` b `]`  := set.Icc a b

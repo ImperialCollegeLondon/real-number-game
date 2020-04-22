@@ -4,9 +4,16 @@ import data.real.basic
 # Chapter 1 : Sets
 
 ## Level 9
+
+As a final test of your ability in working with sets, prove that the set of rational 
+numbers is dense in the reals.
+
+There are several new axioms in the left side bar that will help you in this task.
+Note that you may need to change the type of some quantities from rationals to reals.
+Lean doesn't necessarily consider the rational $2$ to be the same at the real number $2$.
+Some of the axioms on the left make working with the casts from rationals to reals easier.
 -/
 
--- The axioms in the side bar make working with the casts from rationals to reals easier.
 
 /- Axiom : inv_prod_self : 
 ∀ n : ℕ, 0 < n → (1/n : ℝ) * (n : ℝ ) = 1 

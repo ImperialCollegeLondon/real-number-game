@@ -8,7 +8,7 @@ variable X : Type -- hide
 
 
 /- 
-Now prove that for any set $A$, $A ∩ B ⊆ A$.  
+Now prove that for any two sets $A$ and $B$, $A ∩ B ⊆ A$.  
 After `intros x hx,`, the `hx` hypothesis will be a conjunction.  
 Use the `cases` tactic to finish.
 -/

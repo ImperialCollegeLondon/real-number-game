@@ -9,7 +9,7 @@ variable X : Type --hide
 
 /-
 In this level you continue working with sets, while learning some useful
-proof techniques. 
+Lean tactics, `by_contradiction` and `push_neg`. 
 You need to prove that the empty set is included in any set.
 To do that, we'll follow the advice of P. Halmos in "Naive Set Theory".
 That is, to prove something is true about the empty set, prove that it cannot be false.
@@ -17,20 +17,20 @@ That is, to prove something is true about the empty set, prove that it cannot be
 When starting this level, the goal is:
 $$\forall (A : \textrm{set} \; X), \; \emptyset \subseteq A$$
 To make progress, you'll need to instantiate a specific set $A$ 
-with the `intro` tactic.
+with the well-known `intro` tactic.
 
 Remember now the definition of set inclusion. The goal 
 $$ \emptyset \subseteq A$$
 is the same as 
 $$ \forall x \in \emptyset, x \in A.$$
-Thus, `change ∀ x ∈ ∅, x ∈ A,` on the line after `intro A,`.
-Time to switch to the meat of the proof. Type `by_contradiction hn,` to introduce 
-the contradiction hypothesis "hn" and change the goal to `false`.
+Thus, use `change ∀ x ∈ ∅, x ∈ A` on the line after `intro A`.
+Time to switch to the meat of the proof. Type `by_contradiction hn` to introduce 
+the contradiction hypothesis `hn` and change the goal to `false`.
  
-Next, it is helpful to further change this into a statement that there exists 
+Next, it is helpful to further change this into the equivalent statement that there exists 
 a member of the empty set which does not belong to $A$. 
 This can be accomplished by
-`push_neg at hn,`. You sure can bring this home from here using `cases`.
+`push_neg at hn`. You sure can bring this home from here using `cases`.
 
 -/
 

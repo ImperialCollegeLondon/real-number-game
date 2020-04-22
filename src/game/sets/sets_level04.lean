@@ -18,7 +18,10 @@ change the goal into two goals, corresponding to the left-right and
 right-left implication, respectively. For the first goal, after
 `intro H,` the equality of the two sets can be rewritten in terms
 of inclusion by `apply set.subset.antisymm,`. You can find the corresponding
-statement in the left side bar.
+statement in the left side bar. 
+In that statement, the arguments in between braces are implicit; 
+in this case the types of $A$ and $B$ are inferred from the
+two hypotheses $H$ and $G$.
 -/
 
 /- Lemma

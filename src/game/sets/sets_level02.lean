@@ -12,7 +12,7 @@ variable X : Type -- hide
 Working with sets is very similar to working with propositions.
 Let's now prove that any set $A$ is included in its union with 
 any other set $B$. That is, you need to prove that:
-`∀ x ∈ A, x ∈ A ∪ B`
+`∀ x ∈ A, x ∈ A ∪ B`,
 a statement which is definitionally equivalent to the goal in the theorem.
 You can again convince yourselves that this is the case by typing
 `change ∀ x ∈ A, x ∈ A ∪ B,`

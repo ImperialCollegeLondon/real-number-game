@@ -27,7 +27,10 @@ levels = [
 	"src/game/order/level02.lean",
 	"src/game/order/level03.lean",
 	"src/game/order/level04.lean",
-	"src/game/order/level05.lean"
+	"src/game/order/level05.lean",
+	"src/game/order/level06.lean",
+	"src/game/order/level07.lean",
+	"src/game/order/level08.lean"
 ]
 
 [[worlds]]
