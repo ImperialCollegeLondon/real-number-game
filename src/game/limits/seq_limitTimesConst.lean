@@ -9,8 +9,8 @@ A basic result for working with sequences.
 -/
 
 /- Lemma
-If $\lim_{n \to \infty} a_n = L$ and $c \in \mathbb{R}$, then
- $\lim_{n \to \infty} (c \cdot a_n) = c \cdot L$
+If $\lim_{n \to \infty} a_n = \alpha$ and $c \in \mathbb{R}$, then
+ $\lim_{n \to \infty} (c \cdot a_n) = c \cdot \alpha$
 -/
 lemma limit.times_const (a : ℕ → ℝ) (α c : ℝ) (hL : is_limit a α) : 
     is_limit (λ n, c * (a n)) (c*α) :=
