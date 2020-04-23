@@ -9,9 +9,9 @@ open real
 ## Level 8
 
 Prove by example that there exist pairs of real numbers
-$a$ and $b$ such that $a \in \mathbb{R} - \mathbb{Q}$, 
-$b \in \mathbb{R} - \mathbb{Q}$,
-but their product $a ⬝ b$ is a rational number, $(a ⬝ b) \in ℐbb{Q}$.
+$a$ and $b$ such that $a \in \mathbb{R} \setminus \mathbb{Q}$, 
+$b \in \mathbb{R} \setminus \mathbb{Q}$,
+but their product $a \cdot b$ is a rational number, $(a \cdot b) \in \mathbb{Q}$.
 You may use this result in the Lean mathlib library:
 
 `irrational_sqrt_two : irrational (sqrt 2)
