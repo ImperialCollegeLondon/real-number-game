@@ -41,7 +41,8 @@ will be called `a(n)` or `a n` in Lean, rather than $a_n$, but this is OK.
 The key definition we want is the concept of a limit of a sequence.
 -/
 
-definition is_limit (a : ℕ → ℝ) (l : ℝ) := ∀ ε : ℝ, 0 < ε → ∃ N : ℕ, ∀ n : ℕ, N ≤ n → |a n - l| < ε
+definition is_limit (a : ℕ → ℝ) (α : ℝ) := 
+  ∀ ε : ℝ, 0 < ε → ∃ N : ℕ, ∀ n : ℕ, N ≤ n → |a n - α| < ε
 
 /-
 Let's now prove the basic fact that a sequence has at most one limit. 

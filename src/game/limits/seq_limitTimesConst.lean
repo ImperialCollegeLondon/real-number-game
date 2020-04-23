@@ -1,7 +1,8 @@
 import game.limits.L01defs
 
 notation `|` x `|` := abs x -- hide
-def is_limit (a : ℕ → ℝ) (l : ℝ) := ∀ ε : ℝ, 0 < ε → ∃ N : ℕ, ∀ n : ℕ, N ≤ n → |a n - l| < ε
+def is_limit (a : ℕ → ℝ) (α : ℝ) := 
+  ∀ ε : ℝ, 0 < ε → ∃ N : ℕ, ∀ n : ℕ, N ≤ n → |a n - α| < ε
 
 /-
 A basic result for working with sequences.
@@ -11,8 +12,8 @@ A basic result for working with sequences.
 If $\lim_{n \to \infty} a_n = L$ and $c \in \mathbb{R}$, then
  $\lim_{n \to \infty} (c \cdot a_n) = c \cdot L$
 -/
-lemma limit.times_const (a : ℕ → ℝ) (L c : ℝ) (hL : is_limit a L) : 
-    is_limit (λ n, c * (a n)) (L*c) :=
+lemma limit.times_const (a : ℕ → ℝ) (α c : ℝ) (hL : is_limit a α) : 
+    is_limit (λ n, c * (a n)) (c*α) :=
 begin
   rcases lt_trichotomy c 0 with hc | hc | hc,
   {
@@ -26,12 +27,12 @@ begin
     have H := hM n hn,
     have G := (lt_div_iff' habsc).mp H,
     have F := abs_mul c,
-    set b := a n - L with hb,
+    set b := a n - α with hb,
     have E := F b,
     rw hb at E,
-    have D := mul_sub c (a n) L,
+    have D := mul_sub c (a n) α,
     rw D at E, 
-    rw mul_comm c L at E, rw ← hb at E,
+    rw ← hb at E,
     linarith,
   },
   {
@@ -39,7 +40,7 @@ begin
     cases hL ε hε with M hM,
     use M, intros n hn, simp,
     have H : c * (a n) = 0, norm_num, left, exact hc, rw H,
-    have G : L * c = 0, norm_num, right, exact hc, rw G,
+    have G : c * α = 0, norm_num, left, exact hc, rw G,
     norm_num, exact hε,
   },
   { -- this can be merged with first case
@@ -51,13 +52,13 @@ begin
     have H := hM n hn,
     have G := (lt_div_iff' hc).mp H,
     have F := abs_mul c,
-    set b := a n - L with hb,
+    set b := a n - α with hb,
     have E := F b,
     have D : |c| = c, exact abs_of_pos hc,
     rw D at E, rw hb at E,
-    have C := mul_sub c (a n) L,
+    have C := mul_sub c (a n) α,
     rw C at E, 
-    rw mul_comm c L at E, rw ← hb at E,
+    rw ← hb at E,
     linarith,
   }, 
   done
