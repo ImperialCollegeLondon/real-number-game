@@ -60,7 +60,8 @@ parents = [3]
 levels = [
 	"src/game/limits/L01defs.lean",
 	"src/game/limits/seq_lim_add.lean",
-    	"src/game/limits/seq_limitTimesConst.lean"
+    	"src/game/limits/seq_limitTimesConst.lean",
+    	"src/game/limits/seq_limitLinear.lean"
 ]
 
 [[worlds]]
