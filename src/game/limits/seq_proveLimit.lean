@@ -3,9 +3,6 @@ import game.limits.L01defs
 notation `|` x `|` := abs x -- hide
 def is_limit (a : ℕ → ℝ) (α : ℝ) := 
   ∀ ε : ℝ, 0 < ε → ∃ N : ℕ, ∀ n : ℕ, N ≤ n → |a n - α| < ε
-def is_convergent (a : ℕ → ℝ) := ∃ α : ℝ, is_limit a α
-def is_Cauchy (a : ℕ → ℝ) := 
-  ∀ ε : ℝ, 0 < ε → ∃ N : ℕ, ∀ m n : ℕ, N ≤ n ∧ m ≤ N → |a m - a n| < ε
 
 /-
 A simple limit proof.

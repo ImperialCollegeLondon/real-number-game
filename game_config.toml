@@ -87,7 +87,8 @@ levels = [
 	"src/game/functions/bothBijective.lean", 
 	"src/game/functions/twoSidedInverse.lean",
 	"src/game/functions/composition_injective.lean",
-	"src/game/functions/composition_surjective.lean"
+	"src/game/functions/composition_surjective.lean",
+	"src/game/functions/classicContinDef.lean"
 ]
 
 [[worlds]]
