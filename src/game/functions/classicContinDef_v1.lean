@@ -13,7 +13,7 @@ Work in progress.
 notation `|` x `|` := abs x
 
 def continuous_at_x (f : ℝ → ℝ) (x : ℝ) := 
-    ∀ ε : ℝ, 0 < ε → ∃ δ : ℝ, 0 < δ ∧ ∀ y : ℝ, |x - y| < δ → |f x - f y| < ε
+    ∀ ε : ℝ, 0 < ε → ∃ δ : ℝ, 0 < δ → ∀ y : ℝ, |x - y| < δ → |f x - f y| < ε
 def square_f (x : ℝ) := x^2
 
 /- Lemma
@@ -24,12 +24,8 @@ begin
     intros ε hε,
     set d := min (1:ℝ) (ε/7) with hdefd,
     use d,
-    split,
-    { -- prove this d is positive
-        have h1 : 0 < (1:ℝ), linarith,
-        have h2 : 0 < (ε/7), linarith,
-        simp, split, exact h1, exact h2, 
-    },
+    -- is this ok? Should need to prove d > 0 -- ?
+    intro hd,
     intros y hy,
     unfold square_f,
     have H : 3^2 - y^2 = (3-y)*(3+y), ring,
@@ -53,13 +49,6 @@ begin
         have h45 : 0 < 3 + y, linarith, --reusing, should only do once
         have h46 := abs_of_pos h45,
         rw ← h46 at h6y, exact h6y,
-    -- I shouldn't need to prove this twice, how to fix?
-    have hd : 0 < d,
-    { -- prove this d is positive
-        have h1 : 0 < (1:ℝ), linarith,
-        have h2 : 0 < (ε/7), linarith,
-        simp, split, exact h1, exact h2, 
-    },
     have D := (mul_lt_mul_right hd).mpr h7y,
     rw mul_comm at D, rw mul_comm 7 d at D,
     have h9y : |3 - y| * |3 + y| <  d * 7, linarith,
@@ -68,4 +57,3 @@ begin
     have h12y : (ε/7) * 7 = ε, linarith,
     rw h12y at h11y, exact h11y,
 end
-
