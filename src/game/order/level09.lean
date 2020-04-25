@@ -75,8 +75,6 @@ begin
     have ha : 0 ≤ |a|,  exact is_absolute_value.abv_nonneg abs a,
     have hb : 0 ≤ |b|,  exact is_absolute_value.abv_nonneg abs b,
     have hc : 0 ≤ |a| + |b|, linarith,
-    have g5 := sqr_sqrt hab,
-    have g6 := sqr_sqrt hc,
     have G := eq_sqr_to_eq ( |a + b| ) ( |a| + |b| ) hab hc H2, exact G, done
 end
 
