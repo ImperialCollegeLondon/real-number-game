@@ -97,7 +97,8 @@ name = "Cardinality"
 id = 7
 parents = [6]
 levels = [
-	"src/game/cardinality/tempLevel1.lean"
+	"src/game/cardinality/finite_inj.lean",
+	"src/game/cardinality/countable_inj.lean"
 ]
 
 [[worlds]]
