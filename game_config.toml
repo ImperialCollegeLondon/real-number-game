@@ -93,17 +93,25 @@ levels = [
 ]
 
 [[worlds]]
-name = "Integral"
+name = "Cardinality"
 id = 7
 parents = [6]
+levels = [
+	"src/game/cardinality/tempLevel1.lean"
+]
+
+[[worlds]]
+name = "Integral"
+id = 8
+parents = [7]
 levels = [
 	"src/game/integral/tempLevel1.lean"
 ]
 
 [[worlds]]
 name = "Topology of the reals"
-id = 8
-parents = [7]
+id = 9
+parents = [8]
 levels = [
 	"src/game/topology/hausdorff.lean"
 ]
