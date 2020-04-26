@@ -13,5 +13,6 @@ Planned sections so far:
 4) Sequences and limits
 5) Series and sums
 6) Functions
-7) Integral
-8) Topology of R
+7) Cardinality
+8) Integral
+9) Topology of R
