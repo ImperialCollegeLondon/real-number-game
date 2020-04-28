@@ -22,5 +22,9 @@ $X$ is also finite.
 theorem finite_inj (X Y : set ℝ) (f : X → Y) (hY : finite Y) : 
     injective f → finite X :=
 begin
-   sorry,
+    intro hf,
+    have h1 := finite.fintype hY, -- can't get f(X) ⊆ Y, type coercion problem
+    --have H1 := card_image_of_injective,
+    --sorry,
 end
+#check finite_subsets_of_finite
