@@ -26,7 +26,7 @@ Many thanks to Mohammad Pedramfar, without whom this game would not exist.
 
 Several people contributed ideas and sometimes full proofs, most of which have found 
 their place in the game in one way or another.
-This aims at being a complete list: Christopher Sumnicht.
+This aims at being a complete list eventually: Kenny Lau, Patrick Massot, Christopher Sumnicht.
 
 # Questions?
 
