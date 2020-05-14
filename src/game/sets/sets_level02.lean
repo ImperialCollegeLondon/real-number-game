@@ -35,4 +35,10 @@ begin
     --change ∀ (x : α), x ∈ A → x ∈ A ∪ B,  --they may want to do this
     intros x hx,
     left, exact hx, done
+
+
+
+
+
+
 end
