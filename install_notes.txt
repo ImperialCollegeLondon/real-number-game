@@ -1,0 +1,6 @@
+Installation on kmb's linux box:
+
+1) Update Lean-game-maker according to the installation instructions in its README.
+
+2) If necessary, 
+https://leanprover.zulipchat.com/#narrow/stream/113488-general/topic/Lean.203.2E8.20wasm
