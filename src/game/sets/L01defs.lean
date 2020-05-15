@@ -10,33 +10,60 @@ variable X : Type -- hide
 
 ## Level 1 : Introduction to sets.
 
-This chapter assumes you are familiar with the following tactics: `intro`, `apply`, `exact`. 
--- TODO -- any more?
-If you are not, try playing Function World and Proposition World of the Natural Number Game. 
+This chapter assumes you are familiar with the following tactics: `intro`, `apply`, `exact`, `cases`, `split`, `left` and `right`.<br>
+If you are not, try playing Function World and Proposition World of the Natural Number Game.
+ 
 In this level we will learn about the `change` tactic, and the idea of definitional equality.
 
-For our initial examples, we'll use sets with members of a generic type. 
-Let $A$ and $B$ be sets of any type $X$. Lean defines $A \subseteq B$ to mean 
+For our initial examples, we'll use sets $A$ and $B$  with members of a generic type $X$. Lean defines $A \subseteq B$ to mean 
 $$\forall a, a \in A \implies a \in B.$$ 
-Let's learn how to prove that $A \subseteq A$.
+Let's learn how to prove that $A \subseteq A$, indicated as our goal in the lemma below by `⊢ A ⊆ A`. 
 
-In the lemma below, our goal is `⊢ A ⊆ A`. By *definition* this means `∀ a : X, a ∈ A → a ∈ A.` 
-This is the actual definition of `⊆` in Lean. 
-You can check this for yourself by using the `change` tactic. 
+By *definition* our goal is equivalent to `∀ a : X, a ∈ A → a ∈ A` (that is, due to the actual definition of `⊆` in Lean). <br>
+Whenever two expressions are *definitionally equal* in this way, we can use the `change` tactic to replace one by the other in a goal. <br> 
+For example, if `P` and `Q` are  equal by definition then we can use
+
+`change Q,`
+
+to change a goal `P` to a goal `Q` (remembering the comma!).
+-/
+
+/- Hint : Hint : If you are unsure how to prove A ⊆ A directly, try changing your goal.
 If you start your proof with 
 
-`change ∀ a : ℝ, a ∈ X → a ∈ X,`
+`change ∀ a : X, a ∈ A → a ∈ A,`
 
-then the goal will change to `⊢ ∀ (a : X), a ∈ A → a ∈ A`. You can change it back with
+then the goal should change to `⊢ ∀ (a : X), a ∈ A → a ∈ A`. You can change it back with
 
 `change A ⊆ A,`
 
-The `change` tactic can be used to change the goal to something *definitionally equivalent* 
-to the goal. That is, something *equal by definition*. 
+Note that you do not have to use the `change` tactic at all to complete this proof.
 
-To make progress with a `∀ a, ...` goal you can `intro a`. You can probably take it from here.
-Note that you do not have to use the `change` tactic at all, you can start with `intro a`.
 -/
+
+/- 
+<hr style="height:10px; visibility:hidden;" />
+-/
+
+
+/- Hint : Hint : To make progress with a goal of form `∀ a : X, ...`, introduce a term of type `X` by using a familiar tactic. 
+
+In this example, using
+
+`intro a,`
+
+will introduce an arbitrary term of type X.
+
+Note that this is the tactic we use to assume a hypothesis (when proving an implication), or to choose an arbitrary element of some domain (when defining a function).
+
+Use the same tactic to introduce an appropriately named hypothesis for an implication, and close the goal with the `exact` tactic.
+-/
+
+/-
+If you get stuck, you can click on the hints for more details!
+-/
+
+
 
 /- Lemma
 If $A$ is a set of elements of type X, then $A \subseteq A$. 
