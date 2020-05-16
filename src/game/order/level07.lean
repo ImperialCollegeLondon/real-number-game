@@ -11,7 +11,7 @@ open real
 Prove by example that there exist pairs of real numbers
 $a$ and $b$ such that $a \in \mathbb{R} \setminus \mathbb{Q}$, 
 $b \in \mathbb{R} \setminus \mathbb{Q}$,
-but their sum $a + b$ is a rational number, $(a+b) \in mathbb{Q}$.
+but their sum $a + b$ is a rational number, $(a+b) \in \mathbb{Q}$.
 You may use this result in the Lean mathlib library:
 
 `irrational_sqrt_two : irrational (sqrt 2)`
