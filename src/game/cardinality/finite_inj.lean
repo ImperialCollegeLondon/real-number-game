@@ -25,6 +25,6 @@ begin
     intro hf,
     have h1 := finite.fintype hY, -- can't get f(X) ⊆ Y, type coercion problem
     --have H1 := card_image_of_injective,
-    --sorry,
+    sorry,
 end
 #check finite_subsets_of_finite

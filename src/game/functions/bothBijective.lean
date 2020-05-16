@@ -1,4 +1,5 @@
 import data.real.basic
+import game.functions.bothInjective game.functions.bothSurjective
 open function
 
 /-

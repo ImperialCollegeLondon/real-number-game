@@ -36,7 +36,9 @@ begin
   intros x hx,
   by_contradiction hnx,
   push_neg at hnx,
-  have E := zero_in_prod,
-  have D := hx E, linarith, done
+  --TODO: kmb doesn't know what zero_in_prod is, and it's not compiling
+  --have E := zero_in_prod,
+  --have D := hx E, linarith, done
+  sorry
 end
 
