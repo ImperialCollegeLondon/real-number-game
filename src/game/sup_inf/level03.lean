@@ -17,7 +17,6 @@ definition has_lub (S : set ℝ) := ∃ x, is_lub' S x
 This level asks you to prove what the supremum of a given open set is.
 -/
 
--- part (c) (i)
 definition reals_lt_59 := {x : ℝ | x < 59}
 
 -- begin hide
