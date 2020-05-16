@@ -32,6 +32,10 @@ Some of the axioms on the left make working with the casts from rationals to rea
 -- one way to prove ℚ dense in ℝ 
 def dense_in_R (A : set ℝ) := ∀ (x y : ℝ), x < y → ∃ a ∈ A, a ∈ set.Ioo x y
 def embedded_rationals : set ℝ := { x | ∃ r : ℚ, x = ↑r }
+axiom archimedean_R : ∀ x : ℝ, 0 < x → ∃ n : ℕ, 0 < n ∧ (1/n : ℝ) < x
+axiom has_ceiling : ∀ x : ℝ,  ∃ m : ℤ, ((m-1) : ℝ) ≤ x ∧ x < (m:ℝ)
+axiom inv_prod_self : ∀ n : ℕ, 0 < n → (1/n : ℝ) * (n : ℝ ) = 1 
+axiom inv_prod_other : ∀ (m : ℤ), ∀ (n : ℕ), 0 < n → (1/n : ℝ) * (m : ℝ) = (m/n : ℝ)
 
 /- Lemma
 Rationals are dense in the reals.

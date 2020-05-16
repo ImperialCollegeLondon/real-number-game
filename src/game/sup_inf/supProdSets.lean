@@ -1,5 +1,7 @@
 import data.real.basic
 
+import .lub_prodSets
+
 /-
 # Chapter 3 : Sup and Inf
 
@@ -8,7 +10,8 @@ import data.real.basic
 
 
 -- main result in lemma sup_mem_prod_of_sets
-def mem_prod_sets (A : set ℝ) (B : set ℝ) := { x : ℝ | ∃ y ∈ A, ∃ z ∈ B, x = y * z}
+-- hide
+--def mem_prod_sets (A : set ℝ) (B : set ℝ) := { x : ℝ | ∃ y ∈ A, ∃ z ∈ B, x = y * z}
 
 
 /-
