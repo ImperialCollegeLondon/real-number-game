@@ -9,15 +9,15 @@ A classical result: the supremum of an element-wise sum of sets.
 -/
 
 -- see also ds_infSum.lean for only the better-organized version -- hide
-def sum_of_sets (A : set ℝ) (B : set ℝ) := { x : ℝ | ∃ y ∈ A, ∃ z ∈ B, x = y + z}
+def sum_sets (A : set ℝ) (B : set ℝ) := { x : ℝ | ∃ y ∈ A, ∃ z ∈ B, x = y + z}
 
 /- Lemma
 If $A$ and $B$ are sets of reals, then
 $$ \textrm{sup} (A + B) = \textrm{sup} (A) + \textrm{sup}(B)$$
 -/
-lemma sup_sum_of_sets (A : set ℝ) (B : set ℝ) (h1A : A.nonempty) (h1B : B.nonempty) 
+lemma sup_sum_sets (A : set ℝ) (B : set ℝ) (h1A : A.nonempty) (h1B : B.nonempty) 
   (h2A : bdd_above A) (h2B : bdd_above B) (a : ℝ) (b : ℝ) : 
-  (is_lub A a) ∧ (is_lub B b) → is_lub (sum_of_sets A B) (a + b) :=
+  (is_lub A a) ∧ (is_lub B b) → is_lub (sum_sets A B) (a + b) :=
 begin
   intro h,
   cases h with hA hB,
@@ -33,9 +33,9 @@ begin
   -- now prove that (a+b) is the least upper bound
   intros S hS,
   --change ∀ xab ∈ (sum_of_sets A B), xab ≤ S at hS,
-  have H1 : ∀ y ∈ A, ∀ z ∈ B, (y + z) ∈ (sum_of_sets A B),
+  have H1 : ∀ y ∈ A, ∀ z ∈ B, (y + z) ∈ (sum_sets A B),
     intros y hy z hz,
-    unfold sum_of_sets, 
+    unfold sum_sets, 
     existsi y, existsi hy, existsi z, existsi hz, refl,
   have H2 : ∀ y ∈ A, ∀ z ∈ B, (y + z) ≤ S, 
     intros y hy z hz,
@@ -69,14 +69,14 @@ end
 -- Kevin's term proof for second part
 lemma sup_sum_of_sets' (A : set ℝ) (B : set ℝ) (a : ℝ) (b : ℝ)
   (hA : is_lub A a) (hB : is_lub B b) :
-  a + b ∈ lower_bounds (upper_bounds (sum_of_sets A B)) :=
+  a + b ∈ lower_bounds (upper_bounds (sum_sets A B)) :=
     λ S hS, add_le_of_le_sub_left $ hB.2 $ λ z hz, le_sub.1 $ hA.2 $ λ y hy, 
     le_sub_right_of_add_le $ hS ⟨y, hy, z, hz, rfl⟩
 
 -- Patrick Massot's proof for second part
 lemma sup_sum_of_sets'' (A : set ℝ) (B : set ℝ) (a : ℝ) (b : ℝ)
   (hA : is_lub A a) (hB : is_lub B b) :
-  a + b ∈ lower_bounds (upper_bounds (sum_of_sets A B)) :=
+  a + b ∈ lower_bounds (upper_bounds (sum_sets A B)) :=
 begin
     intros S hS,
   have H1 : ∀ x ∈ A, S - x ∈ upper_bounds B,
