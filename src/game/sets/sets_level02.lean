@@ -14,6 +14,7 @@ Let's now prove that any set $A$ is included in its union with
 any other set $B$, or $A ⊆ A ∪ B$. 
 
 Our goal is definitionally equivalent to `∀ x ∈ A, x ∈ (A ∪ B)`.
+The definition of `x ∈ (A ∪ B)` is `x ∈ A ∨ x ∈ B`.
 
 You should already know the tactics needed to prove this goal, so give 
 it a try before checking the hints.
