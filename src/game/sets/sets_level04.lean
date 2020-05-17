@@ -22,6 +22,27 @@ statement in the left side bar.
 In that statement, the arguments in between braces are implicit; 
 in this case the types of $A$ and $B$ are inferred from the
 two hypotheses $H$ and $G$.
+
+## A word on coding style
+
+After a `split` statement, one goal turns into two. A good programming style
+would be to use `{}` brackets to work on each goal individually, like this:
+```
+begin
+  split,
+  { insert,
+    proof of,
+    first goal
+  },
+  { insert,
+    proof of,
+    second goal
+  }
+end
+```
+
+This way you only ever have one goal to work on, and your code becomes
+easier to read.
 -/
 
 /- Lemma
