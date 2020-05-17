@@ -7,6 +7,13 @@ import data.real.basic
 
 This level invites you to work out a property of the absolute value.
 In Lean the absolute value of $x$ is denoted by `abs x`. 
+-/
+
+/- Hint : The definition of the absolute value in mathlib:
+definition abs {α : Type u} [decidable_linear_ordered_add_comm_group α] (a : α) : α := max a (-a)
+-/
+
+/-
 For ease of use, a notation can be wrapped around that definition as below.
 -/
 

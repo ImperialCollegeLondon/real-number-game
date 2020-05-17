@@ -8,7 +8,8 @@ import data.real.basic
 As a final test of your ability in working with sets, prove that the set of rational 
 numbers is dense in the reals.
 
-There are several new axioms in the left side bar that will help you in this task.
+This proof will, among other things, rely on several new axioms that appear
+in the left side bar.
 Note that you may need to change the type of some quantities from rationals to reals.
 Lean doesn't necessarily consider the rational $2$ to be the same at the real number $2$.
 Some of the axioms on the left make working with the casts from rationals to reals easier.
@@ -32,10 +33,14 @@ Some of the axioms on the left make working with the casts from rationals to rea
 -- one way to prove ℚ dense in ℝ 
 def dense_in_R (A : set ℝ) := ∀ (x y : ℝ), x < y → ∃ a ∈ A, a ∈ set.Ioo x y
 def embedded_rationals : set ℝ := { x | ∃ r : ℚ, x = ↑r }
+-- begin hide
 axiom archimedean_R : ∀ x : ℝ, 0 < x → ∃ n : ℕ, 0 < n ∧ (1/n : ℝ) < x
+-- we might want to prove these below. Made into axioms just for ease.
+-- the problem is that the proofs are too hard for this level, IMO (DS)
 axiom has_ceiling : ∀ x : ℝ,  ∃ m : ℤ, ((m-1) : ℝ) ≤ x ∧ x < (m:ℝ)
 axiom inv_prod_self : ∀ n : ℕ, 0 < n → (1/n : ℝ) * (n : ℝ ) = 1 
 axiom inv_prod_other : ∀ (m : ℤ), ∀ (n : ℕ), 0 < n → (1/n : ℝ) * (m : ℝ) = (m/n : ℝ)
+-- end hide
 
 /- Lemma
 Rationals are dense in the reals.

@@ -7,7 +7,7 @@ import data.real.basic
 
 This level aims to familiarize you with the use of the trichotomy property in 
 Lean, as it will come in handy in later levels.
-The corresponding statement in Lean's mathlib is:
+This property is stated in Lean's mathlib is:
 
 `lt_trichotomy : ∀ (a b : ?M_1), a < b ∨ a = b ∨ b < a`
 
