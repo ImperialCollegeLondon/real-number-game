@@ -2,7 +2,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: 0.1.0\n"
-"POT-Creation-Date: 2020-05-17 11:56:17.556572\n"
+"POT-Creation-Date: 2020-05-17 12:59:39.454232\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 
@@ -321,7 +321,7 @@ msgid "theorem empty_def : (∅ : set α) = {x | false} := rfl\n"
 msgstr ""
 
 #: Sets level 6
-msgid "Definition : The empty set is defined in mathlib as:"
+msgid "Empty set definition in mathlib:"
 msgstr ""
 
 #: Sets level 6
@@ -406,8 +406,8 @@ msgid ""
 "rational \n"
 "numbers is dense in the reals.\n"
 "\n"
-"There are several new axioms in the left side bar that will help you in this "
-"task.\n"
+"This proof will, among other things, rely on several new axioms that appear\n"
+"in the left side bar.\n"
 "Note that you may need to change the type of some quantities from rationals "
 "to reals.\n"
 "Lean doesn't necessarily consider the rational $2$ to be the same at the "
@@ -437,7 +437,7 @@ msgid ""
 "This level aims to familiarize you with the use of the trichotomy property "
 "in \n"
 "Lean, as it will come in handy in later levels.\n"
-"The corresponding statement in Lean's mathlib is:\n"
+"This property is stated in Lean's mathlib is:\n"
 "\n"
 "`lt_trichotomy : ∀ (a b : ?M_1), a < b ∨ a = b ∨ b < a`\n"
 "\n"
@@ -458,6 +458,20 @@ msgid ""
 "\n"
 "This level invites you to work out a property of the absolute value.\n"
 "In Lean the absolute value of $x$ is denoted by `abs x`. \n"
+msgstr ""
+
+#: Order level 2
+msgid ""
+"definition abs {α : Type u} [decidable_linear_ordered_add_comm_group α] (a : "
+"α) : α := max a (-a)\n"
+msgstr ""
+
+#: Order level 2
+msgid "The definition of the absolute value in mathlib:"
+msgstr ""
+
+#: Order level 2
+msgid ""
 "For ease of use, a notation can be wrapped around that definition as below.\n"
 msgstr ""
 
@@ -877,10 +891,6 @@ msgstr ""
 
 #: Limits of sequences level 1
 msgid "-- The next few things should be hidden"
-msgstr ""
-
-#: Limits of sequences level 1
-msgid "-- end of scary things"
 msgstr ""
 
 #: Limits of sequences level 1
