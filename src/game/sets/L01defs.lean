@@ -4,6 +4,10 @@ namespace xena -- hide
 
 variable X : Type -- hide
 
+-- begin hide
+/- The first level, originally written by KMB. -/
+-- end hide
+
 /-
 # Chapter 1 : Sets
 
