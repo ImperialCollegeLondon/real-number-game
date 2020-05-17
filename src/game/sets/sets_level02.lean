@@ -1,6 +1,8 @@
-variable X : Type -- hide
+import game.sets.L01defs -- hide
 
--- World name : Sets
+namespace xena -- hide
+
+variable X : Type -- hide
 
 /-
 # Chapter 1 : Sets
@@ -62,3 +64,5 @@ begin
     left, exact hx, done
 
 end
+
+end xena --hide

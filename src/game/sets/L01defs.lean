@@ -1,9 +1,8 @@
-import data.real.basic -- imports the real numbers ℝ
+import data.set.basic
+
 namespace xena -- hide
 
 variable X : Type -- hide
-
--- World name : Sets
 
 /-
 # Chapter 1 : Sets

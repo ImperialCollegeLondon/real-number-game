@@ -1,4 +1,7 @@
-import data.set.basic --hide
+import game.sets.sets_level04 -- hide
+
+namespace xena -- hide
+
 variable X : Type --hide
 
 /-
@@ -27,3 +30,5 @@ begin
     have G : x ∈ A ∩ B, rw H, exact hx,
     cases G with hA hB, exact hB, done
 end
+
+end xena -- hide

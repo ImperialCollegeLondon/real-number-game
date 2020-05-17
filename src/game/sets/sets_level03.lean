@@ -1,3 +1,7 @@
+import game.sets.sets_level02 -- hide
+
+namespace xena -- hide
+
 variable X : Type -- hide
 
 /-
@@ -24,3 +28,5 @@ begin
     cases hx with xA xB,
     exact xA, done
 end
+
+end xena -- hide
