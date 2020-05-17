@@ -5,6 +5,10 @@ variable X : Type -- hide
 
 -- World name : Sets
 
+-- begin hide
+/- The first level, originally written by KMB. -/
+-- end hide
+
 /-
 # Chapter 1 : Sets
 

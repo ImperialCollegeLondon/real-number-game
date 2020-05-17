@@ -13,7 +13,16 @@ Lean tactics, `by_contradiction` and `push_neg`.
 You need to prove that the empty set is included in any set.
 To do that, we'll follow the advice of P. Halmos in "Naive Set Theory".
 That is, to prove something is true about the empty set, prove that it cannot be false.
+-/
 
+/- Hint : Empty set definition in mathlib: 
+theorem empty_def : (∅ : set α) = {x | false} := rfl
+-/
+-- begin hide
+-- Is there a definition in Lean core that I'm missing?
+-- end hide
+
+/-
 When starting this level, the goal is:
 $$\forall (A : \textrm{set} \; X), \; \emptyset \subseteq A$$
 To make progress, you'll need to instantiate a specific set $A$ 
