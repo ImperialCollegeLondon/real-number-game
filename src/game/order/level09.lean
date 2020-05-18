@@ -1,6 +1,8 @@
 import data.real.basic
 open real
 
+namespace xena -- hide
+
 /-
 # Chapter 2 : Order
 
@@ -78,4 +80,5 @@ begin
     have G := eq_sqr_to_eq ( |a + b| ) ( |a| + |b| ) hab hc H2, exact G, done
 end
 
+end xena -- hide
 

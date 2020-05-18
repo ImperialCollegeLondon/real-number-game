@@ -1,5 +1,7 @@
 import data.real.basic
 
+namespace xena -- hide
+
 /-
 # Chapter 2 : Order
 
@@ -29,3 +31,5 @@ begin
     have F : abs (-b) = abs b, norm_num,
     rw F at G, exact G, done
 end
+
+end xena --hide

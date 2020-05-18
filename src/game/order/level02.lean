@@ -1,5 +1,7 @@
 import data.real.basic
 
+namespace xena -- hide
+
 /-
 # Chapter 2 : Order
 
@@ -27,3 +29,5 @@ theorem abs_prod (a b : ℝ) : |a * b| = |a| * |b| :=
 begin
     sorry,
 end
+
+end xena --hide

@@ -1,6 +1,8 @@
 import data.real.basic
 open real
 
+namespace xena -- hide
+
 /-
 # Chapter 2 : Order
 
@@ -40,3 +42,5 @@ begin
     rw h2a at h1, rw h2b at h1, exact h1, done
 
 end
+
+end xena -- hide

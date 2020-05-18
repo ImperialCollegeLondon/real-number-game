@@ -3,6 +3,8 @@ import data.real.irrational
 
 open real
 
+namespace xena -- hide
+
 /-
 # Chapter 2 : Order
 
@@ -33,3 +35,4 @@ begin
   simp, norm_num, done
 end
 
+end xena -- hide

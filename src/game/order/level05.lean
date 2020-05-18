@@ -1,5 +1,7 @@
 import data.real.basic
 
+namespace xena -- hide
+
 /-
 # Chapter 2 : Order
 
@@ -18,3 +20,5 @@ theorem abs_of_sub_le_abs (a b : ℝ) : | |a| - |b| | ≤ |a - b| :=
 begin
     sorry, -- need to work it out
 end
+
+end xena --hide

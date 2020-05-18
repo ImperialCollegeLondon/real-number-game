@@ -1,5 +1,7 @@
 import data.real.basic
 
+namespace xena -- hide
+
 /-
 # Chapter 2 : Order
 
@@ -18,3 +20,5 @@ theorem abs_le_rng (a c : ℝ) (h : 0 ≤ c): |a| ≤ c → (-c) ≤ a ∧ a ≤
 begin
     sorry,
 end
+
+end xena --hide
