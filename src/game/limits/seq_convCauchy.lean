@@ -1,6 +1,8 @@
 import game.limits.L01defs
 import game.limits.seq_proveLimit
 
+namespace xena -- hide
+
 notation `|` x `|` := abs x -- hide
 
 def is_convergent (a : ℕ → ℝ) := ∃ L : ℝ, is_limit a L
@@ -22,4 +24,6 @@ lemma conv_iff_cauchy (a : ℕ → ℝ) :
 begin
   sorry,
 end
+
+end xena -- hide
 
