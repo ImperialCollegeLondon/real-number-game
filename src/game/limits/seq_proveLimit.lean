@@ -3,6 +3,8 @@ import game.limits.seq_limitLinear
 
 notation `|` x `|` := abs x -- hide
 
+namespace xena -- hide
+
 /-
 A simple limit proof.
 -/
@@ -49,3 +51,5 @@ begin
   refine div_le_div_of_le_left zero_le_one HM'' HNn,
   done
 end
+
+end xena -- hide

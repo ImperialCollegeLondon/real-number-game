@@ -1,11 +1,8 @@
 import game.limits.L01defs
 
+namespace xena -- hide
+
 notation `|` x `|` := abs x -- hide
--- begin hide
--- for some reason, the definition from L01defs is not available so I need it again below - DS
-def is_limit (a : ℕ → ℝ) (α : ℝ) := ∀ ε : ℝ, 0 < ε → ∃ N : ℕ, 
-    ∀ n : ℕ, N ≤ n → |a n - α| < ε
--- end hide
 
 /-
 Another basic result for working with sequences.
@@ -44,4 +41,6 @@ begin
    have D : 2 * e = ε, linarith,
    rw D at E, exact E, done
 end
+
+end xena -- hide
 

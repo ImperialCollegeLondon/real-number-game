@@ -1,17 +1,14 @@
 import game.limits.L01defs
 import game.limits.seq_limitTimesConst
 
+namespace xena -- hide
+
 notation `|` x `|` := abs x -- hide
 
 /-
 Use the previous results to obtain linearity.
 -/
 
--- begin hide
--- these should be available from previous levels
-axiom times_const_temp (a : ℕ → ℝ) (α c : ℝ) (hL : is_limit a α) : 
-    is_limit (λ n, c * (a n)) (c*α) 
--- end hide
 
 /- Lemma
 If $\lim_{n \to \infty} a_n = \alpha$ and $\lim_{n \to \infty} b_n = \beta$
@@ -27,4 +24,6 @@ begin
     exact lim_times_const b β c hb,
     done
 end
+
+end xena -- hide
 

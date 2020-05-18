@@ -1,6 +1,8 @@
 import game.limits.L01defs
 import game.limits.seq_lim_add
 
+namespace xena -- hide
+
 notation `|` x `|` := abs x -- hide
 
 /-
@@ -62,4 +64,6 @@ begin
   }, 
   done
 end
+
+end xena -- hide
 
