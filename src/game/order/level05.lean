@@ -45,5 +45,3 @@ begin
 end
 
 end xena --hide
-
-example (a: ℝ) : |a| = | -a| := by library_search
