@@ -1,8 +1,11 @@
 import game.limits.L01defs
 
 notation `|` x `|` := abs x -- hide
-def is_limit (a : ℕ → ℝ) (l : ℝ) := ∀ ε : ℝ, 0 < ε → ∃ N : ℕ, 
-    ∀ n : ℕ, N ≤ n → |a n - l| < ε
+-- begin hide
+-- for some reason, the definition from L01defs is not available so I need it again below - DS
+def is_limit (a : ℕ → ℝ) (α : ℝ) := ∀ ε : ℝ, 0 < ε → ∃ N : ℕ, 
+    ∀ n : ℕ, N ≤ n → |a n - α| < ε
+-- end hide
 
 /-
 Another basic result for working with sequences.

@@ -1,8 +1,7 @@
 import game.limits.L01defs
+import game.limits.seq_lim_add
 
 notation `|` x `|` := abs x -- hide
-def is_limit (a : ℕ → ℝ) (α : ℝ) := 
-  ∀ ε : ℝ, 0 < ε → ∃ N : ℕ, ∀ n : ℕ, N ≤ n → |a n - α| < ε
 
 /-
 A basic result for working with sequences.
@@ -12,7 +11,7 @@ A basic result for working with sequences.
 If $\lim_{n \to \infty} a_n = \alpha$ and $c \in \mathbb{R}$, then
  $\lim_{n \to \infty} (c \cdot a_n) = c \cdot \alpha$
 -/
-lemma limit.times_const (a : ℕ → ℝ) (α c : ℝ) (hL : is_limit a α) : 
+lemma lim_times_const (a : ℕ → ℝ) (α c : ℝ) (hL : is_limit a α) : 
     is_limit (λ n, c * (a n)) (c*α) :=
 begin
   rcases lt_trichotomy c 0 with hc | hc | hc,

@@ -1,8 +1,7 @@
 import game.limits.L01defs
+import game.limits.seq_limitLinear
 
 notation `|` x `|` := abs x -- hide
-def is_limit (a : ℕ → ℝ) (α : ℝ) := 
-  ∀ ε : ℝ, 0 < ε → ∃ N : ℕ, ∀ n : ℕ, N ≤ n → |a n - α| < ε
 
 /-
 A simple limit proof.

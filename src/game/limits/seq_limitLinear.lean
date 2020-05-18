@@ -1,8 +1,7 @@
 import game.limits.L01defs
+import game.limits.seq_limitTimesConst
 
 notation `|` x `|` := abs x -- hide
-def is_limit (a : ℕ → ℝ) (l : ℝ) := 
-    ∀ ε : ℝ, 0 < ε → ∃ N : ℕ, ∀ n : ℕ, N ≤ n → |a n - l| < ε
 
 /-
 Use the previous results to obtain linearity.
@@ -10,10 +9,6 @@ Use the previous results to obtain linearity.
 
 -- begin hide
 -- these should be available from previous levels
-axiom lim_add_temp (a : ℕ → ℝ) (b : ℕ → ℝ) (α β : ℝ) 
-    (ha : is_limit a α) (hb : is_limit b β) : 
-    is_limit ( λ n, (a n) + (b n) ) (α + β)
-
 axiom times_const_temp (a : ℕ → ℝ) (α c : ℝ) (hL : is_limit a α) : 
     is_limit (λ n, c * (a n)) (c*α) 
 -- end hide
@@ -27,9 +22,9 @@ lemma lim_linear (a : ℕ → ℝ) (b : ℕ → ℝ) (α β c : ℝ)
     (ha : is_limit a α) (hb : is_limit b β) : 
     is_limit ( λ n, c * (a n) + c * (b n) ) (c * α + c * β) :=
 begin
-    apply lim_add_temp,
-    exact times_const_temp a α c ha,
-    exact times_const_temp b β c hb,
+    apply lim_add,
+    exact lim_times_const a α c ha,
+    exact lim_times_const b β c hb,
     done
 end
 
