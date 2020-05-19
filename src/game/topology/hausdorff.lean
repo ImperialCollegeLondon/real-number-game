@@ -1,5 +1,7 @@
 import data.real.basic
 
+--begin hide
+namespace xena
 def neighborhood1 (a : ℝ) (ε : ℝ) (h : ε > 0) := { x : ℝ | abs(a - x) < ε}
 
 /-
@@ -8,6 +10,7 @@ def neighborhood1 (a : ℝ) (ε : ℝ) (h : ε > 0) := { x : ℝ | abs(a - x) < 
  But that does raise some issues which I don't know how to handle
  when using it in the main result lemma.
 -/
+-- end hide
 
 def neighborhood (a : ℝ) (ε : ℝ) := { x : ℝ | abs(a - x) < ε} 
 local attribute [instance] classical.prop_decidable --hide
@@ -50,3 +53,5 @@ begin
   have hb2 : abs(b-a) = abs(a-b), exact abs_sub _ _,
   rw hb2 at hdf, linarith, done
 end
+
+end xena -- hide

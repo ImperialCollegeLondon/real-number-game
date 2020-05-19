@@ -1,6 +1,8 @@
 import data.real.basic
 import topology.basic
 
+namespace xena -- hide
+
 open function
 open real
 open set
@@ -41,5 +43,7 @@ lemma continuity_topological (f : ℝ → ℝ) (X : set ℝ) :
 begin
     sorry,
 end
+
+end xena
 
 
