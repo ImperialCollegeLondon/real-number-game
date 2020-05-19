@@ -1,5 +1,7 @@
 import data.real.basic
 
+namespace xena -- hide
+
 /-
 # Chapter 3 : Sup and Inf
 
@@ -48,3 +50,5 @@ begin
   },
   linarith [hA.2 H2], done
 end
+
+end xena -- hide

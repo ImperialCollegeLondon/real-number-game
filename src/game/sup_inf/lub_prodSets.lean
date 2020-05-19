@@ -1,6 +1,8 @@
 import data.real.basic
 import ..sets.sets_level08
 
+namespace xena -- hide
+
 /-
 # Chapter 3 : Sup and Inf
 
@@ -44,4 +46,6 @@ begin
   have D := hx E, linarith, done
   --sorry
 end
+
+end xena -- hide
 

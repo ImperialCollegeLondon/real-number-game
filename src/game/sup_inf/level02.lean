@@ -1,5 +1,6 @@
 import data.real.basic
 
+namespace xena -- hide
 -- World name : Sup and Inf
 
 /-
@@ -50,3 +51,5 @@ begin
   }, 
   done
 end 
+
+end xena -- hide

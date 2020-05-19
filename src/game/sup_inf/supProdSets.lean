@@ -1,6 +1,7 @@
 import data.real.basic
-
 import .lub_prodSets
+
+namespace xena -- hide
 
 /-
 # Chapter 3 : Sup and Inf
@@ -64,3 +65,5 @@ begin
   have E1 := is_lub.unique D E,
   linarith, done
 end
+
+end xena -- hide

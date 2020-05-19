@@ -1,5 +1,7 @@
 import data.real.basic
 
+namespace xena -- hide
+
 /-
 # Chapter 3 : Sup and Inf
 
@@ -28,3 +30,5 @@ have Hqin : ↑q ∈ embedded_rationals := ⟨q,rfl⟩,
 have Hwrong2 := Hbub Hqin,
 exact not_lt.2 Hwrong2 (Hq.left),
 end
+
+end xena -- hide

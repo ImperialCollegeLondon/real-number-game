@@ -1,5 +1,7 @@
 import data.real.basic
 
+namespace xena -- hide
+
 /-
 # Chapter 3 : Sup and Inf
 
@@ -22,3 +24,5 @@ lemma not_complete_rationals :
 begin
    sorry,
 end
+
+end xena -- hide

@@ -1,5 +1,7 @@
 import data.real.basic
 
+namespace xena -- hide
+
 /-
 # Chapter 3 : Sup and Inf
 
@@ -28,3 +30,5 @@ begin
   cases h1 with yA h2,
   sorry, sorry, --needs being worked out
 end
+
+end xena -- hide

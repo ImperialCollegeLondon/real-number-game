@@ -1,5 +1,7 @@
 import data.real.basic
 
+namespace xena -- hide
+
 /-
 # Chapter 3 : Sup and Inf
 
@@ -43,3 +45,5 @@ begin
   have E := (mul_le_mul_left hc).mpr F,
   exact (le_div_iff' hc).mp F, done
 end
+
+end xena -- hide

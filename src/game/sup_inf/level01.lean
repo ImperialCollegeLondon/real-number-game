@@ -41,4 +41,4 @@ begin
   exact ha,
 end
 
-end xena
+end xena -- hide

@@ -1,5 +1,7 @@
 import data.real.basic
 
+namespace xena -- hide
+
 /-
 # Chapter 3 : Sup and Inf
 
@@ -46,3 +48,5 @@ begin
     exact lt_of_one_div_lt_one_div h2n hn.right,
     done
 end
+
+end xena -- hide

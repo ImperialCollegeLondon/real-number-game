@@ -1,5 +1,6 @@
 import data.real.basic
 
+namespace xena -- hide
 
 /-
 # Chapter 3 : Sup and Inf
@@ -64,5 +65,7 @@ have Hcleb := H2 H,
 have Hbltc : b < c := min_lt_avg Hnb,
 exact not_lt.2 Hcleb Hbltc,
 end
+
+end xena -- hide
 
 

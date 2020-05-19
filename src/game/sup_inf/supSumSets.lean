@@ -1,5 +1,7 @@
 import data.real.basic
 
+namespace xena -- hide
+
 /-
 # Chapter 3 : Sup and Inf
 
@@ -66,6 +68,8 @@ begin
   exact add_le_of_le_sub_left H8, done
 end
 
+
+-- begin hide
 -- Kevin's term proof for second part
 lemma sup_sum_of_sets' (A : set ℝ) (B : set ℝ) (a : ℝ) (b : ℝ)
   (hA : is_lub A a) (hB : is_lub B b) :
@@ -89,3 +93,6 @@ begin
     exact hB.2 (H1 x hx) },
   linarith [hA.2 H2],  --exact le_sub_iff_add_le.mp (hA.2 H2),
 end
+
+--- end hide
+end xena -- hide

@@ -1,5 +1,6 @@
 import data.real.basic
 
+namespace xena -- hide
 
 /-
 # Chapter 3 : Sup and Inf
@@ -57,3 +58,5 @@ begin
     exact not_le_of_lt H1 H1', --of_not_gt
   }
 end 
+
+end xena -- hide
