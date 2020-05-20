@@ -116,7 +116,8 @@ name = "Topology of the reals"
 id = 9
 parents = [8]
 levels = [
-	"src/game/topology/open_sets.lean",
+	"src/game/topology/union_open_sets.lean",
+	"src/game/topology/inter_open_sets.lean",
 	"src/game/topology/hausdorff.lean",
 	"src/game/topology/continuity.lean"
 ]
