@@ -1,4 +1,5 @@
 import data.real.basic
+import data.vector
 open real
 
 variable X : Type -- hide
@@ -8,13 +9,17 @@ variable X : Type -- hide
 
 -/
 
+-- begin hide
+
 #check finset
 #check finset.card_range
 #check list
+--Do we want a list? A vector? 
+--either way, not sure how to go about this yet
+--def partition (a b : ℝ) (A: set.Icc a b) (n : ℕ) := list ℝ
 
---do we want a finset or a list?
---either way, not sure how to go about this
---def partition (a b : ℝ) (A: set.Icc a b) (n : ℕ) := finset ℝ
+-- end hide
+
 
 
 /- Lemma

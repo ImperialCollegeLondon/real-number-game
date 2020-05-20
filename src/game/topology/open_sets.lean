@@ -1,5 +1,4 @@
 import data.real.basic
-import topology.basic
 import data.set.lattice
 
 --begin hide
@@ -30,7 +29,6 @@ lemma arbitrary_union_open_sets_v2 :
 
 /- Lemma
 Arbitrary union of open sets is open -- WIP, to do.
-Could also make J simpler-looking, as above.
 -/
 lemma is_open_union_of_open (X : β → set ℝ ) ( hj : ∀ j, is_open (X j) )
     : is_open (Union X) :=
