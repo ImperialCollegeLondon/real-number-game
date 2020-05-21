@@ -16,7 +16,8 @@ levels = [
 	"src/game/sets/sets_level07.lean",
 	"src/game/sets/sets_level08.lean",
 	"src/game/sets/sets_level09.lean",
-	"src/game/sets/sets_ext_level.lean"
+	"src/game/sets/sets_level10.lean"
+
 ]
 
 [[worlds]]
