@@ -13,7 +13,7 @@ variable X : Type -- hide
 
 ## Level 1 : Introduction to sets.
 
-This chapter assumes you are familiar with the following tactics: `intro`, `apply`, `exact`, `cases`, `split`, `left` and `right`.<br>
+This chapter assumes you are familiar with the following tactics: `intro`, `apply`, `exact`, `cases`, `split`, `left`, `right` and `use`.<br>
 If you are not, try playing Function World and Proposition World of the Natural Number Game.
  
 In this level we will learn about the `change` tactic, and the idea of definitional equality.
