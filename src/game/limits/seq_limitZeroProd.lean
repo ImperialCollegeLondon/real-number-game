@@ -8,7 +8,8 @@ namespace xena -- hide
 notation `|` x `|` := abs x -- hide
 
 /-
-Use previous results to obtain the limit of a product.
+Use previous results to obtain the limit of a product if individual limits
+for the factors are both zero.
 -/
 
 
