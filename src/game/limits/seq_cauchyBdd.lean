@@ -40,13 +40,13 @@ begin
   have G := hm m,
   -- construct X = {|a0|, |a1|, ...,|am|}
   let X := finset.image (abs ∘ a) (finset.range (m + 1)),
-  -- a0 is in X
+  -- at least a0 is in X
   have  ha0 : |a 0| ∈ X := finset.mem_image_of_mem _ (mem_range.2 (nat.zero_lt_succ _)),
-  -- thus X is not empty
+  -- hence the set X is not empty
   have ha1 : X ≠ ∅ := ne_empty_of_mem ha0,
   have ha2 := nonempty_iff_ne_empty.mpr ha1,
   -- and therefore has a maximum
-  let B1 := max' X ha2,
+  let B1 := X.max' ha2,
   -- If n ≤ m then get a proof that |a n| ≤ B1.
   have HB1 : ∀ n ≤ m, |a n| ≤ B1 := λ n Hn, le_max' X ha2 _
     (mem_image_of_mem _ (mem_range.2 (nat.lt_succ_of_le Hn))),
