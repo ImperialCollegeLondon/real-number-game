@@ -44,11 +44,6 @@ Note that you do not have to use the `change` tactic at all to complete this pro
 
 -/
 
-/- 
-<hr style="height:10px; visibility:hidden;" />
--/
-
-
 /- Hint : Hint : To make progress with a goal of form `∀ a : X, ...`, introduce a term of type `X` by using a familiar tactic. 
 
 In this example, using

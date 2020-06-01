@@ -23,20 +23,20 @@ it a try before checking the hints.
 -/
 
 /- Hint : Hint : The proof steps may become clearer if you change the goal.
-The goal can be changed to the quantified statement above, using
-
-`change ∀ x ∈ A, x ∈ A ∪ B,`
-
-To make the relationship between sets and propositions even clearer, we could use
+Use the `change` tactic and the definitions give above:
 
 `change ∀ x ∈ A, x ∈ A ∨ x ∈ B,`
+
+This will change your goal to the definitionally equivalent 
+
+`∀ x : X, x ∈ A ⇾ x ∈ A ∨ x ∈ B`
+
+Start your proof of `∀ (x : X) ...` in the way you learned in the previous level.
+
+You will then have a statement of propositional form `α → β ∨ γ`. See if you can use your knowledge of propositions to solve this!
 -/
 
-/-
-<hr style="height:10px; visibility:hidden;" />
--/
-
-/- Hint : Hint : After introducing your terms, you'll need to prove one side of a disjunction.
+/- Hint : Hint : After introducing your terms, you'll need to prove the `left` side of a disjunction.
 With or without the `change` lines, you can introduce the 
 hypotheses we need by using 
 
@@ -45,9 +45,9 @@ hypotheses we need by using
 Now the equivalence with the world of propositions will become apparent. 
 
 To prove that the union of two sets is inhabited is to prove the disjunction 
-$P ∨ Q$ of two propositions, where the left one, $P$, reads $x ∈ A$. 
+$P ∨ Q$ of two propositions. In this case, $P$ is our statement $x ∈ A$.
 
-Thus, choosing `left,` will select the term that coincides with the hypothesis `hx`. 
+Choosing `left,` will change our goal to the first disjunct. 
 
 You should now be able to easily finish the proof.
 -/
