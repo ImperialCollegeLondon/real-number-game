@@ -69,6 +69,7 @@ levels = [
     	"src/game/limits/seq_limSeqSub.lean",
     	"src/game/limits/seq_limitProd.lean",
     	"src/game/limits/seq_proveLimit.lean",
+    	"src/game/limits/seq_cauchyBdd.lean",
     	"src/game/limits/seq_convCauchy.lean"
 ]
 

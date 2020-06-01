@@ -1,13 +1,10 @@
 import game.limits.L01defs
-import game.limits.seq_proveLimit
+import game.limits.seq_cauchyBdd
 
 namespace xena -- hide
 
 notation `|` x `|` := abs x -- hide
 
-def is_convergent (a : ℕ → ℝ) := ∃ α : ℝ, is_limit a α 
-def is_Cauchy (a : ℕ → ℝ) := 
-  ∀ ε : ℝ, 0 < ε → ∃ N : ℕ, ∀ m n : ℕ, N ≤ m ∧ N ≤ n → |a m - a n| < ε
 
 /-
 Relationship convergent/Cauchy sequences.
@@ -17,6 +14,7 @@ Work in progress.
 
 /- Lemma
 A convergent sequence of real numbers is a Cauchy sequence.
+Prove "if and only if": WIP. 
 -/
 lemma conv_iff_cauchy (a : ℕ → ℝ) : 
     is_convergent a →  is_Cauchy a :=
