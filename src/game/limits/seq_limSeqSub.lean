@@ -13,7 +13,7 @@ Use previous results to obtain the limit of a product in the general case.
 
 /- Lemma
 If $\lim_{n \to \infty} a_n = \alpha$, then 
-$\lim_{n \to \infty} (a_n - \alpha) = 0.$
+$\lim_{n \to \infty} (a_n - c) = \alpha - c.$
 -/
 lemma lim_seq_sub_const (a : ℕ → ℝ) (α c : ℝ)
     (ha : is_limit a α) : 
