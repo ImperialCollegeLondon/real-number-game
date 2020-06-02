@@ -26,7 +26,7 @@ def continuous_at_x_seq (f : ℝ → ℝ) (x : ℝ) :=
 /- Lemma
 The two definitions of continuity are equivalent.
 -/
-lemma continuous_iff (f : ℝ → ℝ) : 
+lemma cont_iff_seq_cont (f : ℝ → ℝ) : 
     ∀ x : ℝ, continuous_at_x f x ↔ continuous_at_x_seq f x :=
 begin
     intro x,
