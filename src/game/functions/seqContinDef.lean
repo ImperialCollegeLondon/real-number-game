@@ -56,9 +56,10 @@ begin
       split,
       -- prove this sequence does converge to x
       intros ε hε,
-      use ceil ( (1:ℝ)/((2:ℝ)*ε)  ), -- this fails
-      
+      sorry, -- use ceil ( (1:ℝ)/((2:ℝ)*ε)  ), -- this fails
+
       -- but f(a n) does not converge to f(x)
+      sorry,
 
 
     },
