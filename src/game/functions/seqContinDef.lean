@@ -1,6 +1,6 @@
 import data.real.basic
 
-namespace xena
+namespace xena -- hide
 
 open function
 open real
@@ -66,6 +66,5 @@ begin
     done
 end
 
-end xena
+end xena -- hide
 
-#check ceil
