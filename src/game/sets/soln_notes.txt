@@ -1,10 +1,10 @@
 L01defs:
 Axioms: subset_iff
-Tactics: intros, exact
+Tactics: intros, assumption/exact
 
 sets_level02.lean:
 New Axioms: mem_union_iff
-New Tactics: rw, left, assumption/exact
+New Tactics: rw, left
 
 Level 3:
 New Axioms: mem_inter_iff 
@@ -26,4 +26,19 @@ Level 6:
 New axioms: mem_sdiff_iff, mem_neg_iff 
 New tactics: none
 
+Level 7:
+New axioms: mem_empty_iff 
+New tactics: exfalso
 
+-- levels 1 to 7 are sets of stuff.
+-- Levels 8 to 9 are sets of reals.
+
+Level 8: 
+New axioms: mem_Icc_iff
+New tactics: linarith
+
+Level 9:
+New axioms: mem_prod_sets
+New tactics: dsimp, use, linarith, norm_num
+
+-- Level 10 is density of Q in R and is of a completely different nature

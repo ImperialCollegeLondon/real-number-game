@@ -1,4 +1,4 @@
-import data.real.basic --hide
+import kb_real_defs --hide
 
 /-
 # Chapter 1 : Sets
@@ -27,6 +27,8 @@ If $x = 2$ then $x ∈ [0,5]$
 lemma in_closed_interval (x:ℝ) : x = 2 → x ∈ [(0:ℝ), 5] := 
 begin
     intro hx,
-    split, linarith, linarith, done
+    rw mem_Icc_iff,
+    split;
+    linarith
 end
 

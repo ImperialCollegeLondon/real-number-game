@@ -1,5 +1,10 @@
 import tactic --hide
+
+import game.sets.sets_level06
+
 variable X : Type --hide
+
+namespace xena
 
 /-
 # Chapter 1 : Sets
@@ -47,13 +52,13 @@ local attribute [instance] classical.prop_decidable --hide
 /- Lemma
 The empty set is included in any set $A$.... 
 -/
-theorem empty_set_subset : ∀ A : set X, ∅ ⊆ A :=
+theorem empty_set_subset (A : set X) : ∅ ⊆ A :=
 begin
-    intro A, 
-    change ∀ x ∈ ∅, x ∈ A,
-    by_contradiction hn,
-    push_neg at hn,
-    cases hn with x h1,
-    cases h1 with hf ha,
-    exact hf, done
+  rw subset_iff,
+  intros x hx,
+  exfalso,
+  rw mem_empty_iff at hx,
+  exact hx,
 end
+
+end xena
