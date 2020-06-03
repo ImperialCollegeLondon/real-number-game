@@ -44,8 +44,7 @@ theorem subset_iff_intersection_eq' (A : set X) (B : set X) : A ⊆ B ↔ A ∩ 
 begin
   rw subset_iff,
   rw eq_iff,
-  suffices: ∀ x, (x ∈ A → x ∈ B) ↔ (x ∈ A ∩ B ↔ x ∈ A),
-    simp only [this],
+  apply forall_congr, -- clever trick
   intro x,
   rw mem_inter_iff, -- no longer under a binder
   tauto!

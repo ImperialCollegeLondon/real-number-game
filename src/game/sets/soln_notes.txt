@@ -3,20 +3,27 @@ Axioms: subset_iff
 Tactics: intros, exact
 
 sets_level02.lean:
-Axioms: subset_iff, mem_union_iff
-Tactics: intros, rw, left, assumption
+New Axioms: mem_union_iff
+New Tactics: rw, left, assumption/exact
 
 Level 3:
-Axioms: subset_iff, mem_inter_iff 
-Tactics: intros, rw ... at, cases, assumption/exact
+New Axioms: mem_inter_iff 
+New Tactics: rw ... at, cases,
 
 Level 4:
-Axioms: mem_union_iff, subset_iff, eq_iff
-Tactics: split, intro(s), rw, cases, apply, assumption, left, right
+New Axioms: eq_iff
+Tactics: split, apply, right
 
 Possible problem: can't rewrite under a binder.
 
 Level 5:
-Axioms: the usual
+New Axioms: none
 New tactics: specialize, tauto!
+
+Note: there's a shortcut if you know about forall_congr
+
+Level 6:
+New axioms: mem_sdiff_iff, mem_neg_iff 
+New tactics: none
+
 

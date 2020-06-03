@@ -16,9 +16,12 @@ lemma mem_set_iff (a : X) (P : X → Prop) : a ∈ {b : X | P b} ↔ P a := iff.
 /-- Humans want these -/
 lemma mem_union_iff : x ∈ A ∪ B ↔ x ∈ A ∨ x ∈ B := iff.rfl 
 lemma mem_inter_iff : x ∈ A ∩ B ↔ x ∈ A ∧ x ∈ B := iff.rfl
+lemma mem_sdiff_iff : x ∈ A \ B ↔ x ∈ A ∧ x ∉ B := iff.rfl
+lemma mem_neg_iff : x ∈ -A ↔ x ∉ A := iff.rfl
+
 lemma eq_iff : A = B ↔ ∀ x : X, x ∈ A ↔ x ∈ B := ext_iff
-lemma subset_iff : A ⊆ B ↔ ∀ x : X, x ∈ A → x ∈ B := iff_of_eq subset_def --iff.rfl avoids eq.rec
--- call it subset_iff?
+lemma subset_iff : A ⊆ B ↔ ∀ x : X, x ∈ A → x ∈ B := iff.rfl
+
 
 variables (ι : Type) (f : ι → set X)
 

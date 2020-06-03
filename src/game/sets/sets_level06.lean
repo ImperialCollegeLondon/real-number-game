@@ -75,20 +75,11 @@ $$(A \setminus B) = A \cap B^{c}.$$
 -/
 theorem setdiff_eq_intersect_comp (A B : set X) : A \ B = A ∩ -B := 
 begin
-ext,
-    split, 
-    {   intro h1,         
-        split,
-           {  cases h1 with p q,
-              exact p
-           },
-           {  cases h1 with p q,
-              exact q,
-           }
-    },     
-    {   intro h2,         
-        exact h2
-    }
+  rw eq_iff,
+  intro x,
+  rw mem_sdiff_iff,
+  rw mem_inter_iff,
+  rw mem_neg_iff,
 end
 
 
