@@ -51,29 +51,32 @@ begin
       cases H with e hee,
       cases hee with he hdd,
       unfold seq_continuous_at_x, push_neg,
-      --set a := λ n, x + 1 / (2*(n+1)) with ha,
       set a : ℕ → ℝ := λ n, x + 1 / (2*(n+1)) with ha,
       use a,
       split,
+
       -- prove this sequence does converge to x
       intros ε hε,
-      --sorry, 
-      set N := ceil ( (1:ℝ) / ( (2:ℝ) * ε ) ) with hN, -- this is an integer
-      have h1 :  0 ≤ N, sorry,  -- will need to prove this is positive
-      have h2 := int.to_nat_of_nonneg h1, -- convert to nat
-      use ↑(int.to_nat N), -- this fails if just using N ∈ ℤ 
+      set N := nat_ceil ( (1:ℝ) / ( (2:ℝ) * ε ) ) with hN, -- this is a nat
+      use N,
       intros n hn,
       have h3 : a n = x + 1 / (2 * (n+1)), 
         rw ha,
       have h4 : a n - x = 1 / (2 * (n+1)), linarith,
       rw h4,
       have h5 : ( (1:ℝ) / ( (2:ℝ) * ε ) ) ≤ N, 
-        rw hN, exact le_ceil _,
-      have h6 : (1:ℝ) / (2 * (↑N)) ≤ ε, sorry, -- from h5
+        rw hN, exact le_nat_ceil _,
+      have h6 : (1:ℝ) / (2 * (↑N)) ≤ ε, 
+        sorry, -- to prove this using 0 < N (which follows from hN)
       have h7 : 1 / (2 * (↑n + 1)) < (1:ℝ) / (2 * (↑N)), sorry, -- from hn
       have h8 : 1 / (2 * (↑n + 1)) < ε, linarith,
       set t := (1:ℝ) / (2 * (↑n + 1)) with ht,
-      have h9 : | t | = t, sorry,  -- prove this term is positive
+      have h9 : | t | = t,
+        have h91 : 0 < t, 
+            have h911 : 0 < (↑n + 1), linarith,
+            have h912 : 0 < (2:ℝ) *  (↑n + 1), norm_cast, linarith,
+            exact one_div_pos_of_pos h912,
+        exact abs_of_pos h91,
       rw h9, exact h8,
 
       -- but f(a n) does not converge to f(x)
@@ -85,3 +88,10 @@ begin
 end
 
 end xena -- hide
+
+-- begin hide
+example (a : ℝ ) ( ha : 0 < a) : 0 < 1 / a := by library_search
+example (a : ℝ) : a ≤ nat_ceil a := by library_search
+#check nat_ceil_add_nat
+#check nat_ceil
+-- end hide
