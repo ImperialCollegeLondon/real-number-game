@@ -48,7 +48,9 @@ begin
     exact (hh x).symm
   }
 end
-#check question5
 
+-- uncomment the next line to see the type of the term `question5`
+-- #check question5
 
--- #check eq.trans
+-- *TODO* (Dan) should this term should be called `solution5`?
+-- I think `question5` is the type of the term `solution5`
