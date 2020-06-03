@@ -21,7 +21,6 @@ begin
    intro hf,
     have H := countable_iff_exists_injective.1 hY,
     cases H with g hg,
-    -- THIS NEXT LINE IS BROKEN
     have G := countable_iff_exists_injective.2 ⟨g ∘ f, injective.comp hg hf⟩,
     exact G, done
 end
