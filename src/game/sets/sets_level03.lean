@@ -53,8 +53,7 @@ begin
   rw subset_iff,
   intros x hx,
   rw mem_inter_iff at hx,
-  cases hx,
-  assumption,
+  tauto!, -- or cases, assumption
 end
 
 end xena -- hide

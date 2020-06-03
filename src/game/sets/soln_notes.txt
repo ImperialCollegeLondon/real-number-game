@@ -8,7 +8,7 @@ New Tactics: rw, left
 
 Level 3:
 New Axioms: mem_inter_iff 
-New Tactics: rw ... at, cases,
+New Tactics: rw ... at, cases, -- tauto! can be introduced here
 
 Level 4:
 New Axioms: eq_iff

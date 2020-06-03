@@ -79,6 +79,17 @@ begin
   }
 end
 
+theorem subset_iff_union_eq' (A : set X) (B : set X) : A ⊆ B ↔ A ∪ B = B := 
+begin
+  rw subset_iff,
+  rw eq_iff,
+  apply forall_congr,
+  intro x,
+  rw mem_union_iff,
+  tauto!,
+end
+
+
 
 -- begin
 --     split,
