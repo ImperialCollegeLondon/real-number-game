@@ -26,7 +26,7 @@ example : (0.5 : ℝ) < 1 := by norm_num
 -- irrelevant example
 noncomputable example : nonemptyT (set.Icc 0 1) :=
 { x := 0.5,
-  thm := ⟨by unfold algebra.div;norm_num,by unfold algebra.div;norm_num⟩
+  thm := by {simp,split;norm_num}
 }
 
 -- show

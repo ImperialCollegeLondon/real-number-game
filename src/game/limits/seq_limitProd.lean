@@ -44,7 +44,7 @@ begin
         rw mul_comm α 2, 
     rw h2 at G2,
     have G3 := lim_seq_sub_const 
-        (λ (n : ℕ), (a n - α) * (b n - β) + (β * a n + α * b n)) (2 * α * β) (α * β) G2,
+        (λ (n : ℕ), (a n - α) * (b n - β) + (β * a n + α * b n)) (2 * α * β) (α * β) _,
     simp at G3,
     have h3 : 2 * α * β - α * β = α * β, 
         have h31 : (2:ℝ) * α * β - α * β = (2:ℝ) * α * β + (-1:ℝ) * α * β, ring,
@@ -61,7 +61,7 @@ begin
     rw h4 at G5,
     have h5 : a n * b n - α * b n - β * a n + α * β + (β * a n + α * b n) - α * β - α * β =
         a n * b n - α * β, ring,
-    rw h5 at G5, exact G5, done
+    rw h5 at G5, exact G5, convert G2, ext, ring, done
 end
 
 end xena -- hide
