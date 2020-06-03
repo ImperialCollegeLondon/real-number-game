@@ -51,47 +51,40 @@ begin
       cases H with e hee,
       cases hee with he hdd,
       unfold seq_continuous_at_x, push_neg,
-      set a : ℕ → ℝ := λ n, x + 1 / (2*(n+1)) with ha,
+      -- using these hypotheses, choose a sequence 
+      have k : ∀ n : ℕ, ∃ y : ℝ, |y - x| < (1:ℝ)/(n+1) ∧ e ≤ | f y - f x|, 
+        intro n,
+        have g1 := hdd ( (1:ℝ)/(n+1) ),
+        cases g1 with g11 g12,
+        exfalso,
+        {  -- this seems complicated, but other ways got into coercion problems
+            have f1 : ∀ m : ℕ, 0 < m+1,
+                intro m, exact nat.succ_pos m,
+            have f2 : ∀ m : ℕ, 0 < ( (m+1): ℝ),
+                intro m, 
+                have f21 := f1 m,
+                norm_cast, linarith,
+            have f3 : ∀ m : ℕ, 0 < 1 / ( (m+1): ℝ),
+                intro m,
+                have f31 := one_div_pos_of_pos (f2 m),
+                exact f31,
+            have f4 := f3 n,
+            linarith, 
+        },
+        exact g12,
+      choose a ha using k,
       use a,
-      split,
-
       -- prove this sequence does converge to x
-      intros ε hε,
-      set N := nat_ceil ( (1:ℝ) / ( (2:ℝ) * ε ) ) with hN, -- this is a nat
-      use N,
-      intros n hn,
-      have h3 : a n = x + 1 / (2 * (n+1)), 
-        rw ha,
-      have h4 : a n - x = 1 / (2 * (n+1)), linarith,
-      rw h4,
-      have h5 : ( (1:ℝ) / ( (2:ℝ) * ε ) ) ≤ N, 
-        rw hN, exact le_nat_ceil _,
-      have h6 : (1:ℝ) / (2 * (↑N)) ≤ ε, 
-        sorry, -- to prove this using 0 < N (which follows from hN)
-      have h7 : 1 / (2 * (↑n + 1)) < (1:ℝ) / (2 * (↑N)), sorry, -- from hn
-      have h8 : 1 / (2 * (↑n + 1)) < ε, linarith,
-      set t := (1:ℝ) / (2 * (↑n + 1)) with ht,
-      have h9 : | t | = t,
-        have h91 : 0 < t, 
-            have h911 : 0 < (↑n + 1), linarith,
-            have h912 : 0 < (2:ℝ) *  (↑n + 1), norm_cast, linarith,
-            exact one_div_pos_of_pos h912,
-        exact abs_of_pos h91,
-      rw h9, exact h8,
-
+      split, sorry,  --!!! need to deal with this now !!!
+      
       -- but f(a n) does not converge to f(x)
-      sorry,
-
-
+      unfold is_limit, push_neg,
+      use e, split, exact he, 
+      intro N, use N, split, linarith,
+      have G := ha N, cases G with G1 G2, exact G2, 
+      done
     },
     done
 end
 
 end xena -- hide
-
--- begin hide
-example (a : ℝ ) ( ha : 0 < a) : 0 < 1 / a := by library_search
-example (a : ℝ) : a ≤ nat_ceil a := by library_search
-#check nat_ceil_add_nat
-#check nat_ceil
--- end hide
