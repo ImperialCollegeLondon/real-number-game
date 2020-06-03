@@ -21,7 +21,8 @@ begin
    intro hf,
     have H := countable_iff_exists_injective.1 hY,
     cases H with g hg,
-    have G := countable_iff_exists_injective.2 ⟨g ∘ f, injective_comp hg hf⟩,
+    -- THIS NEXT LINE IS BROKEN
+    have G := countable_iff_exists_injective.2 ⟨g ∘ f, injective.comp hg hf⟩,
     exact G, done
 end
 
@@ -30,5 +31,5 @@ end
 theorem countable_inj_2 (X Y : set ℝ) (f : X → Y) (hY : countable Y) :
     injective f → countable X :=
 λ hf, let ⟨g, hg⟩ := countable_iff_exists_injective.1 hY in
-countable_iff_exists_injective.2 ⟨g ∘ f, injective_comp hg hf⟩
+countable_iff_exists_injective.2 ⟨g ∘ f, injective.comp hg hf⟩
 -- end hide
