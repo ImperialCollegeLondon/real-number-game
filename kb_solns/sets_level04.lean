@@ -54,43 +54,16 @@ $$ A \subseteq B \iff A \cup B = B.$$
 -/
 theorem subset_iff_union_eq (A : set X) (B : set X) : A ⊆ B ↔ A ∪ B = B := 
 begin
-  split,
-  { intro h,
-    rw eq_iff,
-    intro x,
-    rw mem_union_iff, -- can't rewrite under a binder
-    rw subset_iff at h,
     split,
-    { intro h2,
-      cases h2,
-      { apply h,
-        assumption},
-      { assumption}},
-    { intro hB,
-      right,
-      assumption}},
-  { intro h,
-    rw subset_iff,
-    intros x hA,
-    rw ←h,
-    rw mem_union_iff,
-    left,
-    assumption
-  }
+    intro H,
+    apply set.subset.antisymm,
+    intros x hx,
+    cases hx with hxA hxB,
+    exact H hxA, exact hxB,
+    intros x hx, right, exact hx,
+    intro H, intros x hx,
+    have G : x ∈ A ∪ B, left, exact hx,
+    rw H at G, exact G, done
 end
-
-
--- begin
---     split,
---     intro H,
---     apply set.subset.antisymm,
---     intros x hx,
---     cases hx with hxA hxB,
---     exact H hxA, exact hxB,
---     intros x hx, right, exact hx,
---     intro H, intros x hx,
---     have G : x ∈ A ∪ B, left, exact hx,
---     rw H at G, exact G, done
--- end
 
 end xena --hide

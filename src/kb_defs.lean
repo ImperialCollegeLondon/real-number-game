@@ -4,7 +4,7 @@ open_locale classical
 
 open set
 
-namespace rng
+namespace xena
 
 variables {X : Type} (a : X) {x : X} {A B : set X}
 
@@ -26,4 +26,4 @@ variables (ι : Type) (f : ι → set X)
 lemma mem_Union_iff : (x ∈ ⋃(i : ι), f i) ↔ ∃ (i : ι), x ∈ f i := mem_Union
 lemma mem_Inter_iff : (x ∈ ⋂(i : ι), f i) ↔ ∀ (i : ι), x ∈ f i := mem_Inter
 
-end rng
+end xena

@@ -1,7 +1,5 @@
 import data.set.basic
 
-import kb_defs
-
 namespace xena -- hide
 
 variable X : Type -- hide
@@ -70,9 +68,11 @@ If $A$ is a set of elements of type X, then $A \subseteq A$.
 -/
 lemma subset.refl (A : set X) : A ⊆ A :=
 begin
-  rw subset_iff,
-  intros x h,
-  exact h
+  change ∀ a : X, a ∈ A → a ∈ A,
+  intro a,
+  intro ha,
+  exact ha,
+
 end
 
 

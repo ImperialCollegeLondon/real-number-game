@@ -59,11 +59,10 @@ $$ A \subseteq A\cup B.$$
 -/
 theorem subset_union_left (A B : set X) : A ⊆ A ∪ B :=
 begin
-  rw subset_iff,
-  intros x hxA,
-  rw mem_union_iff,
-  left,
-  assumption,
+    --change ∀ (x : α), x ∈ A → x ∈ A ∪ B,  --they may want to do this
+    intros x hx,
+    left, exact hx, done
+
 end
 
 end xena --hide

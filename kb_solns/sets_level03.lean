@@ -50,11 +50,11 @@ $$ A \cap B \subseteq A.$$
 -/
 theorem intersection_subset (A B : set X) : A ∩ B ⊆ A  :=
 begin
-  rw subset_iff,
-  intros x hx,
-  rw mem_inter_iff at hx,
-  cases hx,
-  assumption,
+    intros x hx,
+    cases hx with xA xB,
+    exact xA, done
+
+
 end
 
 end xena -- hide

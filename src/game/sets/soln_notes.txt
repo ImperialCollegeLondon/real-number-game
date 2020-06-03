@@ -1,0 +1,22 @@
+L01defs:
+Axioms: subset_iff
+Tactics: intros, exact
+
+sets_level02.lean:
+Axioms: subset_iff, mem_union_iff
+Tactics: intros, rw, left, assumption
+
+Level 3:
+Axioms: subset_iff, mem_inter_iff 
+Tactics: intros, rw ... at, cases, assumption/exact
+
+Level 4:
+Axioms: mem_union_iff, subset_iff, eq_iff
+Tactics: split, intro(s), rw, cases, apply, assumption, left, right
+
+Possible problem: can't rewrite under a binder.
+
+Level 5:
+Axioms: the usual
+New tactics: specialize, tauto!
+
