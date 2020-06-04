@@ -10,21 +10,27 @@ variable X : Type --hide
 ## Level 4
 -/
 
-
-/- Axiom : set.subset.antisymm {A B : set X} (H : A ⊆ B) (G : B ⊆ A) : 
-A = B
+/- Axiom : lemma eq_iff : A = B ↔ ∀ x : X, x ∈ A ↔ x ∈ B
 -/
 
 /-
+
+To prove that two sets are equal, one needs to use the axiom
+of extensionality: two sets are equal if and only if they have
+the same elements.
+
+We have called this axiom `eq_iff`. In mathlib it is called `ext_iff`.
+
+```
+lemma eq_iff : A = B ↔ ∀ x : X, x ∈ A ↔ x ∈ B
+```
+
+/- Hint : Hint -/
 To prove the theorem below, remember that you can use `split` to 
 change the goal into two goals, corresponding to the left-right and
 right-left implication, respectively. For the first goal, after
-`intro H,` the equality of the two sets can be rewritten in terms
-of inclusion by `apply set.subset.antisymm,`. You can find the corresponding
-statement in the left side bar. 
-In that statement, the arguments in between braces are implicit; 
-in this case the types of $A$ and $B$ are inferred from the
-two hypotheses $H$ and $G$.
+`intro H,` the equality of the two sets can be manipulated
+using `rw eq_iff`.
 
 ## A word on coding style
 
@@ -54,31 +60,24 @@ $$ A \subseteq B \iff A \cup B = B.$$
 -/
 theorem subset_iff_union_eq (A : set X) (B : set X) : A ⊆ B ↔ A ∪ B = B := 
 begin
+  rw subset_iff,
   split,
   { intro h,
     rw eq_iff,
     intro x,
-    rw mem_union_iff, -- can't rewrite under a binder
-    rw subset_iff at h,
-    split,
-    { intro h2,
-      cases h2,
-      { apply h,
-        assumption},
-      { assumption}},
-    { intro hB,
-      right,
-      assumption}},
+    rw mem_union_iff,
+     -- can't rewrite under a binder
+    specialize h x, -- or replace h := h x,
+    tauto! },
   { intro h,
-    rw subset_iff,
     intros x hA,
     rw ←h,
     rw mem_union_iff,
-    left,
-    assumption
+    tauto!
   }
 end
 
+/- Hide 
 theorem subset_iff_union_eq' (A : set X) (B : set X) : A ⊆ B ↔ A ∪ B = B := 
 begin
   rw subset_iff,
@@ -88,20 +87,7 @@ begin
   rw mem_union_iff,
   tauto!,
 end
+-/
 
-
-
--- begin
---     split,
---     intro H,
---     apply set.subset.antisymm,
---     intros x hx,
---     cases hx with hxA hxB,
---     exact H hxA, exact hxB,
---     intros x hx, right, exact hx,
---     intro H, intros x hx,
---     have G : x ∈ A ∪ B, left, exact hx,
---     rw H at G, exact G, done
--- end
 
 end xena --hide
