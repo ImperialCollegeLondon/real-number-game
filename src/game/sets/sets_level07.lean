@@ -27,10 +27,10 @@ lemma mem_empty_iff (a : X) : a ∈ (∅ : set X) ↔ false
 a ∈ (∅ : set X) ↔ false
 -/
 
-/- Hint
+/- Hint : Hint
 Remember that `exfalso` changes any goal to `false`. This can be
 convenient if your hypotheses can prove `false`.
- -/
+-/
 
 /- Lemma
 The empty set is a subset of any set $A$. 
