@@ -75,13 +75,37 @@ begin
       choose a ha using k,
       use a,
       -- prove this sequence does converge to x
-      split, sorry,  --!!! need to deal with this now !!!
+      split,
+      {
+        intros ε hε,
+        set N := nat_ceil ( (1:ℝ)/ ε ) with hN,
+        use N,
+        intros n hn,
+        have H := ha n, 
+        cases H with h1 h2,
+        have hN1 := le_nat_ceil ( (1:ℝ)/ε), rw ← hN at hN1,
+        have hN2 : ((1:ℝ) / ↑N) ≤ ε, 
+            exact one_div_le_of_one_div_le_of_pos hε hN1,
+        have hN3 : ((1:ℝ)/(↑n+1)) < ((1:ℝ) / ↑N), 
+            have hN31 : (n + 1) > N, linarith,
+            have hN32 : 0 < (n+1), linarith,
+            have hN33 : 0 < N, 
+                have hN34 : 0 < ( (1:ℝ)/ε ), exact one_div_pos_of_pos hε,
+                set t := ( (1:ℝ)/ε ) with ht,
+                have hN35 := lt_of_lt_of_le hN34 hN1,
+                norm_cast at hN35, exact hN35,
+            apply one_div_lt_one_div_of_lt,
+            norm_cast, linarith, norm_cast, linarith,
+        have hN4 : ((1:ℝ)/(↑n+1)) < ε, linarith, 
+        linarith,
+      },
       
-      -- but f(a n) does not converge to f(x)
-      unfold is_limit, push_neg,
-      use e, split, exact he, 
-      intro N, use N, split, linarith,
-      have G := ha N, cases G with G1 G2, exact G2, 
+      { -- but f(a n) does not converge to f(x)
+        unfold is_limit, push_neg,
+        use e, split, exact he, 
+        intro N, use N, split, linarith,
+        have G := ha N, cases G with G1 G2, exact G2, 
+      }, 
       done
     },
     done
