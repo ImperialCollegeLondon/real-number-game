@@ -1,6 +1,8 @@
-import game.sets.L01defs -- hide
+import game.sets.sets_level01 -- hide
 
 namespace xena -- hide
+
+open_locale classical -- hide
 
 variable X : Type -- hide
 
@@ -20,13 +22,13 @@ need to know the property which classifies them:
 mem_union_iff : x ∈ A ∪ B ↔ x ∈ A ∨ x ∈ B
 ```
 
-/- Axiom : mem_union_iff : x ∈ A ∪ B ↔ x ∈ A ∨ x ∈ B
-
--/
-
 You need to get yourself into a situation where the left hand side
 of `mem_union_iff` is in your goal; that way, you can `rw mem_union_iff`
 and make progress.
+-/
+
+/- Axiom : mem_union_iff :
+x ∈ A ∪ B ↔ x ∈ A ∨ x ∈ B
 -/
 
 /- Hint : Hint

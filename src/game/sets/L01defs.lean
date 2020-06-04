@@ -4,7 +4,7 @@ import kb_defs
 
 namespace xena -- hide
 
-variable X : Type -- hide
+variable X : Type -- we will think of X as a set here
 
 -- begin hide
 /- The first level, originally written by KMB. -/
@@ -15,38 +15,38 @@ variable X : Type -- hide
 
 ## Level 1 : Introduction to sets.
 
-This chapter assumes you are familiar with the following tactics: `intro`, `apply`, `exact`, `cases`, `split`, `left`, `right` and `use`.<br>
+This chapter assumes you are familiar with the following tactics:
+`rw`, `intro`, `apply`, `exact`, `cases`, `split`, `left`, `right` and `exfalso`.<br>
+
+(TODO (kmb) : check this list is exhaustive)
+
 If you are not, try playing Function World and Proposition World of the Natural Number Game.
- 
-In this level we will learn about the `change` tactic, and the idea of definitional equality.
 
-For our initial examples, we'll use sets $A$ and $B$  with members of a generic type $X$. Lean defines $A \subseteq B$ to mean 
-$$\forall a, a \in A \implies a \in B.$$ 
-Let's learn how to prove that $A \subseteq A$, indicated as our goal in the lemma below by `⊢ A ⊆ A`. 
+## Sets in Lean
 
-By *definition* our goal is equivalent to `∀ a : X, a ∈ A → a ∈ A` (that is, due to the actual definition of `⊆` in Lean). <br>
-Whenever two expressions are *definitionally equal* in this way, we can use the `change` tactic to replace one by the other in a goal. <br> 
-For example, if `P` and `Q` are  equal by definition then we can use
+In this world, there will be an ambient "big" set `X` (actually `X` will be a type),
+and we will consider subsets of `X`. The type of subsets of `X` is called `set X`.
+So if you see `A : set X` it means that `A` is a subset of `X`.
 
-`change Q,`
+## subsets (⊆) and `subset_iff`
 
-to change a goal `P` to a goal `Q` (remembering the comma!).
+If `A B : set X` (i.e. `A` and `B` are subsets of `X`), then `A ⊆ B` is a
+Proposition, i.e. a true/false statement. Lean knows the following fact:
+
+```
+subset_iff : A ⊆ B ↔ ∀ x : X, x ∈ A → x ∈ B
+```
+
+Let's see if you can prove `A ⊆ A` by rewriting `subset_iff`.
 -/
 
-/- Hint : Hint : If you are unsure how to prove A ⊆ A directly, try changing your goal.
-If you start your proof with 
-
-`change ∀ a : X, a ∈ A → a ∈ A,`
-
-then the goal should change to `⊢ ∀ (a : X), a ∈ A → a ∈ A`. You can change it back with
-
-`change A ⊆ A,`
-
-Note that you do not have to use the `change` tactic at all to complete this proof.
-
+/- Axiom : subset_iff
+A ⊆ B ↔ ∀ x : X, x ∈ A → x ∈ B
 -/
 
-/- Hint : Hint : To make progress with a goal of form `∀ a : X, ...`, introduce a term of type `X` by using a familiar tactic. 
+
+/- Hint : Hint
+To make progress with a goal of form `∀ a : X, ...`, introduce a term of type `X` by using a familiar tactic. 
 
 In this example, using
 

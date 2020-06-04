@@ -2,6 +2,8 @@ import game.sets.sets_level03 -- hide
 
 namespace xena -- hide
 
+open_locale classical -- hide
+
 variable X : Type --hide
 
 /-
@@ -10,7 +12,8 @@ variable X : Type --hide
 ## Level 4
 -/
 
-/- Axiom : lemma eq_iff : A = B ↔ ∀ x : X, x ∈ A ↔ x ∈ B
+/- Axiom : eq_iff :
+A = B ↔ ∀ x : X, x ∈ A ↔ x ∈ B
 -/
 
 /-
@@ -24,14 +27,17 @@ We have called this axiom `eq_iff`. In mathlib it is called `ext_iff`.
 ```
 lemma eq_iff : A = B ↔ ∀ x : X, x ∈ A ↔ x ∈ B
 ```
+-/
 
-/- Hint : Hint -/
+/- Hint : Hint
 To prove the theorem below, remember that you can use `split` to 
 change the goal into two goals, corresponding to the left-right and
 right-left implication, respectively. For the first goal, after
 `intro H,` the equality of the two sets can be manipulated
 using `rw eq_iff`.
+-/
 
+/-
 ## A word on coding style
 
 After a `split` statement, one goal turns into two. A good programming style
@@ -77,17 +83,17 @@ begin
   }
 end
 
-/- Hide 
-theorem subset_iff_union_eq' (A : set X) (B : set X) : A ⊆ B ↔ A ∪ B = B := 
-begin
-  rw subset_iff,
-  rw eq_iff,
-  apply forall_congr,
-  intro x,
-  rw mem_union_iff,
-  tauto!,
-end
--/
+-- begin hide
+-- theorem subset_iff_union_eq' (A : set X) (B : set X) : A ⊆ B ↔ A ∪ B = B := 
+-- begin
+--   rw subset_iff,
+--   rw eq_iff,
+--   apply forall_congr,
+--   intro x,
+--   rw mem_union_iff,
+--   tauto!,
+-- end
+-- end hide
 
 
 end xena --hide

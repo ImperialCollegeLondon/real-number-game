@@ -2,6 +2,8 @@ import game.sets.sets_level04 -- hide
 
 namespace xena -- hide
 
+open_locale classical -- hide
+
 variable X : Type --hide
 
 /-
@@ -12,8 +14,17 @@ variable X : Type --hide
 
 
 /-
-You should now be able to prove the theorem below if you
-use `split` and `cases` together with `set.subset.antisymm`.
+If `h : ∀ (x : X), x ∈ A → x ∈ B` then `h` is a function which takes
+an element of x as input, and a proof that `x ∈ A`, and outputs a proof
+that `x ∈ B`. If you want to run this function `h` on some term `x : X`
+then any of the following work:
+
+```
+have h2 := h x,
+replace h := h x,
+specialize h x
+```
+
 -/
 
 /- Lemma
@@ -21,8 +32,6 @@ If $A$ and $B$ are sets of any type $X$, then
 $$ A \subseteq B \iff A \cap B = A.$$
 -/
 
-set_option trace.simplify.rewrite true
---set_option trace.rewrite.simplify true
 theorem subset_iff_intersection_eq (A : set X) (B : set X) : A ⊆ B ↔ A ∩ B = A := 
 begin
   rw subset_iff,
@@ -40,25 +49,16 @@ begin
   }
 end
 
-theorem subset_iff_intersection_eq' (A : set X) (B : set X) : A ⊆ B ↔ A ∩ B = A := 
-begin
-  rw subset_iff,
-  rw eq_iff,
-  apply forall_congr, -- clever trick
-  intro x,
-  rw mem_inter_iff, -- no longer under a binder
-  tauto!
-end
-
-
+-- begin hide
+-- theorem subset_iff_intersection_eq' (A : set X) (B : set X) : A ⊆ B ↔ A ∩ B = A := 
 -- begin
---     split,
---     intro H, apply set.subset.antisymm,
---     intros x hx, cases hx with hA hB, exact hA,
---     intros x hx, split, exact hx, exact H hx,
---     intro H, intros x hx, 
---     have G : x ∈ A ∩ B, rw H, exact hx,
---     cases G with hA hB, exact hB, done
+--   rw subset_iff,
+--   rw eq_iff,
+--   apply forall_congr, -- clever trick
+--   intro x,
+--   rw mem_inter_iff, -- no longer under a binder
+--   tauto!
 -- end
+-- end hide
 
 end xena -- hide

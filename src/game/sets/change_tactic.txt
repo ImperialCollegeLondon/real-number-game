@@ -1,0 +1,14 @@
+ 
+In this level we will learn about the `change` tactic, and the idea of definitional equality.
+
+For our initial examples, we'll use sets $A$ and $B$  with members of a generic type $X$. Lean defines $A \subseteq B$ to mean 
+$$\forall a, a \in A \implies a \in B.$$ 
+Let's learn how to prove that $A \subseteq A$, indicated as our goal in the lemma below by `⊢ A ⊆ A`. 
+
+By *definition* our goal is equivalent to `∀ a : X, a ∈ A → a ∈ A` (that is, due to the actual definition of `⊆` in Lean). <br>
+Whenever two expressions are *definitionally equal* in this way, we can use the `change` tactic to replace one by the other in a goal. <br> 
+For example, if `P` and `Q` are  equal by definition then we can use
+
+`change Q,`
+
+to change a goal `P` to a goal `Q` (remembering the comma!).

@@ -2,12 +2,14 @@ import game.sets.sets_level02 -- hide
 
 namespace xena -- hide
 
+open_locale classical -- hide
+
 variable X : Type -- hide
 
 /-
 # Chapter 1 : Sets
 
-## Level 3
+## Level 3 : intersection (∩)
 -/
 
 
@@ -19,11 +21,10 @@ You will need to rewrite the following term:
 ```
 mem_inter_iff : x ∈ A ∩ B ↔ x ∈ A ∧ x ∈ B 
 ```
-
-/- Axiom : mem_inter_iff : x ∈ A ∪ B ↔ x ∈ A ∨ x ∈ B
-
 -/
 
+/- Axiom : mem_inter_iff :
+x ∈ A ∩ B ↔ x ∈ A ∧ x ∈ B
 -/
 
 /- Hint : Hint

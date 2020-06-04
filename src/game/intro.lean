@@ -1,7 +1,7 @@
 /-
 # The Real Number Game, version 1.0beta
 
-## By Kevin Buzzard and Dan Stanescu currently
+## By Kevin Buzzard, Dan Stanescu and Gavin Thomson
 
 # What is this game?
 
