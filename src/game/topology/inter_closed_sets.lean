@@ -1,7 +1,7 @@
 import data.real.basic
 import data.set.lattice
 import topology.basic
-import game.topology.union_open_sets
+import game.topology.union_closed_sets
 
 open set
 
@@ -13,15 +13,14 @@ namespace xena
 
 -- begin hide
 -- Checking mathlib definitions
-variable β : Type*  
-variable [fintype β]
+variable β : Type*
 -- end hide
 
 /- Lemma
-Finite intersection of open sets is open -- WIP, to do.
+Arbitrary intersection of closed sets is closed -- WIP, to do.
 -/
-lemma is_open_fin_inter_of_open (X : β → set ℝ ) ( hj : ∀ j, is_open (X j) )
-    : is_open (Inter X) :=
+lemma is_closed_inter_of_closed (X : β → set ℝ ) ( hj : ∀ j, is_closed (X j) )
+    : is_closed (Inter X) :=
 begin
     sorry,
 end
