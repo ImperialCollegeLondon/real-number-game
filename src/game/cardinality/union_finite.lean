@@ -4,10 +4,11 @@ open function
 open set
 
 namespace xena -- hide
+
 /-
 # Chapter 7 : Cardinality
 
-## Level 2
+## Level 1
 
 A classical result about finite sets.
 -/
@@ -20,17 +21,9 @@ local attribute [instance] classical.prop_decidable
 If $f : X \to Y$ is an injective function and $Y$ is finite, then
 $X$ is also finite.
 -/
-theorem finite_inj (X Y : set ℝ) (f : X → Y) (hY : finite Y) : 
-    injective f → finite X :=
+theorem union_finite (X Y : set ℝ) : finite X → finite Y → finite (X ∪ Y)  :=
 begin
-    intro hf,
-    have h1 := finite.fintype hY, -- can't get f(X) ⊆ Y, type coercion problem
-    --have H1 := card_image_of_injective,
     sorry,
 end
 
 end xena -- hide
-
--- begin hide
---#check finite_subsets_of_finite
--- end hide
