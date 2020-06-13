@@ -31,15 +31,15 @@ A Cauchy sequence is bounded.
 lemma cauchy_is_bdd (a : ℕ → ℝ) : 
     is_Cauchy a → is_bdd a:=
 begin
-  -- classical proof for boundedness of Cauchy sequences
+  --classical proof for boundedness of Cauchy sequences
   intro HC,
-  set e := (1:ℝ) with he,
-  have h1e : (0:ℝ) < e, linarith,
-  have H := HC e h1e,
-  cases H with m hm,
-  have G := hm m,
+  set e := (1:ℝ),
+  have h1e : (0:ℝ) < 1, linarith,
+  have H := HC 1 h1e,
+  cases H with N hN,
+  have G := hN N,
   -- construct X = {|a0|, |a1|, ...,|am|}
-  let X := finset.image (abs ∘ a) (finset.range (m + 1)),
+  let X := finset.image (abs ∘ a) (finset.range (N + 1)),
   -- at least a0 is in X
   have  ha0 : |a 0| ∈ X := finset.mem_image_of_mem _ (mem_range.2 (nat.zero_lt_succ _)),
   -- hence the set X is not empty
@@ -48,39 +48,47 @@ begin
   -- and therefore has a maximum
   let B1 := X.max' ha2,
   -- If n ≤ m then get a proof that |a n| ≤ B1.
-  have HB1 : ∀ n ≤ m, |a n| ≤ B1 := λ n Hn, le_max' X ha2 _
+  have HB1 : ∀ n ≤ N, |a n| ≤ B1 := λ n Hn, le_max' X ha2 _
     (mem_image_of_mem _ (mem_range.2 (nat.lt_succ_of_le Hn))),
   -- term that bounds all members of the sequence
-  set B := max B1 ( |a m| + 1 ) with hB,
+  set B := max B1 ( |a N| + 1 ) with hB,
   -- so this will be our bound
   use B,
   split,
   swap,
   intro n,
-  cases le_or_gt n m with hn1 hn2,
-  { -- n ≤ m
+  cases le_or_gt n N with hn1 hn2,
+  { -- n ≤ N
     have g1 : | a n | ≤  B1 := HB1 n hn1,
     have g2 : B1 ≤ B := le_max_left _ _, 
     linarith,
   },
-  { -- n > m
+  { -- n > N
     have g1 := G n,
-    have g2 : m ≤ m ∧ m ≤ n,
+    have g2 : N ≤ N ∧ N ≤ n,
         split; linarith,
-    have g3 := g1 g2, 
-    have g4 : | a n | ≤ |a m| + 1,
-        have g41 := abs_of_sub_le_abs (a m) (a n),
-        have g42 : | |a m| - |a n| | < e, linarith,
-        have g43 := abs_le ( |a m| - |a n| ) e (le_of_lt h1e) (le_of_lt g42),
-        cases g43 with g44 g45, linarith,
-    have g5 : |a m| + 1 ≤ B := le_max_right _ _,
+    have g3 := g1 g2,
+    rw abs_lt at g3,
+    have fact1 := g3.left,
+    have fact2 := g3.right,
+    simp,
+    right,
+    rw abs_le,  -- our abs_le is conditional on 0 ≤ c - proven in the last section
+    simp,
+    split,
+    {
+    have simplefact1: - a N ≤ | a N | := neg_le_abs_self (a N),
     linarith,
+    },   
+    {have simplefact2: a N ≤ | a N | := le_abs_self(a N),
+    linarith},
+    
+  have simplefact3: 0 ≤ |a N|, from abs_nonneg (a N),
+  linarith,     
   },
-  -- almost done; need B > 0; linarith needs a little help
-  have g1 : |a m| + 1 ≤ B := le_max_right _ _,
-  have g2 : 0 ≤ |a m|,  exact is_absolute_value.abv_nonneg abs (a m),
-  have g3 : 1 ≤ |a m| + 1, linarith,
-  --have g4 : 0 < 1, linarith, 
+  
+  have g1 : |a N| + 1 ≤ B := le_max_right _ _,
+  have g2: 0 ≤ |a N|, from abs_nonneg (a N),
   linarith,
 
 end
