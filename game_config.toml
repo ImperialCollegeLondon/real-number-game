@@ -104,6 +104,7 @@ name = "Cardinality"
 id = 7
 parents = [6]
 levels = [
+	"src/game/cardinality/union_finite.lean",
 	"src/game/cardinality/finite_inj.lean",
 	"src/game/cardinality/countable_inj.lean"
 ]
@@ -123,6 +124,8 @@ parents = [8]
 levels = [
 	"src/game/topology/union_open_sets.lean",
 	"src/game/topology/inter_open_sets.lean",
+	"src/game/topology/union_closed_sets.lean",
+	"src/game/topology/inter_closed_sets.lean",
 	"src/game/topology/hausdorff.lean",
 	"src/game/topology/continuity.lean"
 ]

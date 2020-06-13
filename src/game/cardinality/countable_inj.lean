@@ -3,10 +3,12 @@ import topology.basic
 open function
 open set
 
+namespace xena -- hide
+
 /-
 # Chapter 7 : Cardinality
 
-## Level 2
+## Level 3
 
 A classical result about countable sets.
 -/
@@ -24,6 +26,8 @@ begin
     have G := countable_iff_exists_injective.2 ⟨g ∘ f, injective.comp hg hf⟩,
     exact G, done
 end
+
+end xena -- hide
 
 -- begin hide
 -- term mode proof due to Kenny Lau

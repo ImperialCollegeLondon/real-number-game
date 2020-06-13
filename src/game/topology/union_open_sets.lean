@@ -16,7 +16,7 @@ variable β : Type
 
 -- begin hide
 -- Checking definitions
-def countable_union (X : nat → set ℝ) := {t : ℝ | exists i, t ∈ X i}
+--def countable_union (X : nat → set ℝ) := {t : ℝ | exists i, t ∈ X i}
 -- end hide
 
 /- Lemma

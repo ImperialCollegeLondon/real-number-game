@@ -10,8 +10,6 @@ open_locale classical
 /-
 Classic eps-delta definition of continuity is equivalent to 
 the definition using sequences.
-
-Work in progress!!!
 -/
 
 notation `|` x `|` := abs x
@@ -44,7 +42,7 @@ begin
         have G := hy (a n) hnd, exact G,
     },
     { -- sequence def -> classical def is a little trickier
-      -- proof by contradiction
+      -- contrapositive
       contrapose!,
       intro H, unfold continuous_at_x at H,
       push_neg at H,
@@ -91,7 +89,6 @@ begin
             have hN32 : 0 < (n+1), linarith,
             have hN33 : 0 < N, 
                 have hN34 : 0 < ( (1:ℝ)/ε ), exact one_div_pos_of_pos hε,
-                set t := ( (1:ℝ)/ε ) with ht,
                 have hN35 := lt_of_lt_of_le hN34 hN1,
                 norm_cast at hN35, exact hN35,
             apply one_div_lt_one_div_of_lt,
