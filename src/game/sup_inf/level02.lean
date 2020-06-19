@@ -1,4 +1,4 @@
-import data.real.basic
+import game.sup_inf.level01
 
 namespace xena -- hide
 -- World name : Sup and Inf
@@ -18,8 +18,14 @@ has an upper bound. The second part of the result is trivial, but showing that t
 set is non-empty will ask you to use techniques learned in the first world.
 -/
 
-definition is_upper_bound (S : set ℝ) (x : ℝ) := x ∈ upper_bounds S 
+-- definition is_upper_bound' (S : set ℝ) (x : ℝ) := x ∈ upper_bounds S 
+-- (Definition above deprecated? GT)
+
+definition is_lub (S : set ℝ) (x : ℝ) := is_upper_bound S x ∧ 
+∀ y : ℝ, is_upper_bound S y → x ≤ y
+
 definition has_lub (S : set ℝ) := ∃ x, is_lub S x 
+
 local attribute [instance] classical.prop_decidable --hide
 
 
@@ -35,14 +41,15 @@ begin
   { -- first prove S is not empty, by contradiction as usual with empty sets
     intro Hempty,
     have H1 : (b-1) ∈ upper_bounds S,
-      change ∀ x ∈ S, x ≤ (b-1),
-      by_contradiction hn,
-      push_neg at hn,
-      cases hn with x h1, 
-      cases h1 with h11 h12,
-      rw Hempty at h11, 
-      exact h11, 
-    have HH := Hb.2 H1, -- b - 1 is an upper bound
+    change ∀ x ∈ S, x ≤ (b-1),
+    by_contradiction hn,
+    push_neg at hn,
+    cases hn with x h1, 
+    cases h1 with h11 h12,
+    rw Hempty at h11, 
+    exact h11, 
+    unfold is_lub at Hb,
+    have HH := Hb.2 (b-1) H1, -- b - 1 is an upper bound
     linarith,
   },
   {

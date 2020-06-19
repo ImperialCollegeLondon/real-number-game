@@ -1,4 +1,4 @@
-import data.real.basic
+import ..sup_inf.supProdConst
 import ..sets.sets_level09
 
 namespace xena -- hide
@@ -43,7 +43,7 @@ begin
   push_neg at hnx,
   --TODO: kmb doesn't know what zero_in_prod is, and it's not compiling
   have E := zero_in_prod,
-  have D := hx E, linarith, done
+  have D := hx 0 E, linarith, done
   --sorry
 end
 

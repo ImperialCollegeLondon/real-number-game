@@ -1,4 +1,6 @@
+import game.order.level09
 import data.real.basic -- imports the real numbers ℝ
+
 namespace xena -- hide
 
 -- World name : Sup and Inf
@@ -15,7 +17,7 @@ Let $X$ be a set of real numbers.
 We say a real number $b$ is an *upper bound* for $X$ if every $x \in X$ is at most $b$.
 -/
 
-def is_upper_bound (X : set ℝ) (b : ℝ) := ∀ x : ℝ, x ∈ X → x ≤ b
+definition is_upper_bound (S : set ℝ) (x : ℝ) := ∀ s ∈ S, s ≤ x 
 
 /-
 Here is an easy fact about upper bounds, which we shall prove below: 
