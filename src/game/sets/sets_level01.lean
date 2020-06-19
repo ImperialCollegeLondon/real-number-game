@@ -1,14 +1,12 @@
-import data.set.basic
+import data.set.basic -- hide
 
-import kb_defs
+import kb_defs -- hide
 
 namespace xena -- hide
 
-variable X : Type -- we will think of X as a set here
+open_locale classical -- hide
 
--- begin hide
-/- The first level, originally written by KMB. -/
--- end hide
+variable X : Type -- we will think of X as a set here
 
 /-
 # Chapter 1 : Sets
@@ -40,7 +38,7 @@ subset_iff : A ⊆ B ↔ ∀ x : X, x ∈ A → x ∈ B
 Let's see if you can prove `A ⊆ A` by rewriting `subset_iff`.
 -/
 
-/- Axiom : subset_iff
+/- Axiom : subset_iff :
 A ⊆ B ↔ ∀ x : X, x ∈ A → x ∈ B
 -/
 

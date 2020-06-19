@@ -1,4 +1,4 @@
-import kb_real_defs
+import data.real.basic
 
 /-
 # Chapter 1 : Sets
@@ -21,19 +21,12 @@ Prove that if $x = 0$, then `x ∈ mem_prod_sets [(-2:ℝ),-1] [(0:ℝ), 3]`
 -/
 lemma zero_in_prod : (0:ℝ) ∈ mem_prod_sets [(-2:ℝ), -1] [(0:ℝ), 3] :=
 begin
-  rw mem_prod_sets,
-  dsimp,
-  use -2,
-  split, 
-  { rw mem_Icc_iff,
-    split; linarith
-  },
-  use 0,
-  split,
-  { rw mem_Icc_iff,
-    split; linarith
-  },
-  norm_num
+  set a0 := (0:ℝ) with ha,
+  have h1 : a0 ∈ (set.Icc (0:ℝ) 3), simp, linarith,
+  set b := (-2:ℝ) with hb,
+  have h2 : b ∈ set.Icc (-2:ℝ) (-1:ℝ), simp, linarith,
+  use b, split, exact h2,
+  use a0, split, exact h1, rw ha, norm_num, done
 end
 
 

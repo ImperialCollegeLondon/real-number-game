@@ -1,55 +1,41 @@
-import game.sets.L01defs -- hide
+import game.sets.sets_level01 -- hide
 
 namespace xena -- hide
+
+open_locale classical -- hide
 
 variable X : Type -- hide
 
 /-
 # Chapter 1 : Sets
 
-## Level 2
+## Level 2 : union (∪)
 -/
 
 /- 
 Working with sets is very similar to working with propositions.
 Let's now prove that any set $A$ is included in its union with 
-any other set $B$, or $A ⊆ A ∪ B$. 
+any other set $B$, or $A ⊆ A ∪ B$. To work with unions you will
+need to know the property which classifies them:
 
-Our goal is definitionally equivalent to `∀ x ∈ A, x ∈ (A ∪ B)`.
-The definition of `x ∈ (A ∪ B)` is `x ∈ A ∨ x ∈ B`.
+```
+mem_union_iff : x ∈ A ∪ B ↔ x ∈ A ∨ x ∈ B
+```
 
-You should already know the tactics needed to prove this goal, so give 
-it a try before checking the hints.
+You need to get yourself into a situation where the left hand side
+of `mem_union_iff` is in your goal; that way, you can `rw mem_union_iff`
+and make progress.
 -/
 
-/- Hint : Hint : The proof steps may become clearer if you change the goal.
-Use the `change` tactic and the definitions give above:
-
-`change ∀ x ∈ A, x ∈ A ∨ x ∈ B,`
-
-This will change your goal to the definitionally equivalent 
-
-`∀ x : X, x ∈ A ⇾ x ∈ A ∨ x ∈ B`
-
-Start your proof of `∀ (x : X) ...` in the way you learned in the previous level.
-
-You will then have a statement of propositional form `α → β ∨ γ`. See if you can use your knowledge of propositions to solve this!
+/- Axiom : mem_union_iff :
+x ∈ A ∪ B ↔ x ∈ A ∨ x ∈ B
 -/
 
-/- Hint : Hint : After introducing your terms, you'll need to prove the `left` side of a disjunction.
-With or without the `change` lines, you can introduce the 
-hypotheses we need by using 
-
-`intros x hx,`
-
-Now the equivalence with the world of propositions will become apparent. 
-
-To prove that the union of two sets is inhabited is to prove the disjunction 
-$P ∨ Q$ of two propositions. In this case, $P$ is our statement $x ∈ A$.
-
-Choosing `left,` will change our goal to the first disjunct. 
-
-You should now be able to easily finish the proof.
+/- Hint : Hint
+We start with a rewrite (see level 1).
+Then, after introducing your terms, you'll be able to pull off
+the second rewrite. Finally, you'll need to prove the `left`
+side of an `or` goal.
 -/
 
 
@@ -59,10 +45,11 @@ $$ A \subseteq A\cup B.$$
 -/
 theorem subset_union_left (A B : set X) : A ⊆ A ∪ B :=
 begin
-    --change ∀ (x : α), x ∈ A → x ∈ A ∪ B,  --they may want to do this
-    intros x hx,
-    left, exact hx, done
-
+  rw subset_iff,
+  intros x hxA,
+  rw mem_union_iff,
+  left,
+  assumption,
 end
 
 end xena --hide

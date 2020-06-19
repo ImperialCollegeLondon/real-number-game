@@ -1,0 +1,26 @@
+/- Hint : Propositional Extensionality 
+
+`constant propext {a b : Prop} : (a ↔ b) → a = b`
+
+
+If two propositions imply one another, then those two propositions are equal. Here `constant` indicates that this is not just a theorem but an axiom.
+
+Curly braces indicate that the arguments of `propext` may be left implicit and inferred from context.
+-/
+
+/- Hint : Function Extensionality
+
+`theorem funext {f₁ f₂ : Π x : α, β x} (h : ∀ x, f₁ x = f₂ x) : f₁ = f₂.`
+
+If two functions agree on all arguments, then those functions are equal.
+
+-/
+
+/- Hint : Set Extensionality
+
+`theorem ext_iff {s t : set α} : s = t ↔ ∀ x, x ∈ s ↔ x ∈ t`
+
+
+Two sets are equal if and only if they contain the same elements.
+
+-/
