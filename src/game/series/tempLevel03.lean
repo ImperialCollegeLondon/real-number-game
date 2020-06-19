@@ -22,8 +22,8 @@ series_converges b → series_converges a :=
 begin
 
 --introduce hyp that series over b converges, with sum T
-intro hyp1,
-cases hyp1 with T hypT,
+intro hyp,
+cases hyp with T hypT,
 
     --show that partial sums over a are all positive
     have fact1: ∀ k : ℕ, (0 ≤ kth_partial_sum a k),
@@ -52,12 +52,17 @@ cases hyp1 with T hypT,
 
 unfold series_converges,
 
-have fact5: ∀ n : ℕ, kth_partial_sum a n ≤ T,
+have fact5: ∀ k : ℕ, kth_partial_sum b k ≤ T,
 unfold seq_partials_over at hypT,
 intro n,
 unfold is_limit at hypT,
-
 sorry,
+
+have fact6 : ∀ k : ℕ, kth_partial_sum a k ≤ T,
+intro k, specialize fact3 k, specialize fact5 k, linarith,
+
+
+
 sorry,
 /-  
     change 0 ≤ (finset.sum (finset.range (k + 1)) a),

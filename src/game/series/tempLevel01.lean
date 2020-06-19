@@ -1,18 +1,24 @@
-import game.series.tempLevel00
+import game.series.L01defs
 
 namespace xena 
 
+-- begin hide
 -- if we want to use sigma notation, use 
 -- import algebra.big_operators
 -- open_locale big_operators 
 -- https://leanprover-community.github.io/mathlib_docs/algebra/big_operators.html
+-- end hide
 
 /- 
-Temporary level 01: If $\sum a_n$ converges, then $a_n \to 0$.
+If $\sum a_n$ converges, then $a_n \to 0$.
 
 We take the approach of showing that $(S_n) → M$ then $(S_{n+1}) → M$,
 and then using the fact that $a_{n+1} = S_{n+1} - S_n$.
 -/
+
+def kth_partial_sum (a : ℕ → ℝ) (k : ℕ) := (finset.range (k+1)).sum a
+
+def seq_partials_over (a : ℕ → ℝ ) : ℕ → ℝ := (λ (n : ℕ), kth_partial_sum a n )
 
 def series_converges (a : ℕ → ℝ) := is_convergent (seq_partials_over a)
 

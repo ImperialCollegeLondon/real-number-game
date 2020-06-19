@@ -1,21 +1,26 @@
-import game.limits.L01defs
-import data.finset
 import game.limits.seq_convCauchy
-import tactic.linarith
-import data.real.basic
-import algebra.pi_instances
-
 
 namespace xena -- hide
 
 notation `|` x `|` := abs x -- hide
 
 /-
-A useful result for working with sequences -- a convergent sequence is bounded.
+Another useful result for working with sequences -- a convergent sequence is bounded.
 -/
 
-/- We define the concepts of a bound and a bounded sequence, in much the same way
-that we defined the concepts of a limit and a convergent sequence. -/
+/- 
+We define the concepts of a bounded sequence, in much the same way
+that we defined the concepts of a limit and a convergent sequence. 
+-/
+
+/-
+NOTE: limits/seq_cauchyBdd.lean introduces the definition
+
+is_bdd (a : ℕ → ℝ) := ∃ B > 0, ∀ n, |a n| ≤ B 
+
+Here I omit the B > 0 condition (which follows from properties of abs?)
+But this level is perhaps superfluous anyway.
+-/
 
 definition is_bound (a : ℕ → ℝ) (M : ℝ) := ∀ n, | a n | ≤ M
 definition is_bounded (a : ℕ → ℝ) := ∃ M, is_bound a M
@@ -45,7 +50,7 @@ specialize HN_k bigN,               -- specialize to bigN
 have fact1:= HN_k(Nisbig),          -- just applying our conditional
 rw abs_lt at fact1,    
 
-rw abs_le,     -- note our abs_le will require us to show c ≥ 0, unlike mathlib
+rw abs_le,     -- note our abs_le will require us to show c ≥ 0
 simp,
 split,
         
@@ -61,7 +66,6 @@ linarith,
 
 },
 
-        
    --  Having shown that we have a bound for the elements above N_k, we consider the earlier terms
    --  This section is mostly cribbed from Kevin's M1P1 limits file
 
@@ -69,7 +73,7 @@ linarith,
 
    have fact4 : |a 0| ∈ rangeset := finset.mem_image_of_mem _ (mem_range.2 (nat.zero_lt_succ _)), 
    have fact5 : rangeset ≠ ∅ := ne_empty_of_mem fact4,        
-   have fact6 := nonempty_iff_ne_empty.mpr fact5,    -- could hide this and just state nonemptiness?  
+   have fact6 := nonempty_iff_ne_empty.mpr fact5,  
    
    let Bx := rangeset.max' fact6,                              
    let B := max Bx ( |α|  + 1),
@@ -82,7 +86,7 @@ cases lt_or_ge n N_k with Hlt Hge,
     left,        
     have HBx : ∀ n < N_k, |a n| ≤ Bx := λ n Hn, le_max' rangeset fact6 _
     (mem_image_of_mem _ (mem_range.2 (nat.lt_succ_of_lt Hn))),   
-    apply HBx,               -- was the lambda the best way to do this?
+    apply HBx,               
     exact Hlt,         
     
     have h2 : |a n| ≤ |α| + 1 := bounds_geq_N_k n Hge,

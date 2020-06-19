@@ -8,12 +8,6 @@ namespace xena -- hide
 ## Level 11
 -/
 
-
-/-definition is_upper_bound (S : set ℝ) (x : ℝ) := ∀ s ∈ S, s ≤ x 
-definition is_lub' (S : set ℝ) (x : ℝ) := is_upper_bound S x ∧ 
-  ∀ y : ℝ, is_upper_bound S y → x ≤ y
-definition has_lub (S : set ℝ) := ∃ x, is_lub' S x -/
-
 def embedded_rationals : set ℝ := {x : ℝ | ∃ y : ℚ, x = ↑y}
 
 /- Lemma

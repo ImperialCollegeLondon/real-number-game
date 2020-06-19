@@ -1,4 +1,9 @@
 import game.sets.L01defs
+
+--NOTE: the recursive import from previous world breaks run_cmd add_interactive below??
+--I think the problem comes from sup_inf.rat_complete
+--So I will import sup_inf in the next level
+
 import data.real.basic
 import tactic.linarith
 

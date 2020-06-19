@@ -53,7 +53,8 @@ levels = [
        	 "src/game/sup_inf/supProdSets.lean",
        	 "src/game/sup_inf/lub_rationals.lean",
        	 "src/game/sup_inf/unbdd_iff.lean",
-       	 "src/game/sup_inf/rat_complete.lean"
+       	 "src/game/sup_inf/rat_complete.lean",
+	     "src/game/sup_inf/GLBprop_if_LUBprop.lean"
 ]
 
 [[worlds]]
@@ -70,7 +71,11 @@ levels = [
     	"src/game/limits/seq_limitProd.lean",
     	"src/game/limits/seq_proveLimit.lean",
     	"src/game/limits/seq_cauchyBdd.lean",
-    	"src/game/limits/seq_convCauchy.lean"
+    	"src/game/limits/seq_convCauchy.lean",
+  	    "src/game/limits/bounded_if_convergent.lean",
+        "src/game/limits/shift_rule_seq.lean",
+	    "src/game/limits/seq_bdd_iff_range_bdd.lean",
+        "src/game/limits/bdd_monos_converge.lean"
 ]
 
 [[worlds]]

@@ -1,8 +1,8 @@
-import game.series.L01defs
+import game.limits.bounded_if_convergent
 
 namespace xena
 /- 
-Temporary level 00: Shift rule for sequences:
+"Shift rule" for sequences, used in Series world:
 -/
 
 /- Lemma
