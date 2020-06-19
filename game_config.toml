@@ -1,17 +1,46 @@
-name = "Real number game"
-version = "0.1.0"
-extra_files = "extras"
-intro = "src/game/intro.lean"
+[[worlds]]
+name = "Functions"
+id = 6
+parents = [5]
+levels = [
+	"src/game/functions/bothInjective.lean",
+	"src/game/functions/bothSurjective.lean",
+	"src/game/functions/bothBijective.lean", 
+	"src/game/functions/twoSidedInverse.lean",
+	"src/game/functions/composition_injective.lean",
+	"src/game/functions/composition_surjective.lean",
+	"src/game/functions/classicContinDef.lean",
+	"src/game/functions/seqContinDef.lean"
+]
 
 [[worlds]]
-name = "Sets"
-id = 1
+name = "Cardinality"
+id = 7
+parents = [6]
 levels = [
-	"src/game/sets/sets_level01.lean",
-    "src/game/sets/sets_level02.lean",
-	"src/game/sets/sets_level03.lean",
-	"src/game/sets/sets_level04.lean",
-	"src/game/sets/sets_level05.lean",
-	"src/game/sets/sets_level06.lean",
-	"src/game/sets/sets_level07.lean",
+	"src/game/cardinality/union_finite.lean",
+	"src/game/cardinality/finite_inj.lean",
+	"src/game/cardinality/countable_inj.lean"
 ]
+
+[[worlds]]
+name = "Integral"
+id = 8
+parents = [7]
+levels = [
+	"src/game/integral/tempLevel1.lean"
+]
+
+[[worlds]]
+name = "Topology of the reals"
+id = 9
+parents = [8]
+levels = [
+	"src/game/topology/union_open_sets.lean",
+	"src/game/topology/inter_open_sets.lean",
+	"src/game/topology/union_closed_sets.lean",
+	"src/game/topology/inter_closed_sets.lean",
+	"src/game/topology/hausdorff.lean",
+	"src/game/topology/continuity.lean"
+]
+
