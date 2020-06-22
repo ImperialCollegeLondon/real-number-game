@@ -11,12 +11,35 @@ def is_decreasing (a : ℕ → ℝ) := ∀ n : ℕ, a (n + 1) ≤ a n
 def is_monotone (a : ℕ → ℝ) := is_increasing a ∨ is_decreasing a
 
 -- begin hide
--- Note: later I need (N0 ≤ k) → (a N0 ≤ a k) for `a` monotone increasing
--- So perhaps first prove the following by induction?
-theorem is_increasing' (a : ℕ → ℝ) : is_increasing a ↔ ∀ m n : ℕ, 
- m ≤ n ↔ a m ≤ a n := 
+-- Note: later we use (n ≤ k) → (a n ≤ a k) for `a` monotone increasing
+-- and (n ≤ k) → (a k ≤ a n) for decreasing. Should these be proved first,
+-- or use mathlib's versions of monotone? 
+--https://leanprover-community.github.io/mathlib_docs/order/basic.html
+
+theorem is_increasing' (a : ℕ → ℝ) : is_increasing a ↔ (∀ m n : ℕ, 
+ m ≤ n → a m ≤ a n) := 
 begin
-sorry,
+split,
+intros inc m n,
+{intro hyp,
+induction hyp with k hyp ihyp,
+exact le_refl (a m),
+exact le_trans ihyp (inc k),},
+intros hyp p,
+exact (hyp p (p + 1)) (nat.le_succ p),
+end
+
+theorem is_decreasing' (a : ℕ → ℝ) : is_decreasing a ↔ (∀ m n : ℕ, 
+ m ≤ n → a n ≤ a m) := 
+begin
+split,
+intros dec m n,
+{intro hyp,
+induction hyp with k hyp ihyp,
+exact le_refl (a m),
+exact le_trans (dec k) ihyp,},
+intros hyp p,
+exact (hyp p (p + 1)) (nat.le_succ p),
 end
 -- end hide
 
@@ -67,7 +90,9 @@ cases h2 with increasing decreasing,
     let forcontra := hyp_s.right (s - e) claim,
     --forcontra says that s ≤ s - e. But e is positive, so linarith closes.
     linarith,
-
+    
+    -- we now unfold the fact that s - e is not an upper bound for M,
+    -- and prove that s is the limit of our increasing sequence
     unfold is_upper_bound at fact2,
     push_neg at fact2,
     cases fact2 with l hypl,
@@ -76,9 +101,9 @@ cases h2 with increasing decreasing,
     cases hypl.left with N0 hypN0,
     use N0,
     intros k hypk,
-    
-    rw is_increasing' at increasing, -- is this necessary?
-    have fact3:= (increasing N0 k).mp hypk,
+    -- applying the theorem proved above
+    rw is_increasing' at increasing, 
+    have fact3:= (increasing N0 k) hypk,
     refine abs_lt.mpr _,
     split, 
     linarith,
@@ -87,10 +112,47 @@ cases h2 with increasing decreasing,
     linarith,
     },
 
-    --monotone decreasing case
+    --monotone decreasing case, using the same strategy
     {
-       
-    sorry,
+    have fact3: has_glb M,
+    refine glb_property_reals M _,
+
+    split,
+        {
+        exact set.range_nonempty a,
+        },
+
+        {
+        exact ((seq_bdd_iff_range_bdd a).mp h1).right,
+        },
+
+    cases fact3 with i hyp_i,
+    use i,
+
+    intros e hype,
+
+    -- We show that i + e cannot be a lower bound for M (our set of terms)
+    have fact4: ¬ is_lower_bound M (i + e),
+    by_contradiction claim,
+    let forcontra := hyp_i.right (i + e) claim,
+    linarith,
+
+    unfold is_lower_bound at fact4,
+    push_neg at fact4,
+    cases fact4 with m hypm,
+ 
+    cases hypm.left with N0 hypN0,
+    use N0,
+    intros k hypk,
+    -- applying the theorem proved above
+    rw is_decreasing' at decreasing, 
+    have fact5:= (decreasing N0 k) hypk,
+    refine abs_lt.mpr _,
+    split, 
+    have fact4: i ≤ a k, 
+    exact hyp_i.left (a k) (set.mem_range_self k),
+    linarith,
+    linarith,
     },
 
 end
