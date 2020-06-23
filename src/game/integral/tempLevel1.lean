@@ -11,9 +11,9 @@ variable X : Type -- hide
 
 -- begin hide
 
-#check finset
-#check finset.card_range
-#check list
+--#check finset
+--#check finset.card_range
+--#check list
 --Do we want a list? A vector? 
 --either way, not sure how to go about this yet
 --def partition (a b : ℝ) (A: set.Icc a b) (n : ℕ) := list ℝ

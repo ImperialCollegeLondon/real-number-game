@@ -25,7 +25,7 @@ have habs : 2 ∣ (1:ℕ),
     by simp * at *,
 -- therefore the ) below!!!!
 show false, from absurd habs dec_trivial )
-#check sqrt_two_irrational_V1
+--#check sqrt_two_irrational_V1
 
 -- tactics mode
 theorem sqrt_two_irrational_V2 {a b : ℕ} (co : gcd a b = 1) : a^2 ≠ 2 * b^2 :=
@@ -118,4 +118,4 @@ have 2 ∣ gcd a b,
 have 2 ∣ (1 : ℕ),
   by simp * at *,
 show false, from absurd ‹2 ∣ 1› dec_trivial
-#check sqrt_two_irrational
+--#check sqrt_two_irrational

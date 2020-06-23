@@ -62,7 +62,7 @@ begin
     apply hc,
     repeat {assumption},
 end
-#check gcdeven
+--#check gcdeven
 
 /- Lemma
 If $a$ is an integer, then $a$ is even if and only if $a^2$ is even.
