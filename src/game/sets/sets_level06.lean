@@ -31,7 +31,7 @@ lemma mem_neg_iff : x ∈ -A ↔ x ∉ A
 
 In this lemma, you might get a shock. The `rw` tactic is aggressive
 in the Real Number Game -- if after a rewrite the goal can be
-solved by `rfl`, then Lean will close the goal automatically.
+solved by `refl`, then Lean will close the goal automatically.
 
 -/
 
@@ -50,7 +50,7 @@ $$(A \setminus B) = A \cap B^{c}.$$
 -/
 theorem setdiff_eq_intersect_comp (A B : set X) : A \ B = A ∩ -B := 
 begin
-  rw eq_iff,
+  rw ext_iff,
   intro x,
   rw mem_sdiff_iff,
   rw mem_inter_iff,

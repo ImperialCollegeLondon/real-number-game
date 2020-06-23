@@ -27,9 +27,13 @@ lemma mem_empty_iff (a : X) : a ∈ (∅ : set X) ↔ false
 a ∈ (∅ : set X) ↔ false
 -/
 
-/- Hint : Hint
+/- Hint : Stuck?
 Remember that `exfalso` changes any goal to `false`. This can be
 convenient if your hypotheses can prove `false`.
+
+Another approach: if `hx : false` then `cases hx` will do a case
+split into every proof of false -- but there are no proofs of
+false! So there will be no cases left to do.
 -/
 
 /- Lemma
@@ -42,6 +46,9 @@ begin
   exfalso,
   rw mem_empty_iff at hx,
   exact hx,
+
+
+
 end
 
 end xena
