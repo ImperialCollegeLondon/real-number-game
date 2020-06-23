@@ -34,10 +34,10 @@ If $A$ and $B$ are sets of any type $X$, then
 $$ A \subseteq B \iff A \cap B = A.$$
 -/
 
-theorem subset_iff_inter_eq (A : set X) (B : set X) : A ⊆ B ↔ A ∩ B = A := 
+theorem subset_iff_inter_eq (A : set X) (B : set X) : A ⊆ B ↔ A = A ∩ B := 
 begin
   rw subset_iff,
-  rw eq_iff,
+  rw ext_iff,
   split,
   { intros h x,
     specialize h x,
