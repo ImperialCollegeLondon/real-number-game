@@ -31,7 +31,13 @@ and make progress.
 x ∈ A ∪ B ↔ x ∈ A ∨ x ∈ B
 -/
 
-/- Hint : Hint
+/- Hint : Tactic tip : intros
+`intros` is like `intro` but can be used to introduce more than one
+thing at once. For example if your goal is `⊢ ∀ (x : X), x ∈ A → x ∈ A ∪ B`
+then `intros x hx` will do the same as `intro x, intro hx`.
+-/
+
+/- Hint : Stuck?
 We start with a rewrite (see level 1).
 Then, after introducing your terms, you'll be able to pull off
 the second rewrite. Finally, you'll need to prove the `left`
