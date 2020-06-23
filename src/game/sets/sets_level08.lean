@@ -9,26 +9,51 @@ import kb_real_defs --hide
 
 /- 
 This is a very basic example of working with intervals of real numbers in Lean.
-An interval that is closed at both endpoints $a$ and $b$ can be 
-constructed using `set.Icc a b`. For an open-closed interval, the notation
+An interval `[a, b]` that is closed at both endpoints $a$ and $b$ can be 
+constructed using `set.Icc a b`. For an open-closed interval `(a, b]`,
+the notation
 is `set.Ioc a b`, etc. The usual closed-interval notation, using square
-brackets, is used here as a wrapper around these definitions.
-After `intro hx,` the `split` tactic will showcase the conditions for 
-membership. The inequality goals can be met with the `linarith` tactic.
-The latter is very useful when dealing with goals that don't involve any
-nonlinearity in the involved variables, in particular with inequalities.
+brackets, is used here as a wrapper around these definitions. We have
+the following lemma:
+
+
+
+```
+mem_Icc_iff : x ∈ Icc a b ↔ a ≤ x ∧ x ≤ b
+```
+-/
+
+/- Axiom : mem_Icc_iff :
+x ∈ Icc a b ↔ a ≤ x ∧ x ≤ b
+-/
+
+/-
+After rewriting it, the `split` tactic will isolate the two conditions for 
+membership. Each inequality goals can be solved with the `norm_num` tactic,
+which closes goals which are equalities or inequalities between explicit
+real numbers.
+-/
+
+/- Pro tip : semicolons
+If instead of a comma, you end a line with a semicolon, then
+Lean will apply the next tactic to all the goals created by the
+previous tactic, rather than just the top one.
+-/
+
+/- Pro tip : definitional equality
+`mem_Icc_iff` is true by definition, so you don't actually
+have to even rewrite it.
 -/
 
 notation `[` a `,` b `]`  := set.Icc a b
 
-/- Lemma
-If $x = 2$ then $x ∈ [0,5]$
+/- Lemma : no-side-bar
+$2 ∈ [0,5]$
 -/
-lemma in_closed_interval (x:ℝ) : x = 2 → x ∈ [(0:ℝ), 5] := 
+example : (2 : ℝ) ∈ [(0 : ℝ), 5] := 
 begin
-    intro hx,
     rw mem_Icc_iff,
     split;
-    linarith
+    norm_num,
 end
 
