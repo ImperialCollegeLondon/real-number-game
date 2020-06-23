@@ -50,7 +50,7 @@ In this example, using
 
 `intro a,`
 
-will introduce an arbitrary term of type X.
+will introduce an arbitrary term of type `X`.
 
 Note that this is the tactic we use to assume a hypothesis (when proving an implication), or to choose an arbitrary element of some domain (when defining a function).
 
@@ -71,6 +71,9 @@ begin
   rw subset_iff,
   intros x h,
   exact h
+
+
+
 end
 
 
