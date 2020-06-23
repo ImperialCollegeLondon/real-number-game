@@ -65,7 +65,7 @@ right-left implication, respectively. For the first goal, after
 using `rw ext_iff`.
 -/
 
-/- Hint: rewrite failures
+/- Hint: rewrite failures and the `simp_rw` tactic
 `rw` doesn't work "under a binder". In other words, if your goal is
 `⊢	∀ (x : X), x ∈ B ↔ x ∈ A ∪ B` then `rw mem_union_iff` won't work!
 It's the `∀` which is blocking it. Either do `intro x` (and then
