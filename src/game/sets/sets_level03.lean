@@ -27,7 +27,7 @@ mem_inter_iff : x ∈ A ∩ B ↔ x ∈ A ∧ x ∈ B
 x ∈ A ∩ B ↔ x ∈ A ∧ x ∈ B
 -/
 
-/- Hint : Hint
+/- Hint : Stuck?
 You need to start the same way as in the previous levels.
 Try and get yourself into a situation where you have a
 *hypothesis* `hAB : x ∈ A ∩ B` and then use `rw mem_inter_iff at hAB`. 
@@ -38,13 +38,14 @@ By convention, ∧ binds more tightly than →
 (i.e. `x ∈ A ∧ x ∈ B → x ∈ A` means `(x ∈ A ∧ x ∈ B) → x ∈ A`)
 -/
 
-/- Hint : Hint 
+/- Hint : Reminder about `cases` 
 The `cases h with hP hQ` tactic turns `h : P ∧ Q` into `hP : P` and `hQ : Q`
 -/
 
 /- Hint : The `tauto!` tactic
-The `tauto!` tactic solves logical goals -- for example it could
-easily solve this goal:
+The `tauto!` tactic solves goals in propositional logic (i.e. problems where
+the relevant hypotheses and goal just involve `∧`, `∨`, `¬` and `→` and
+propositions -- for example it could easily solve this goal:
 
 ```
 h : P ∧ Q
