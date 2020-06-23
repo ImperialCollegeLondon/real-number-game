@@ -64,6 +64,17 @@ end
 -- together are enough to deduce that max a b is what it is,
 -- because of le_antisymm
 
+theorem max_choice (a b : X) : max a b = a ∨ max a b = b :=
+begin
+  cases le_total a b with hab hba,
+  { right,
+    exact max_eq_right hab
+  },
+  { left,
+    exact max_eq_left hba
+  }
+end
+
 theorem max_comm (a b : X) : max a b = max b a :=
 begin
   cases le_total a b with hab hba,
@@ -95,11 +106,11 @@ end
 -- this comes out nicely
 theorem max_le (hac : a ≤ c) (hbc : b ≤ c) : max a b ≤ c :=
 begin
-  cases le_total a b with hab hba,
-  { rw max_eq_right hab,
+  cases max_choice a b with ha hb,
+  { rw ha,
     assumption
   },
-  { rw max_eq_left hba,
+  { rw hb,
     assumption
   }
 end
@@ -107,13 +118,48 @@ end
 -- so does this
 theorem max_lt (hac : a < c) (hbc : b < c) : max a b < c :=
 begin
-  cases le_total a b with hab hba,
-  { rw max_eq_right hab,
+  cases max_choice a b with ha hb,
+  { rw ha,
     assumption
   },
-  { rw max_eq_left hba,
+  { rw hb,
     assumption
   }
+end
+
+-- and this, if we can teach `apply le_trans _ habc`
+theorem max_le_iff : a ≤ c ∧ b ≤ c ↔ max a b ≤ c :=
+begin
+  split,
+  { intro h,
+    cases h with hac hbc,
+    exact max_le hac hbc
+  },
+  { intro habc,
+    split,
+    { apply le_trans _ habc,
+      apply le_max_left},
+    { apply le_trans _ habc,
+      apply le_max_right
+    }
+  },
+end
+
+theorem max_lt_iff : a < c ∧ b < c ↔ max a b < c :=
+begin
+  split,
+  { intro h,
+    cases h with hac hbc,
+    exact max_lt hac hbc
+  },
+  { intro habc,
+    split,
+    { apply lt_of_le_of_lt _ habc,
+      apply le_max_left},
+    { apply lt_of_le_of_lt _ habc,
+      apply le_max_right
+    }
+  },
 end
 
 -- long but fun
