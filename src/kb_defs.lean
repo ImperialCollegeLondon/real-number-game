@@ -14,7 +14,7 @@ lemma mem_inter_iff : x ∈ A ∩ B ↔ x ∈ A ∧ x ∈ B := iff.rfl
 lemma mem_sdiff_iff : x ∈ A \ B ↔ x ∈ A ∧ x ∉ B := iff.rfl
 lemma mem_neg_iff : x ∈ -A ↔ x ∉ A := iff.rfl
 
-lemma eq_iff : A = B ↔ ∀ x : X, x ∈ A ↔ x ∈ B := ext_iff
+lemma ext_iff : A = B ↔ ∀ x : X, x ∈ A ↔ x ∈ B := ext_iff
 lemma subset_iff : A ⊆ B ↔ ∀ x : X, x ∈ A → x ∈ B := iff.rfl
 
 /-- Humans want these in level 7 -/
