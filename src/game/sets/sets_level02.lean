@@ -56,6 +56,8 @@ begin
   rw mem_union_iff,
   left,
   assumption,
+
+  
 end
 
 end xena --hide

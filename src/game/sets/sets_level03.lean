@@ -63,6 +63,9 @@ begin
   intros x hx,
   rw mem_inter_iff at hx,
   tauto!, -- or cases, assumption
+
+
+  
 end
 
 end xena -- hide
