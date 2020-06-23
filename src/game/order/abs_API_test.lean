@@ -70,7 +70,39 @@ end
 
 theorem abs_mul : abs (a * b) = abs a * abs b :=
 begin
-  sorry
+  cases le_total 0 a with h0a ha0;
+  cases le_total 0 b with h0b hb0,
+  { -- both nonnegative
+    rw abs_of_nonneg h0a,
+    rw abs_of_nonneg h0b,
+    rw abs_of_nonneg,
+    -- nlinarith -- when it exists!
+    apply mul_nonneg h0a h0b -- until it does
+  },
+  { -- b <= 0 <= a
+    rw abs_of_nonneg h0a,
+    rw abs_of_nonpos hb0,
+    rw abs_of_nonpos,
+    { ring},
+    -- nlinarith -- when it exists!
+    apply mul_nonpos_of_nonneg_of_nonpos h0a hb0 -- until it does
+  },
+  { -- a ≤ 0 ≤ b
+    rw abs_of_nonpos ha0,
+    rw abs_of_nonneg h0b,
+    rw abs_of_nonpos,
+    { ring},
+    -- nlinarith -- when it exists!
+    apply mul_nonpos_of_nonpos_of_nonneg ha0 h0b -- until it does
+  },
+  { -- both nonnegative
+    rw abs_of_nonpos ha0,
+    rw abs_of_nonpos hb0,
+    rw abs_of_nonneg,
+    { ring},
+    -- nlinarith -- when it exists!
+    apply mul_nonneg_of_nonpos_of_nonpos ha0 hb0 -- until it does
+  },  
 end
 
 
