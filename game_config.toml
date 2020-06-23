@@ -8,7 +8,7 @@ name = "Sets"
 id = 1
 levels = [
 	"src/game/sets/sets_level01.lean",
-    	"src/game/sets/sets_level02.lean",
+    "src/game/sets/sets_level02.lean",
 	"src/game/sets/sets_level03.lean",
 	"src/game/sets/sets_level04.lean",
 	"src/game/sets/sets_level05.lean",
