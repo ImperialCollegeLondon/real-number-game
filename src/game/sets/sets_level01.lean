@@ -42,8 +42,13 @@ Let's see if you can prove `A ⊆ A` by rewriting `subset_iff`.
 A ⊆ B ↔ ∀ x : X, x ∈ A → x ∈ B
 -/
 
+/- Hint : Tactic tip
+The `assumption` tactic will close a goal if it is equal to one of your
+hypotheses. It's actually longer to type than `exact hx`, but it's easier to
+use because you don't have to bother remembering what you called `hx`.
 
-/- Hint : Hint
+-/
+/- Hint : Stuck? Here's a hint.
 To make progress with a goal of form `∀ a : X, ...`, introduce a term of type `X` by using a familiar tactic. 
 
 In this example, using
