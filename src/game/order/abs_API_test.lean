@@ -90,14 +90,14 @@ begin
     rw abs_of_nonneg h0b,
     rw abs_of_nonpos,
     { ring},
-    nlinarith, -- when it exists!
+    nlinarith,
   },
   { -- both nonnegative
     rw abs_of_nonpos ha0,
     rw abs_of_nonpos hb0,
     rw abs_of_nonneg,
     { ring},
-    nlinarith,-- when it exists!
+    nlinarith,
   },  
 end
 
