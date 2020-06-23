@@ -76,32 +76,28 @@ begin
     rw abs_of_nonneg h0a,
     rw abs_of_nonneg h0b,
     rw abs_of_nonneg,
-    -- nlinarith -- when it exists!
-    apply mul_nonneg h0a h0b -- until it does
+    nlinarith,
   },
   { -- b <= 0 <= a
     rw abs_of_nonneg h0a,
     rw abs_of_nonpos hb0,
     rw abs_of_nonpos,
     { ring},
-    -- nlinarith -- when it exists!
-    apply mul_nonpos_of_nonneg_of_nonpos h0a hb0 -- until it does
+    nlinarith,
   },
   { -- a ≤ 0 ≤ b
     rw abs_of_nonpos ha0,
     rw abs_of_nonneg h0b,
     rw abs_of_nonpos,
     { ring},
-    -- nlinarith -- when it exists!
-    apply mul_nonpos_of_nonpos_of_nonneg ha0 h0b -- until it does
+    nlinarith, -- when it exists!
   },
   { -- both nonnegative
     rw abs_of_nonpos ha0,
     rw abs_of_nonpos hb0,
     rw abs_of_nonneg,
     { ring},
-    -- nlinarith -- when it exists!
-    apply mul_nonneg_of_nonpos_of_nonpos ha0 hb0 -- until it does
+    nlinarith,-- when it exists!
   },  
 end
 
