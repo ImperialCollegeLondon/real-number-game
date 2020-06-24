@@ -23,6 +23,7 @@ example : a ≤ b → b ≤ c → a ≤ c := le_trans
 
 example : a ≤ b → b ≤ a → a = b := le_antisymm
 
+-- I think this is more useful in practice than trichotomy
 example : a ≤ b ∨ b ≤ a := le_total a b
 
 example : a < b ↔ a ≤ b ∧ a ≠ b := lt_iff_le_and_ne
