@@ -22,6 +22,11 @@ Need to complete the proof.
 lemma not_complete_rationals : 
     ¬ complete embedded_rationals :=
 begin
+   -- the plan here is to use the set { x : ℚ | x ^2 < 2}
+   -- this is bounded, and the sup S will satisfy neither
+   -- S ^ 2 < 2 nor S ^ 2 > 2 (due to density of rationals)
+   -- so S ^ 2 = 2, but there's not such S ∈ ℚ
+   -- (as per sets/sqrt2NotRational.lean)
    sorry,
 end
 
