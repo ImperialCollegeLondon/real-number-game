@@ -29,8 +29,16 @@ begin
   cases h1 with yA h2,
   { have h2 := hA yA, linarith, },
   -- prove that (c+a) is the GLB
-  intros lb hlb,
-  sorry, -- still need a bit of work
+  intros L hL,
+  have h3 : L - c ∈ lower_bounds A,
+    intros y hy,
+    set x := y + c with hx,
+    have h31 : x ∈ sum_set_const A c,
+      unfold sum_set_const, 
+      split, swap, use y, split, exact hy, exact hx,
+    have h32 := hL h31, rw hx at h32, linarith,
+  have h4 := hB h3, linarith,
+  done
 end
 
 end xena -- hide
