@@ -14,9 +14,10 @@ variable X : Type -- we will think of X as a set here
 ## Level 1 : Introduction to sets.
 
 This chapter assumes you are familiar with the following tactics:
-`rw`, `intro`, `apply`, `exact`, `cases`, `split`, `left`, `right` and `exfalso`.<br>
+`rw`, `intro`, `apply`, `exact`, `cases`, `split`, `use`, `left`, `right` and `exfalso`.
 
 (TODO (kmb) : check this list is exhaustive)
+(We might need to add `ring`)
 
 If you are not, try playing Function World and Proposition World of the Natural Number Game.
 
