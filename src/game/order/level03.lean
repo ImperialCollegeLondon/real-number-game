@@ -1,4 +1,4 @@
-import data.real.basic
+import game.order.level02
 
 namespace xena -- hide
 
@@ -16,8 +16,9 @@ notation `|` x `|` := abs x --hide
 For any two real numbers $a$ and $b$, we have that
 $$|a| ≤ c ↔ -c ≤ a ≤ c$$.
 -/
-theorem abs_le (a c : ℝ) (h : 0 ≤ c): |a| ≤ c → (-c) ≤ a ∧ a ≤ c :=
+theorem abs_le (a c : ℝ) (h : 0 ≤ c): |a| ≤ c ↔ (-c) ≤ a ∧ a ≤ c :=
 begin
+split,
     rcases lt_trichotomy a 0 with haNeg | haZero | haPos,
     { -- case a < 0
         intro H, 
@@ -32,6 +33,25 @@ begin
         have h1 : |a| = a, exact abs_of_pos haPos,
         rw h1 at H, split, linarith, exact H,
     },
+    
+    
+    rcases lt_trichotomy a 0 with haNeg | haZero | haPos,
+    { -- case a < 0
+        intro H, 
+        have h1 : | a | = - a, exact abs_of_neg haNeg,
+        rw abs_le, 
+        exact H,
+    },
+    { -- case a = 0
+        intro H,
+        rw abs_le, exact H,
+    },
+    { -- case 0 < a
+        intro H,
+        rw abs_le, exact H,
+    },
+    
+
     done
 end
 

@@ -1,4 +1,4 @@
-import data.real.basic
+import game.sup_inf.level04
 
 namespace xena -- hide
 
@@ -29,7 +29,7 @@ begin
     cases h0 with y h1, cases h1 with yA h2,
     cases h2 with z h3, cases h3 with zB hx,
     have H12A := hA.left, have H12B := hB.left,
-    have H13A := H12A yA, have H13B := H12B zB,
+    have H13A := H12A y yA, have H13B := H12B z zB,
     linarith,
   },
   -- now prove that (a+b) is the least upper bound
@@ -71,10 +71,11 @@ end
 
 -- begin hide
 -- Kevin's term proof for second part
+-- NOTE: I altered this after is_lub changed. I don't *think* it's broken -- GT.
 lemma sup_sum_of_sets' (A : set ℝ) (B : set ℝ) (a : ℝ) (b : ℝ)
   (hA : is_lub A a) (hB : is_lub B b) :
   a + b ∈ lower_bounds (upper_bounds (mem_sum_sets A B)) :=
-    λ S hS, add_le_of_le_sub_left $ hB.2 $ λ z hz, le_sub.1 $ hA.2 $ λ y hy, 
+    λ S hS, add_le_of_le_sub_left $ hB.2 (S - a) $ λ z hz, le_sub.1 $ hA.2 (S - z) $ λ y hy, 
     le_sub_right_of_add_le $ hS ⟨y, hy, z, hz, rfl⟩
 
 -- Patrick Massot's proof for second part
@@ -90,8 +91,8 @@ begin
   have H2 : S - b ∈ upper_bounds A,
   { intros x hx,
     suffices : b ≤ S - x, by linarith, -- by rwa le_sub,
-    exact hB.2 (H1 x hx) },
-  linarith [hA.2 H2],  --exact le_sub_iff_add_le.mp (hA.2 H2),
+    exact hB.2 (S - x) (H1 x hx) },
+  linarith [hA.2 (S - b) H2],  --exact le_sub_iff_add_le.mp (hA.2 H2),
 end
 
 --- end hide

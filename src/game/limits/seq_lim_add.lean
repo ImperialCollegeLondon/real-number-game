@@ -1,4 +1,6 @@
 import game.limits.L01defs
+import game.sup_inf.GLBprop_if_LUBprop
+
 
 namespace xena -- hide
 
