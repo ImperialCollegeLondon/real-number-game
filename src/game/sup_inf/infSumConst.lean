@@ -27,7 +27,10 @@ begin
   intros x h0,
   cases h0 with y h1,
   cases h1 with yA h2,
-  sorry, sorry, --needs being worked out
+  { have h2 := hA yA, linarith, },
+  -- prove that (c+a) is the GLB
+  intros lb hlb,
+  sorry, -- still need a bit of work
 end
 
 end xena -- hide
