@@ -14,7 +14,8 @@ May need to change definitions.
 -/
 
 def bdd (X : set ℝ) := bdd_above X ∧ bdd_below X
-def complete (X : set ℝ) := ∀ Y : set ℝ, Y.nonempty ∧ Y ⊆ X ∧ bdd Y → ∃ s i : ℝ, is_lub Y s ∧ is_glb Y i 
+def complete (X : set ℝ) := 
+    ∀ Y : set ℝ, Y.nonempty ∧ Y ⊆ X ∧ bdd Y → ∃ s ∈ X, is_lub Y s ∧ ∃ i ∈ X, is_glb Y i
 
 
 /- Lemma
@@ -46,7 +47,7 @@ begin
    { -- case 2 < S^2 can also be sorted out using density of rationals
        sorry,
    },
-   { -- the interesting case S^2 = 2, trouble because of coercions, S is real!!
+   { -- the interesting case S^2 = 2, maybe some trouble due to coercions ?
         sorry,
    },
 
