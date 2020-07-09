@@ -12,7 +12,7 @@ variables {X : Type} (a : X) {x : X} {A B : set X}
 lemma mem_union_iff : x ∈ A ∪ B ↔ x ∈ A ∨ x ∈ B := iff.rfl 
 lemma mem_inter_iff : x ∈ A ∩ B ↔ x ∈ A ∧ x ∈ B := iff.rfl
 lemma mem_sdiff_iff : x ∈ A \ B ↔ x ∈ A ∧ x ∉ B := iff.rfl
-lemma mem_neg_iff : x ∈ -A ↔ x ∉ A := iff.rfl
+lemma mem_neg_iff : x ∈ Aᶜ ↔ x ∉ A := iff.rfl
 
 lemma ext_iff : A = B ↔ ∀ x : X, x ∈ A ↔ x ∈ B := ext_iff
 lemma subset_iff : A ⊆ B ↔ ∀ x : X, x ∈ A → x ∈ B := iff.rfl

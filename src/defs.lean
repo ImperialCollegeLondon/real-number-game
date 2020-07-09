@@ -1,8 +1,8 @@
 import data.real.basic
 import data.set.intervals
-import tactic.norm_num
+import tactic
 
--- nonempty is a class but let's have it working on set ℝ
+export has_Sup (Sup) has_Inf (Inf)
 
 namespace real_number_game
 
@@ -52,7 +52,7 @@ instance : bounded_aboveT (set.Icc 0 1) :=
 }
 
 -- hide
-noncomputable def Sup (S : set ℝ) [nonemptyP S] [bounded_aboveP S] := _root_.Sup S
+noncomputable def Sup (S : set ℝ) [nonemptyP S] [bounded_aboveP S] := Sup S
 
 -- state as axiom; hide proof
 theorem le_Sup {S : set ℝ} [nonemptyP S] [bounded_aboveP S] : ∀ x ∈ S, x ≤ Sup S :=
@@ -68,7 +68,7 @@ theorem Sup_le {S : set ℝ} [nonemptyP S] [bounded_aboveP S] :
   ∀ b : ℝ, is_upper_bound S b → Sup S ≤ b :=
 begin
   intros b hb,
-  show _root_.Sup S ≤ b,
+  show has_Sup.Sup S ≤ b,
   rw real.Sup_le,
   { exact hb},
   { cases nonemptyP.thm S with c hc, use c, exact hc},

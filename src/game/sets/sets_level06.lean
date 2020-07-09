@@ -48,7 +48,7 @@ If $A$ and $B$ are sets with elements of type $X$, then
 
 $$(A \setminus B) = A \cap B^{c}.$$
 -/
-theorem setdiff_eq_intersect_comp (A B : set X) : A \ B = A ∩ -B := 
+theorem setdiff_eq_intersect_comp (A B : set X) : A \ B = A ∩ Bᶜ := 
 begin
   rw ext_iff,
   intro x,
