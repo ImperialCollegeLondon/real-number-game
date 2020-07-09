@@ -32,7 +32,6 @@ example : a ≤ b → b < c → a < c := lt_of_le_of_lt
 
 example : a < b → b ≤ c → a < c := lt_of_lt_of_le
 
-
 -- max is already defined so we work in a namespace
 
 namespace test
@@ -65,6 +64,7 @@ end
 -- together are enough to deduce that max a b is what it is,
 -- because of le_antisymm
 
+-- level 1
 theorem max_choice (a b : X) : max a b = a ∨ max a b = b :=
 begin
   cases le_total a b with hab hba,

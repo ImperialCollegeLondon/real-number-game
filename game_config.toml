@@ -129,3 +129,10 @@ levels = [
 	"src/game/topology/hausdorff.lean",
 	"src/game/topology/continuity.lean"
 ]
+
+[[worlds]]
+name = "Max and Abs"
+id = 10
+levels = [
+	"src/game/max_and_abs/level01.lean"
+]
