@@ -1,4 +1,3 @@
-import data.real.basic
 import .lub_prodSets
 
 namespace xena -- hide

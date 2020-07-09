@@ -1,5 +1,7 @@
-import game.series.L01defs
+import game.series.tempLevel01
 variable X : Type --hide
+
+namespace xena
 
 /- 
 Idea 02: if $\forall n \in \mathbb{N}, a_n \ge 0$,
@@ -17,3 +19,5 @@ begin
     intros x hx,
     left, exact hx, done
 end
+
+end xena

@@ -1,4 +1,4 @@
-import data.real.basic
+import game.sup_inf.infSumConst
 
 namespace xena -- hide
 
@@ -27,7 +27,7 @@ begin
   { -- prove that (c*a) is an upper bound
     intros x h0,
     cases h0 with y h1, cases h1 with yA h2,
-    have H13A := hA1 yA, rw h2, 
+    have H13A := hA1 y yA, rw h2, 
     exact (mul_le_mul_left hc).mpr H13A,
   },
   -- now prove that (c*a) is the least upper bound
@@ -35,13 +35,13 @@ begin
   set y1 := S / c with hys,
   have H : y1 ∈ upper_bounds A,
     intros x hx,
-    have G := hA1 hx, 
+    have G := hA1 x hx, 
     set xc := c * x with hxc,
     have G1 : xc ∈ const_times_set c A, 
         use x, existsi hx, exact hxc,
-    have G2 := hS G1, rw hxc at G2,  
+    have G2 := hS xc G1, rw hxc at G2,  
     rw hys, exact (le_div_iff' hc).mpr G2,
-  have F := hA2 H, rw hys at F, 
+  have F := hA2 y1 H, rw hys at F, 
   have E := (mul_le_mul_left hc).mpr F,
   exact (le_div_iff' hc).mp F, done
 end

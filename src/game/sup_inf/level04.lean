@@ -1,3 +1,4 @@
+import game.sup_inf.level03
 import data.real.basic
 
 namespace xena -- hide
@@ -7,12 +8,6 @@ namespace xena -- hide
 
 ## Level 4 
 -/
-
-
-definition is_upper_bound (S : set ℝ) (x : ℝ) := ∀ s ∈ S, s ≤ x 
-definition is_lub' (S : set ℝ) (x : ℝ) := is_upper_bound S x ∧ 
-  ∀ y : ℝ, is_upper_bound S y → x ≤ y
-definition has_lub (S : set ℝ) := ∃ x, is_lub' S x 
 
 /-
 A generalization of the result in the previous level.
@@ -43,7 +38,7 @@ end
 /- Lemma
 A more general version of the previous level...
 -/
-lemma lub_open (y : ℝ) : is_lub' {x : ℝ | x < y} y :=
+lemma lub_open (y : ℝ) : is_lub {x : ℝ | x < y} y :=
 begin
 split,
 { intros a ha,
