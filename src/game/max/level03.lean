@@ -19,6 +19,12 @@ tries `refl` after a rewrite; note that `≤` is reflexive, so `refl` will
 close a goal of the form `a ≤ a`. 
 -/
 
+/- Hint : Tip : `rwa`
+The `rwa` tactic means "rewrite, and then close the goal because it's an
+assumption". It is shorter than `rw` followed by `exact h`
+if `h` is an assumption.
+-/
+
 /- Lemma
 For any real numbers $a$ and $b$, we have $a\leq\max(a,b).$
 -/
