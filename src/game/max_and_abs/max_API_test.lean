@@ -76,6 +76,7 @@ begin
   }
 end
 
+-- level 2
 theorem max_comm (a b : X) : max a b = max b a :=
 begin
   cases le_total a b with hab hba,
@@ -87,6 +88,7 @@ begin
   }  
 end
 
+-- level 3
 theorem le_max_left (a b : X) : a ≤ max a b :=
 begin
   cases le_total a b with hab hba,
@@ -98,6 +100,7 @@ begin
   }  
 end
 
+-- level 4
 theorem le_max_right (a b : X) : b ≤ max a b :=
 begin
   rw max_comm,

@@ -1,9 +1,14 @@
 import tactic -- hide
 
 import data.real.basic -- imports the real numbers
+/-
 
+-/
 open_locale classical -- allow proofs by contradiction
-noncomputable theory -- don't fuss about the reals being uncomputable
+/-
+
+-/
+noncomputable theory -- don't fuss about the reals being noncomputable
 
 namespace xena -- hide
 
@@ -34,35 +39,30 @@ example : a ≤ b → b < c → a < c := lt_of_le_of_lt
 
 example : a < b → b ≤ c → a < c := lt_of_lt_of_le
 ```
-
-/- Axiom : le_refl :
-le_refl (a : ℝ) : a ≤ a
 -/
 
-/- Axiom : le_trans :
-le_trans : a ≤ b → b ≤ c → a ≤ c
+/- Axiom : le_refl a : a ≤ a
 -/
 
-/- Axiom : le_antisymm :
-le_antisymm : a ≤ b → b ≤ a → a = b
+/- Axiom : le_trans : a ≤ b → b ≤ c → a ≤ c
 -/
 
-/- Axiom : le_total :
-le_total a b : a ≤ b ∨ b ≤ a
+/- Axiom : le_antisymm : a ≤ b → b ≤ a → a = b
 -/
 
-/- Axiom : lt_iff_le_and_ne :
-lt_iff_le_and_ne : a < b ↔ a ≤ b ∧ a ≠ b
+/- Axiom : le_total a b : a ≤ b ∨ b ≤ a
 -/
 
-/- Axiom : lt_of_le_of_lt :
-lt_of_le_of_lt : a ≤ b → b < c → a < c 
+/- Axiom : lt_iff_le_and_ne : a < b ↔ a ≤ b ∧ a ≠ b
 -/
 
-/- Axiom : lt_of_lt_of_le :
-lt_of_lt_of_le : a < b → b ≤ c → a < c
+/- Axiom : lt_of_le_of_lt : a ≤ b → b < c → a < c 
 -/
 
+/- Axiom : lt_of_lt_of_le : a < b → b ≤ c → a < c
+-/
+
+/-
 We start with `max a b := if a ≤ b then b else a`. It is
 uniquely characterised by the following two properties, which are hence
 all you will need to know:
@@ -72,16 +72,14 @@ theorem max_eq_right : a ≤ b → max a b = b
 
 theorem max_eq_left : b ≤ a → max a b = a
 ```
-
-/- Axiom : max_eq_right :
-max_eq_right : a ≤ b → max a b = b
 -/
 
-/- Axiom: max_eq_left :
-theorem max_eq_left : b ≤ a → max a b = a
+/- Axiom : max_eq_right : a ≤ b → max a b = b
 -/
 
+/- Axiom : max_eq_left : b ≤ a → max a b = a
 -/
+
 -- begin hide
 def max (a b : ℝ) := if a ≤ b then b else a
 
@@ -104,6 +102,11 @@ begin
   }
 end
 -- end hide
+
+/-
+All of these theorems are in the theorem statement box on the left.
+See if you can now prove the useful `max_choice` lemma using them.
+-/
 
 /- Hint : Hint
 Do a case split with `cases le_total a b`. 
