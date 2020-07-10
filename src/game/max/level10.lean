@@ -16,10 +16,10 @@ And finally `lt_max_iff`.
 
 /- Lemma
 If $a$, $b$, $c$ are real numbers,
-then $a<\max(b,c)$ iff ($a<b$ or $a<c.$
+then $a<\max(b,c)$ iff ($a<b$ or $a<c$).
 -/
 
-theorem lt_max_iff : a < max b c ↔ a < b ∨ a < c :=
+theorem lt_max_iff {a b c : ℝ} : a < max b c ↔ a < b ∨ a < c :=
 begin
   split,
   { intro ha,

@@ -136,11 +136,25 @@ levels = [
 ]
 
 [[worlds]]
-name = "Max and Abs"
+name = "Max"
 id = 10
 levels = [
-	"src/game/max_and_abs/level01.lean",
-	"src/game/max_and_abs/level02.lean",
-	"src/game/max_and_abs/level03.lean",
-	"src/game/max_and_abs/level04.lean"
+	"src/game/max/level01.lean",
+	"src/game/max/level02.lean",
+	"src/game/max/level03.lean",
+	"src/game/max/level04.lean",
+	"src/game/max/level05.lean",
+	"src/game/max/level06.lean",
+	"src/game/max/level07.lean",
+	"src/game/max/level08.lean",
+	"src/game/max/level09.lean",
+	"src/game/max/level10.lean"
+]
+
+[[worlds]]
+name = "Abs"
+id = 11
+parents = [10]
+levels = [
+	"src/game/abs/level01.lean"
 ]

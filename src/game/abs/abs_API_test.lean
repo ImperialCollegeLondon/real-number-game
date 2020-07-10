@@ -1,5 +1,6 @@
-import game.max_and_abs.max_API_test
-import data.real.basic
+import game.max.level10
+
+open_locale classical
 
 noncomputable theory
 
@@ -31,7 +32,7 @@ end
 theorem abs_le : abs a ≤ b ↔ -b ≤ a ∧ a ≤ b :=
 begin
   rw abs_def,
-  rw ←max_le_iff,
+  rw max_le_iff,
   split;
   intro h;
   cases h;
