@@ -14,10 +14,6 @@ namespace xena -- hide
 In fact `max_le` can be beefed up to an iff statement.
 -/
 
-/- Lemma
-If $a$, $b$, $c$ are real numbers,
-then ($a\leq c$ and $b\leq c$) iff $\max(a,b)\leq c.$
--/
 
 /- Hint : Tip : using `le_trans` 
 If your goal is `x ≤ z` and you have a hypothesis `h : y ≤ z`
@@ -38,6 +34,11 @@ refine le_trans _ h
 
 and this just reduces the goal to proving `x ≤ y` immediately. 
 
+-/
+
+/- Lemma
+If $a$, $b$, $c$ are real numbers,
+then ($a\leq c$ and $b\leq c$) iff $\max(a,b)\leq c.$
 -/
 
 theorem max_le_iff {a b c : ℝ} : a ≤ c ∧ b ≤ c ↔ max a b ≤ c :=
