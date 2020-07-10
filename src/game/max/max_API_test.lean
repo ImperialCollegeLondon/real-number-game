@@ -108,6 +108,7 @@ begin
 end
 
 -- this comes out nicely
+-- level 5
 theorem max_le (hac : a ≤ c) (hbc : b ≤ c) : max a b ≤ c :=
 begin
   cases max_choice a b with ha hb,
@@ -119,19 +120,8 @@ begin
   }
 end
 
--- so does this
-theorem max_lt (hac : a < c) (hbc : b < c) : max a b < c :=
-begin
-  cases max_choice a b with ha hb,
-  { rw ha,
-    assumption
-  },
-  { rw hb,
-    assumption
-  }
-end
-
 -- and this, if we can teach `apply le_trans _ habc`
+-- level 6
 theorem max_le_iff : a ≤ c ∧ b ≤ c ↔ max a b ≤ c :=
 begin
   split,
@@ -149,6 +139,22 @@ begin
   },
 end
 
+
+-- so does this
+-- level 7
+theorem max_lt (hac : a < c) (hbc : b < c) : max a b < c :=
+begin
+  cases max_choice a b with ha hb,
+  { rw ha,
+    assumption
+  },
+  { rw hb,
+    assumption
+  }
+end
+
+
+-- level 8
 theorem max_lt_iff : a < c ∧ b < c ↔ max a b < c :=
 begin
   split,
@@ -166,7 +172,7 @@ begin
   },
 end
 
--- long but fun
+-- level 9
 theorem le_max_iff : a ≤ max b c ↔ a ≤ b ∨ a ≤ c :=
 begin
   split,
