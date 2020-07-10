@@ -16,7 +16,7 @@ We've done `max_le_iff`; here is `le_max_iff`.
 
 /- Lemma
 If $a$, $b$, $c$ are real numbers,
-then $a\leq\max(b,c)$ iff ($a\leq b$ or $a\leq c.$
+then $a\leq\max(b,c)$ iff ($a\leq b$ or $a\leq c$).
 -/
 
 theorem le_max_iff {a b c : ℝ} : a ≤ max b c ↔ a ≤ b ∨ a ≤ c :=
