@@ -12,6 +12,12 @@ namespace xena -- hide
 ## Level 2
 
 `max_comm` is the statement that `max a b = max b a`. See if you can prove it.
+
+Technical note: in contrast to the natural number game, the `rw` used
+in the real number game is Lean's more powerful `rw`, which automatically
+tries `refl` after a rewrite. So for example, if after a rewrite a goal
+becomes `a = a` then that goal will be closed automatically. Watch out
+for vanishing goals!
 -/
 
 /- Hint : Hint

@@ -13,10 +13,9 @@ namespace xena -- hide
 
 `le_max_left` is the statement that `a ≤ max a b`.
 
-Technical note: in contrast to the natural number game, the `rw` used
-in the real number game is Lean's more powerful `rw`, which automatically
-tries `refl` after a rewrite; note that `≤` is reflexive, so `refl` will
-close a goal of the form `a ≤ a`. 
+Technical note: `refl` will also close the goal `⊢ a ≤ a` because
+`≤` is reflexive. Watch out for goals being randomly closed after
+a rewrite.
 -/
 
 /- Hint : Tip : `rwa`
