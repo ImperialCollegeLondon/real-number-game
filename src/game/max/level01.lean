@@ -16,7 +16,7 @@ namespace xena -- hide
 variables {a b c : ℝ}
 
 /-
-# Chapter ? : Max and abs
+# Chapter 1 : Max
 
 ## Level 1
 

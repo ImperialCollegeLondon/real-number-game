@@ -7,7 +7,7 @@ noncomputable theory -- hide
 namespace xena -- hide
 
 /-
-# Chapter ? : Max
+# Chapter 1 : Max
 
 ## Level 9
 

@@ -5,7 +5,7 @@ intro = "src/game/intro.lean"
 
 [[worlds]]
 name = "Max"
-id = 10
+id = 1
 levels = [
 	"src/game/max/level01.lean",
 	"src/game/max/level02.lean",
