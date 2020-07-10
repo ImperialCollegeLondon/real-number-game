@@ -151,10 +151,3 @@ levels = [
 	"src/game/max/level10.lean"
 ]
 
-[[worlds]]
-name = "Abs"
-id = 11
-parents = [10]
-levels = [
-	"src/game/abs/level01.lean"
-]
