@@ -15,7 +15,7 @@ namespace xena -- hide
 proof using what we've already done.
 -/
 
-/- Hint : 
+/- Hint : Hint
 Why not start with `rw max_comm`?
 -/
 
