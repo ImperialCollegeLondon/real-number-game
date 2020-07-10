@@ -1,4 +1,4 @@
-import game.max_and_abs.level04 -- hide
+import game.max.level04 -- hide
 
 open_locale classical -- hide
 
