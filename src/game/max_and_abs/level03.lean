@@ -22,7 +22,6 @@ close a goal of the form `a ≤ a`.
 /- Lemma
 For any real numbers $a$ and $b$, we have $a\leq\max(a,b).$
 -/
-
 theorem le_max_left (a b : ℝ) : a ≤ max a b :=
 begin
   cases le_total a b with hab hba,

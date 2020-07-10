@@ -21,7 +21,6 @@ Again, do a case split with `cases le_total a b`.
 /- Lemma
 For any real numbers $a$ and $b$, we have $\max(a,b) = \max(b,a).$
 -/
-
 theorem max_comm (a b : ℝ) : max a b = max b a :=
 begin
   cases le_total a b with hab hba,
