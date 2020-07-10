@@ -68,7 +68,7 @@ theorem Sup_le {S : set ℝ} [nonemptyP S] [bounded_aboveP S] :
   ∀ b : ℝ, is_upper_bound S b → Sup S ≤ b :=
 begin
   intros b hb,
-  show _root_.Sup S ≤ b,
+  show has_Sup.Sup S ≤ b,
   rw real.Sup_le,
   { exact hb},
   { cases nonemptyP.thm S with c hc, use c, exact hc},
