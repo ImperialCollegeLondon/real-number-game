@@ -8,3 +8,9 @@ https://leanprover.zulipchat.com/#narrow/stream/113488-general/topic/Lean.203.2E
 Equivalently, go to the Lean release page:
 https://github.com/leanprover-community/lean/releases
 to download the latest zipped file containing the Lean web interface. Press on the `Tags` tab to get previous releases.
+
+On Ubuntu 20.04/Mint 20, just before trying to install Lean game maker: 
+1) Make sure your python setuptools package is up to date. Within the environment you created for the game, do:
+`pip3 install --upgrade setuptools`
+2) Make sure the `fire` python package is installed:
+`pip3 install fire`
