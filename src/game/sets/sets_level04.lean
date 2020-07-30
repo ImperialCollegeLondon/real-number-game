@@ -25,7 +25,7 @@ the same elements.
 In Lean's maths library this axiom is called `ext_iff`.
 
 ```
-lemma ext_diff : A = B ↔ ∀ x : X, x ∈ A ↔ x ∈ B
+lemma ext_iff : A = B ↔ ∀ x : X, x ∈ A ↔ x ∈ B
 ```
 -/
 
