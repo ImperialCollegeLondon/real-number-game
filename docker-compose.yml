@@ -1,0 +1,13 @@
+version: '3.3'
+services:
+  real-number-game:
+    ports:
+      - 8000:8000
+    environment:
+      - 'PATH=$HOME/.elan/bin:$PATH'
+    build:
+      context: .
+      target: runtime
+      args:
+        - 'TAG=latest'
+    image: 'real-number-game:latest'
